@@ -19,7 +19,7 @@ int main () {
         }
     }
     printf("Number of digits is %d", count);
-
+    fclose(fp);
     return 0;
    
 }

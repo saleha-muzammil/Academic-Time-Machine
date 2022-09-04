@@ -1,7 +1,10 @@
 #include <stdio.h>
 
-void addRecord(FILE* fp){
-    
+void addRecord(const char* filename){
+
+    FILE *fp;
+    fp=fopen(filename, "a");
+
     char name[40];
     char rollNum[10];
     char email[50];
@@ -13,35 +16,39 @@ void addRecord(FILE* fp){
     printf("Enter Email: ");
     scanf("%49s", email);
 
+    fputc('\n', fp);
     fputs("<New Entry>\n", fp);
     fputs(name, fp);
+    fputc('\n', fp);
     fputs(rollNum, fp);
+    fputc('\n', fp);
     fputs(email, fp);
 
-}
-void readRecord(FILE* fp){
+    fclose(fp);
 
 }
-void deleteRecord(FILE* fp){
+void readRecord(const char* filename){
+
+}
+void deleteRecord(const char* filename){
 
 }
 
 int main(){
-    FILE *fp;
-    fp=fopen("StudentRecord.txt", "r");
+    const char* filename="StudentRecord.txt";
     
     char mode = 'x';
     while (1){
-        printf("Press A to add student to record\nPress R to read student records\nPress D to to delete student record\nPress S to stop program");
+        printf("Press A to add student to record\nPress R to read student records\nPress D to to delete student record\nPress S to stop program\n");
         scanf("%c", &mode);
         if (mode == 'A'){
-            addRecord(fp);
+            addRecord(filename);
         }
         else if (mode == 'R'){
-            readRecord(fp);
+            readRecord(filename);
         }
         else if (mode == 'D'){
-            deleteRecord(fp);
+            deleteRecord(filename);
         }
         else if (mode == 'S'){
             break;
@@ -50,6 +57,5 @@ int main(){
             printf("Invalid input. Try Again\n");
         }    
     }
-    fclose(fp);
     return 0;
 }

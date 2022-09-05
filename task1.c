@@ -5,9 +5,16 @@ int main (int argc, char** argv) {
     FILE* fp;
     char cur;
     int count = 0;
-    char *filename=argv[1];
-    
-    strcat(filename, ".txt");
+    char qStr[]="q1_";
+    char txtStr[]=".txt";
+
+    char *fileStr=argv[1];
+    char *filename=qStr;
+    char *fileText=txtStr;
+
+    strcat(filename, fileStr);
+    strcat(filename, fileText);
+
     fp= fopen(filename, "r");
     
     while (1){

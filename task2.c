@@ -54,6 +54,35 @@ void readRecord(const char* filename){
 
 }
 void deleteRecord(const char* filename){
+    FILE *fp1, *fp2;
+    char curStr[64];
+    char temp[]="temp.txt";
+    int num=0;
+    int count=0;
+
+    fp1=fopen(filename, "r");
+    fp2 = fopen(temp, "w"); 
+
+    printf("Input number of record to delete.\n");
+    scanf("%d", &num);
+     while (fgets(curStr, 63, fp1)!=NULL){
+        if (strcmp(curStr,"<New Entry>\n")==0){
+            count++;
+        }
+        if (count==num){
+            fgets(curStr, 63, fp1);
+            fgets(curStr, 63, fp1);
+            fgets(curStr, 63, fp1);
+        }
+        else {
+            fprintf(fp2, "%s", curStr);
+        }
+    }
+
+    fclose(fp1);
+    fclose(fp2);
+    remove(filename);  		// remove the original file 
+    rename(temp, filename); 	// rename the temporary file to original name
 
 }
 

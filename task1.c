@@ -1,11 +1,14 @@
 #include <stdio.h>
+#include <string.h>
 
-int main () {
+int main (int argc, char** argv) {
     FILE* fp;
     char cur;
     int count = 0;
-
-    fp= fopen("data1.txt", "r");
+    char *filename=argv[1];
+    
+    strcat(filename, ".txt");
+    fp= fopen(filename, "r");
     
     while (1){
         cur=fgetc(fp);

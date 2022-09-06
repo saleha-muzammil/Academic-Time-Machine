@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
+
 void swap(char *xp, char *yp)
 {
     int temp = *xp;
@@ -23,29 +24,36 @@ char* reverseExceptVowels(char* str){
 }
 int main (int argc, char** argv) {
     FILE *fp1, *fp2;
-    char curStr[40];
+    char curStr[65536];
+    char qStr[]="q3_";
     char temp[]="temp.txt";
+    char txtStr[]=".txt";
+
     int count = 0;
-    char *filename=argv[1];
+
+    char *fileStr=argv[1];
+    char *filename=qStr;
+    char *fileText=txtStr;
+
+    strcat(filename, fileStr);
+    strcat(filename, fileText);
+
+    char fname[50];
+    strcpy(fname, filename);
     
-    strcat(filename, ".txt");
     fp1= fopen(filename, "r");
     fp2=fopen(temp, "w");
 
-    
-    
-    while (fscanf(fp1, "%39s", curStr)==1){
-        reverseExceptVowels(curStr);
-        printf(curStr);
-        fprintf(fp2, "%s", curStr);
-        fputc(' ', fp2);
+    while (fgets(curStr, 4096, fp1)!=NULL){
 
+        reverseExceptVowels(curStr);
+        fprintf(fp2, "%s", curStr);
     }
+
     fclose(fp1);
     fclose(fp2);
-    remove(filename);  		// remove the original file 
-    rename(temp, filename); 	// rename the temporary file to original name
-
+    remove(fname);  		// remove the original file 
+    rename(temp, fname); 	// rename the temporary file to original name
     return 0;
    
 }

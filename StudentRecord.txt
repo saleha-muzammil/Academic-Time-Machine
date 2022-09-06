@@ -1,12 +1,8 @@
 <New Entry>
-Maaz
-20L-0987
-l200987@lhr.nu.edu.pk
+Abdul Rafay Zahid
+20L-1203
+l201203@lhr.nu.edu.pk
 <New Entry>
-Fatima
-39203
-34093049
-<New Entry>
-Maaz
-Ibrahim
-Ahmed
+Abdul Rafay Zahid
+20L-1203
+l201203@lhr.nu.edu.pk

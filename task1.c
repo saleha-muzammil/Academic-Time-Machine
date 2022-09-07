@@ -15,6 +15,8 @@ int main (int argc, char** argv) {
     strcat(filename, fileStr);
     strcat(filename, fileText);
 
+    // printf("%s", filename);
+
     fp= fopen(filename, "r");
     
     while (1){

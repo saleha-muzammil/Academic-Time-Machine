@@ -4,7 +4,7 @@
 
 void swap(char *xp, char *yp)
 {
-    int temp = *xp;
+    char temp = *xp;
     *xp = *yp;
     *yp = temp;
 }
@@ -44,7 +44,7 @@ int main (int argc, char** argv) {
     fp1= fopen(filename, "r");
     fp2=fopen(temp, "w");
 
-    while (fgets(curStr, 4096, fp1)!=NULL){
+    while (fgets(curStr, 65535, fp1)!=NULL){
 
         reverseExceptVowels(curStr);
         fprintf(fp2, "%s", curStr);

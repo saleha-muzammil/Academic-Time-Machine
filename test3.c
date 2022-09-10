@@ -22,7 +22,7 @@ int main(int argc, char **argv){
 
 	char fileStr[65536];
 
-	while (fgets(fileStr, 65535, fp1) != NULL){
+	while (fscanf(fp1, fileStr) != 0){
 		reverse(fileStr);
 		fprintf(fp2, "%s", fileStr);
 	}

@@ -5,9 +5,6 @@
 #include <fcntl.h>
 #include <pthread.h>
 #include <semaphore.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-#include <sys/wait.h>
 
 
 int sem1, sem2, mutex;
@@ -18,21 +15,17 @@ void *producer()
 
     // FIFO file path
     char *myfifo = "/tmp/mypipe";
-
-    // Creating the named file(FIFO)
-    // mkfifo(<pathname>,<permission>)
     mkfifo(myfifo, 0666);
-    char str[255]="data block";
 
+    char str[100];
     do
     {
 
         wait(&sem1);
         wait(&mutex);
-        // printf("Input data\n");
-        // fgets(str, 255, stdin);
+ 
         fd1 = open(myfifo, O_WRONLY);
-        write(fd1, str, 255*sizeof(char));
+        write(fd1, str, 100*sizeof(char));
         close(fd1);
         signal(&mutex);
         signal(&sem2);
@@ -42,21 +35,16 @@ void *consumer()
 {
     int fd1;
 
-    // FIFO file path
     char *myfifo = "/tmp/mypipe";
-
-    // Creating the named file(FIFO)
-    // mkfifo(<pathname>,<permission>)
     mkfifo(myfifo, 0666);
 
-    char str[255];
+    char str[100]="data block";
     do
     {
         wait(&sem2);
         wait(&mutex);
         fd1 = open(myfifo, O_RDONLY);
-        read(fd1, str, 255*sizeof(char));
-        printf("Received: %s", str);
+        read(fd1, str, 100*sizeof(char));
         close(fd1);
 
         signal(&mutex);

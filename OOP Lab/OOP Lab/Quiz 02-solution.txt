@@ -1,0 +1,14 @@
+Output:
+0 0 A A A A B B B 3 D 2 3 D A D 1 4 D
+
+void setTune(Tune & obj, int index)
+{
+	if(index,15)
+	{
+		tunes[index] = &obj;
+	}
+}
+~TuneLibrary() 
+{
+
+}

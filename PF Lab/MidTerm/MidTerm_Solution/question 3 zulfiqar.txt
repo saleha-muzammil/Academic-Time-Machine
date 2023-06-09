@@ -1,0 +1,59 @@
+//Question 3
+
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+bool reverseCheck(int input)
+{
+	int reverse = 0, y;
+	y = input;
+	while ( y >=1)
+	{
+		reverse = reverse* 10;
+		reverse = (reverse + y%10);
+		y = y/10;
+	}
+    if ( reverse == input)
+		return true;
+	else 
+		return false;
+}
+
+
+
+
+int main ()
+{
+	ofstream writer;
+	writer.open ("output.txt", ios :: app);
+	for (int loop = 1 ; loop <=4 ; loop++)
+	{
+	int input, counter=0, x=0;
+	bool flag = false;
+	while (counter != 6)
+  {
+	  counter = 0;
+	cout << "Enter a 6 digit number : ";
+	cin >> input;
+	x = input;
+	while ( x >=1) 
+	{
+		counter = counter +1 ;
+		x = x/10;
+	}
+	if (counter != 6)
+		cout << "Invalid input , input again"<<endl;
+  }
+	flag = reverseCheck(input);
+	
+	if (flag == true)
+	{
+		writer << "Number " << loop<<" : " <<input << " is a palindrome" << endl;
+	}
+	else 
+		writer << "Number " << loop<<" : " <<input << " is not a palindrome" << endl;
+	}
+
+}
+

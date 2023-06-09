@@ -1,0 +1,30 @@
+Q1a
+good
+-0
+
+Q1b
+good
+-0
+
+
+Q1c.a
+good
+
+
+Q1c.b
+how exactly
+-2
+
+
+Q2a
+good
+-0
+
+Q2b
+8 and 10 are imp no matter what
+13 can be skipped
+
+-2
+
+total = 36
+

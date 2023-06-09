@@ -1,0 +1,40 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int num, r;
+	cout << "Input any number: ";
+	cin >> num;
+	int temp_num=num;
+
+	while (num % 10 == 0)
+	{
+		num = num / 10;
+	}
+
+	int act_num = num;
+	cout << num<<endl;
+
+	int reverse_num = 0;
+
+	while (num != 0)
+	{
+		r = num % 10;
+		reverse_num = reverse_num * 10 + r;
+		num = num / 10;
+	}
+
+	if (act_num == reverse_num)
+	{
+		cout << temp_num << " is palindrome" << endl;
+	}
+	else
+	{
+		cout << temp_num << " is not palindrome" << endl;
+	}
+
+	system("pause");
+	return 0;
+}
+

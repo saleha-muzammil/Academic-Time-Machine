@@ -1,0 +1,44 @@
+extends layout
+
+block content
+  script(src="http://code.jquery.com/jquery-3.1.0.min.js")
+  script(src="/magic.js")
+      
+  h1= "FAST Library"
+  #shamsa
+  input#search(type="search", placeholder="Search Books")
+  #results
+  //input(id = "myInput")
+  form.form-horizontal(action="/Library/SearchResult", method="post", role="form")
+    .form-group
+      select(name="searchlocation")
+        option Lahore
+        option Islamabad
+      select(name="searchby")
+        option title
+        option author
+      //label(for="search") Search
+      input(name="search", value = searchtext, id = "searchText")
+      button Search
+      
+  h1= "All books"      
+  each book in allbooks               
+    //p Title: #{book.title} 
+    a(href="/Library/ItemDetail/"+ book._id) #{book.title} 
+    p
+    //p Author: #{book.author}
+    //p Arrival Date: #{book.entry_date}
+
+  h1= "New Arrivals"
+  each book in newarrivals               
+    //p Title: #{book.title} 
+    a(href="/Library/ItemDetail/"+ book._id) #{book.title} 
+    p Author: #{book.author}
+    p Arrival Date: #{book.entry_date}
+
+  h1= "Most Circulated"
+  each book in mostCirculated               
+    //p Title: #{book.title} 
+    a(href="/Library/ItemDetail/"+ book._id) #{book.title} 
+    p Author: #{book.author}
+    p Times Issued: #{book.times_issued}

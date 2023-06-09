@@ -1,0 +1,12 @@
+var express = require("express");
+var router = express.Router();
+
+//var ctrlMain = require("../controllers/main");
+
+var ctrlBooks = require("../controllers/books");
+router.get("/Home", ctrlBooks.homePageLists);
+router.get("/ItemDetail/:itemID", ctrlBooks.bookInfo);
+router.post("/SearchResult", ctrlBooks.getResults);
+router.get("/searching", ctrlBooks.searchAJAX);
+
+module.exports = router;

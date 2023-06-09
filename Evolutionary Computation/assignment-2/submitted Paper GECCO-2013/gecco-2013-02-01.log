@@ -1,0 +1,741 @@
+This is pdfTeX, Version 3.1415926-1.40.11 (MiKTeX 2.9) (preloaded format=latex 2012.2.4)  31 JAN 2013 17:45
+entering extended mode
+**gecco-2013-02-01.tex
+("C:\Nobackup\PhD\GEECO 2013\geeco paper 2013\gecco-2013-02-01.tex"
+LaTeX2e <2009/09/24>
+Babel <v3.8l> and hyphenation patterns for english, afrikaans, ancientgreek, ar
+abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
+croatian, czech, danish, dutch, esperanto, estonian, farsi, finnish, french, ga
+lician, german, german-x-2009-06-19, greek, gujarati, hindi, hungarian, iceland
+ic, indonesian, interlingua, irish, italian, kannada, kurmanji, lao, latin, lat
+vian, lithuanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerm
+an, ngerman-x-2009-06-19, nynorsk, oriya, panjabi, pinyin, polish, portuguese, 
+romanian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swis
+sgerman, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, u
+senglishmax, welsh, loaded.
+("C:\Nobackup\PhD\GEECO 2013\geeco paper 2013\sig-alternate.cls"
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\epsfig.sty"
+Package: epsfig 1999/02/16 v1.7a (e)psfig emulation (SPQR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: dvips.def on input line 91.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\dvips.def"
+File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+))
+\Gin@req@height=\dimen102
+\Gin@req@width=\dimen103
+)
+\epsfxsize=\dimen104
+\epsfysize=\dimen105
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty"
+Package: amssymb 2009/06/22 v3.00
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
+Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
+\@emptytoks=\toks15
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\ams\math\amsmath.sty"
+Package: amsmath 2000/07/18 v2.13 AMS math features
+\@mathmargin=\skip41
+
+For additional information on amsmath, use the `?' option.
+("C:\Program Files\MiKTeX 2.9\tex\latex\ams\math\amstext.sty"
+Package: amstext 2000/06/29 v2.01
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\ams\math\amsgen.sty"
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks16
+\ex@=\dimen106
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\ams\math\amsbsy.sty"
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen107
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\ams\math\amsopn.sty"
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count79
+LaTeX Info: Redefining \frac on input line 211.
+\uproot@=\count80
+\leftroot@=\count81
+LaTeX Info: Redefining \overline on input line 307.
+\classnum@=\count82
+\DOTSCASE@=\count83
+LaTeX Info: Redefining \ldots on input line 379.
+LaTeX Info: Redefining \dots on input line 382.
+LaTeX Info: Redefining \cdots on input line 467.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen108
+LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
+\macc@depth=\count84
+\c@MaxMatrixCols=\count85
+\dotsspace@=\muskip10
+\c@parentequation=\count86
+\dspbrk@lvl=\count87
+\tag@help=\toks17
+\row@=\count88
+\column@=\count89
+\maxfields@=\count90
+\andhelp@=\toks18
+\eqnshift@=\dimen109
+\alignsep@=\dimen110
+\tagshift@=\dimen111
+\tagwidth@=\dimen112
+\totwidth@=\dimen113
+\lineht@=\dimen114
+\@envbody=\toks19
+\multlinegap=\skip42
+\multlinetaggap=\skip43
+\mathdisplay@stack=\toks20
+LaTeX Info: Redefining \[ on input line 2666.
+LaTeX Info: Redefining \] on input line 2667.
+)
+Document Class 'sig-alternate' <23rd. May '12>. Modified by G.K.M. Tobin/Gerry 
+Murray
+Based in part upon document Style `acmconf' <22 May 89>. Hacked 4/91 by
+shivers@cs.cmu.edu, 4/93 by theobald@cs.mcgill.ca
+Excerpts were taken from (Journal Style) 'esub2acm.cls'.
+****** Bugs/comments/suggestions/technicalities to Gerry Murray -- murray@hq.ac
+m.org ******
+Questions on the style, SIGS policies, etc. to Adrienne Griscti griscti@acm.org
+
+\footheight=\dimen115
+\@maxsep=\dimen116
+\@dblmaxsep=\dimen117
+\aucount=\count91
+\originalaucount=\count92
+\auwidth=\dimen118
+\auskip=\dimen119
+\auskipcount=\count93
+\auskip=\dimen120
+\allauboxes=\dimen121
+\addauthors=\toks21
+\addauflag=\count94
+\subtitletext=\toks22
+\savesection=\count95
+\sectioncntr=\count96
+\c@figure=\count97
+\c@table=\count98
+\titleboxnotes=\toks23
+\titleboxnoteflag=\count99
+Document Class: sig-alternate 2012/05/23 - V2.5 - based on acmproc.cls V1.3 <No
+v. 30 '99>
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\latexsym.sty"
+Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
+\symlasy=\mathgroup6
+LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
+(Font)                  U/lasy/m/n --> U/lasy/b/n on input line 47.
+)
+\@acmtitlebox=\box28
+\titlenotecount=\count100
+\tntoks=\toks24
+\tntokstwo=\toks25
+\tntoksthree=\toks26
+\tntoksfour=\toks27
+\tntoksfive=\toks28
+\catcount=\count101
+\copyrightnotice=\toks29
+\conf=\toks30
+\confinfo=\toks31
+\c@part=\count102
+\c@section=\count103
+\c@subsection=\count104
+\c@subsubsection=\count105
+\c@paragraph=\count106
+
+Using 'Abbrev' bibliography style
+LaTeX Info: Redefining \cite on input line 1211.
+\bibindent=\dimen122
+\colcntr=\count107
+\saveb@x=\box29
+\copyrtyr=\toks32
+\acmcopyr=\toks33
+\boilerplate=\toks34
+\copyrightetc=\toks35
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\fontenc.sty"
+Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\t1enc.def"
+File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
+)
+LaTeX Font Info:    Try loading font information for T1+aer on input line 100.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\ae\t1aer.fd"
+File: t1aer.fd 1997/11/16 Font definitions for T1/aer.
+)))
+("C:\Nobackup\PhD\GEECO 2013\geeco paper 2013\gecco-2013-02-01.aux")
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Try loading font information for U+msa on input line 103.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
+File: umsa.fd 2009/06/22 v3.00 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 103.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
+File: umsb.fd 2009/06/22 v3.00 AMS symbols B
+)
+LaTeX Font Info:    Try loading font information for U+lasy on input line 103.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\ulasy.fd"
+File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
+)
+
+LaTeX Warning: No \author given.
+
+
+Overfull \hbox (4.52422pt too wide) in paragraph at lines 127--130
+\T1/aer/m/n/9 Meth-ods, and Search--- \T1/aer/m/it/9 Heuris-tic Meth-ods\T1/aer
+/m/n/9 ; I.6.3 [\T1/aer/bx/n/9 Computing
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [1
+
+
+]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (1.41193pt too wide) in paragraph at lines 250--250
+[]\secfnt MULTI-OBJECTIVE MODEL FOR COL-
+ []
+
+
+Overfull \hbox (6.41487pt too wide) in paragraph at lines 252--269
+\T1/aer/m/n/9 The prob-lem dis-cussed in this pa-per deals with multi-objective
+
+ []
+
+[2]
+Overfull \hbox (1.8569pt too wide) in paragraph at lines 420--420
+[]\secfnt A Multi-Objective Model with Con-straints 
+ []
+
+[3]
+Overfull \hbox (10.66432pt too wide) in paragraph at lines 472--472
+[]\secfnt MULTI-OBJECTIVE OP-TI-MIZA-TION AL-
+ []
+
+
+Overfull \hbox (1.67493pt too wide) in paragraph at lines 492--504
+\T1/aer/m/n/9 point crossover (with prob-a-bil-ity = $\OT1/cmr/m/n/9 0\OML/cmm/
+m/it/9 :\OT1/cmr/m/n/9 95$\T1/aer/m/n/9 ) and swap
+ []
+
+
+Overfull \hbox (1.1242pt too wide) in paragraph at lines 559--564
+[][]\T1/aer/m/n/9 Use bi-nary tour-na-ment se-lec-tion with re-place-ment
+ []
+
+
+Overfull \hbox (13.22832pt too wide) in paragraph at lines 564--566
+\T1/aer/m/n/9 fit-ness func-tions and up-date pop-u-la-tion $\OML/cmm/m/it/9 P[
+]$ \T1/aer/m/n/9 ($\OML/cmm/m/it/9 P[] \OT1/cmr/m/n/9 =
+ []
+
+[4]
+Overfull \hbox (1.76833pt too wide) in paragraph at lines 589--589
+[][]\T1/aer/m/n/7 Prob#| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 589--589
+[]\T1/aer/m/n/7 Total
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 589--589
+[]\T1/aer/m/n/7 Required
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 589--589
+[]\T1/aer/m/n/7 Number
+ []
+
+File: hv.eps Graphic file (type eps)
+<hv.eps>
+File: solutionSpace.eps Graphic file (type eps)
+ <solutionSpace.eps> [5]
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+[][]\T1/aer/m/n/7 Pareto-optimal
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+\T1/aer/m/n/7 Ob-jec-tive Func-
+ []
+
+
+Overfull \hbox (1.9825pt too wide) in paragraph at lines 734--760
+ [][][] 
+ []
+
+
+Overfull \hbox (1.76833pt too wide) in paragraph at lines 805--805
+[]\T1/aer/m/n/7 Prob#| 
+ []
+
+
+Overfull \hbox (2.1317pt too wide) in paragraph at lines 807--808
+[]$\OML/cmm/m/it/7 []$| 
+ []
+
+
+Overfull \hbox (2.1317pt too wide) in paragraph at lines 808--808
+[]$\OML/cmm/m/it/7 []$|| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 811--811
+[]\T1/aer/m/n/7 0.0088| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 811--812
+[]\T1/aer/m/n/7 0.0096| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 812--812
+[]\T1/aer/m/n/7 0.0020| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 812--813
+[]\T1/aer/m/n/7 0.0024| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 813--813
+[]\T1/aer/m/n/7 0.0139| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 813--814
+[]\T1/aer/m/n/7 0.0124| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 814--814
+[]\T1/aer/m/n/7 0.0357| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 814--815
+[]\T1/aer/m/n/7 0.0403| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 815--815
+[]\T1/aer/m/n/7 0.0476| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 815--816
+[]\T1/aer/m/n/7 0.0673| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 816--816
+[]\T1/aer/m/n/7 0.1045| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 816--818
+[]\T1/aer/m/n/7 0.0943| 
+ []
+
+
+Overfull \hbox (4.18947pt too wide) in paragraph at lines 802--821
+ [][][] 
+ []
+
+
+Overfull \hbox (1.76833pt too wide) in paragraph at lines 831--831
+[]\T1/aer/m/n/7 Prob#| 
+ []
+
+
+Overfull \hbox (2.1317pt too wide) in paragraph at lines 833--834
+[]$\OML/cmm/m/it/7 []$| 
+ []
+
+
+Overfull \hbox (2.1317pt too wide) in paragraph at lines 834--834
+[]$\OML/cmm/m/it/7 []$|| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 837--837
+[]\T1/aer/m/n/7 0.0107| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 837--838
+[]\T1/aer/m/n/7 0.0106| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 838--838
+[]\T1/aer/m/n/7 0.0022| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 838--839
+[]\T1/aer/m/n/7 0.0019| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 839--839
+[]\T1/aer/m/n/7 0.0186| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 839--840
+[]\T1/aer/m/n/7 0.0154| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 840--840
+[]\T1/aer/m/n/7 0.0422| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 840--841
+[]\T1/aer/m/n/7 0.0370| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 841--841
+[]\T1/aer/m/n/7 0.0458| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 841--842
+[]\T1/aer/m/n/7 0.0421| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 842--842
+[]\T1/aer/m/n/7 0.1018| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 842--844
+[]\T1/aer/m/n/7 0.0707| 
+ []
+
+
+Overfull \hbox (4.18947pt too wide) in paragraph at lines 828--847
+ [][][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Overfull \hbox (1.76833pt too wide) in paragraph at lines 858--858
+[]\T1/aer/m/n/7 Prob#| 
+ []
+
+
+Overfull \hbox (2.1317pt too wide) in paragraph at lines 860--861
+[]$\OML/cmm/m/it/7 []$| 
+ []
+
+
+Overfull \hbox (2.1317pt too wide) in paragraph at lines 861--861
+[]$\OML/cmm/m/it/7 []$|| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 864--864
+[]\T1/aer/m/n/7 0.0074| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 864--865
+[]\T1/aer/m/n/7 0.0081| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 865--865
+[]\T1/aer/m/n/7 0.0018| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 865--866
+[]\T1/aer/m/n/7 0.0020| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 866--866
+[]\T1/aer/m/n/7 0.0194| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 866--867
+[]\T1/aer/m/n/7 0.0176| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 867--867
+[]\T1/aer/m/n/7 0.0373| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 867--868
+[]\T1/aer/m/n/7 0.0468| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 868--868
+[]\T1/aer/m/n/7 0.0508| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 868--869
+[]\T1/aer/m/n/7 0.0619| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 869--869
+[]\T1/aer/m/n/7 0.0944| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 869--871
+[]\T1/aer/m/n/7 0.0934| 
+ []
+
+
+Overfull \hbox (4.18947pt too wide) in paragraph at lines 855--874
+ [][][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Overfull \hbox (1.76833pt too wide) in paragraph at lines 885--885
+[]\T1/aer/m/n/7 Prob#| 
+ []
+
+
+Overfull \hbox (2.1317pt too wide) in paragraph at lines 887--887
+[]$\OML/cmm/m/it/7 []$| 
+ []
+
+
+Overfull \hbox (2.1317pt too wide) in paragraph at lines 888--888
+[][]$\OML/cmm/m/it/7 []$|| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 891--892
+[]\T1/aer/m/n/7 0.0032| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 892--892
+[]\T1/aer/m/n/7 0.0023| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 892--893
+[]\T1/aer/m/n/7 0.0022| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 893--893
+[]\T1/aer/m/n/7 0.0177| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 893--894
+[]\T1/aer/m/n/7 0.0232| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 894--894
+[]\T1/aer/m/n/7 0.0426| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 894--895
+[]\T1/aer/m/n/7 0.0521| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 895--895
+[]\T1/aer/m/n/7 0.0615| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 895--896
+[]\T1/aer/m/n/7 0.0604| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 896--896
+[]\T1/aer/m/n/7 0.0897| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 896--898
+[]\T1/aer/m/n/7 0.0974| 
+ []
+
+
+Overfull \hbox (4.18947pt too wide) in paragraph at lines 882--901
+ [][][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Overfull \hbox (1.76833pt too wide) in paragraph at lines 912--912
+[]\T1/aer/m/n/7 Prob#| 
+ []
+
+
+Overfull \hbox (2.1317pt too wide) in paragraph at lines 914--914
+[]$\OML/cmm/m/it/7 []$| 
+ []
+
+
+Overfull \hbox (2.1317pt too wide) in paragraph at lines 915--915
+[][]$\OML/cmm/m/it/7 []$|| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 918--919
+[]\T1/aer/m/n/7 0.0019| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 919--919
+[]\T1/aer/m/n/7 0.0029| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 919--920
+[]\T1/aer/m/n/7 0.0048| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 920--920
+[]\T1/aer/m/n/7 0.0206| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 920--921
+[]\T1/aer/m/n/7 0.0218| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 921--921
+[]\T1/aer/m/n/7 0.0709| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 921--922
+[]\T1/aer/m/n/7 0.0581| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 922--922
+[]\T1/aer/m/n/7 0.0516| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 922--923
+[]\T1/aer/m/n/7 0.0589| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 923--923
+[]\T1/aer/m/n/7 0.0589| 
+ []
+
+
+Overfull \hbox (7.7217pt too wide) in paragraph at lines 923--925
+[]\T1/aer/m/n/7 0.0751| 
+ []
+
+
+Overfull \hbox (4.18947pt too wide) in paragraph at lines 909--928
+ [][][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Overfull \hbox (8.97127pt too wide) in paragraph at lines 929--946
+[][]\T1/aer/m/n/9 Since stan-dard de-vi-a-tion is small (as shown in ta-bles 3[
+], 4[], 5[], 6[]
+ []
+
+[6]
+File: algorithmsComparison.eps Graphic file (type eps)
+ <algorithmsComparison.eps>
+File: nsga-performance.eps Graphic file (type eps)
+ <nsga-performance.eps>
+File: scalability-figure.eps Graphic file (type eps)
+ <scalability-figure.eps>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[7] ("C:\Nobackup\PhD\GEECO 2013\geeco paper 2013\gecco-2013-02-01.bbl")
+[8] ("C:\Nobackup\PhD\GEECO 2013\geeco paper 2013\gecco-2013-02-01.aux") ) 
+Here is how much of TeX's memory you used:
+ 1876 strings out of 494020
+ 21537 string characters out of 3146519
+ 112337 words of memory out of 3000000
+ 5150 multiletter control sequences out of 15000+200000
+ 42068 words of font info for 56 fonts, out of 3000000 for 9000
+ 714 hyphenation exceptions out of 8191
+ 39i,11n,26p,458b,265s stack positions out of 5000i,500n,10000p,200000b,50000s
+
+Output written on gecco-2013-02-01.dvi (8 pages, 84224 bytes).

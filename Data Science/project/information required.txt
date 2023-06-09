@@ -1,0 +1,24 @@
+Code and Detailed report is needed for every step.
+
+1. How many classes you have considered to tackle this problem and how?
+
+2. # of Images: 
+ (i) how many original images for Pakistan and UK Id cards
+ (ii) how many you have in total after annotations
+ (iii) training and test split (how many images for training and how many for test?)
+
+3. What augmentation method/approach you used? 
+4. Provide annotation files for all images (original+annotated). 
+   Also provide one example original image of UK and PK and its annotation and similarly , one augmented image of both countries with annotation file.
+
+
+5. Provide all code files (main code +augmentation code).
+
+6. Also mention the piece of code for transfer learning:
+     Mention in the report which and how many layers you have removed and on how much data you retrained?
+
+7. Provide detail on all the experiments with training +validation curves.
+8. Report accuracy (How many cards were test. How many labels correctly identified and how many were missed for each class type?)
+   For example a UK ID  card have 3 labels (id#, name, dob), so you have to mention for each test card that how many were missed. Moreover what were the confidence threshold.
+
+while uploading, for images you can reduce their size, it can be in KBs.

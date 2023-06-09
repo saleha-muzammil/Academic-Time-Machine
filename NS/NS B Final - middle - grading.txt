@@ -1,0 +1,40 @@
+Q1a
+
+second concatenation is wrong
+
+Second DP needs PUa
+
+Also, how does this scheme ensure authentication and confidentiality is not discused
+
+-5
+
+Q1b
+there need to be three sets of discoveries, authentications, and connection management as there are three mobile connections : client - router, server - satellite, sattelite - ground station. All three have to be discovered, authenticated and maintained.
+
+-5
+
+
+Q1c
+1 -OK. 
+2 - that extra concatenation is incorrect
+
+Note: Your intial scheme is already very lightweight. You would not be able to remove much.
+If you had added encryption at every hop, the you could have removed it here.
+
+5 points were to reduce the communication protocol complexity - not discussed 
+
+-6
+
+
+Q2a
+
+good
+
+-0
+
+Q2b
+incomplete answer
+-2
+
+total = 22
+

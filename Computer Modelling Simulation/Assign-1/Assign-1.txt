@@ -1,0 +1,1 @@
+Create a simulation of the pendulum using OpenModelica. Plot the position of the pendulum using python script as discussed in the lecture

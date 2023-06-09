@@ -1,0 +1,114 @@
+var Book = require("../models/books");
+var async = require("async");
+
+module.exports.bookList = function(req, res) {
+  Book.find().exec(function(err, books) {
+    if (books) res.render("home", { bookdata: books });
+    else if (err) {
+      console.log(err);
+      return;
+    }
+  });
+};
+
+module.exports.homePageLists = function(req, res) {
+  async.parallel(
+    {
+      allbooks: function(callback) {
+        Book.find().exec(callback);
+      },
+      newarrivals: function(callback) {
+        Book.find({
+          //find books not older than 60 days
+          entry_date: { $gt: Date.now() - 60 * 24 * 60 * 60 * 1000 }
+        }).exec(callback);
+      },
+      mostCirculated: function(callback) {
+        Book.find({
+          //find books issued at least twice
+          times_issued: { $gt: 1 }
+        })
+          .sort({ times_issued: -1 })
+          .exec(callback);
+      }
+    },
+    function(err, results) {
+      if (err) {
+        return next(err);
+      }
+      if (results.allbooks == null) {
+        // No results.
+        var err = new Error("Book not found");
+        err.status = 404;
+        return next(err);
+      }
+
+      // Successful, so render.
+      res.render("home", {
+        allbooks: results.allbooks,
+        newarrivals: results.newarrivals,
+        mostCirculated: results.mostCirculated
+      });
+    }
+  );
+};
+
+module.exports.bookInfo = function(req, res) {
+  console.log("Finding book details", req.params.itemID);
+  if (req.params && req.params.itemID) {
+    Book.findById(req.params.itemID).exec(function(err, book) {
+      if (!book) {
+        return;
+      } else if (err) {
+        console.log(err);
+
+        return;
+      }
+      console.log(book);
+      res.render("bookdetail", { bookinfo: book });
+    });
+  } else {
+    console.log("No book ID specified");
+  }
+};
+
+module.exports.getResults = function(req, res) {
+  var searchText = req.body.search;
+  var searchLocation = req.body.searchlocation;
+  var searchBy = req.body.searchby;
+  console.log(searchText);
+  console.log(searchLocation);
+  console.log(searchBy);
+  var query = {};
+  query[searchBy] = searchText;
+  query["location"] = searchLocation;
+
+  Book.find(query).exec(function(err, books) {
+    if (!books) {
+      return;
+    } else if (err) {
+      console.log(err);
+
+      return;
+    }
+    console.log(books);
+    res.render("searchResults", { booksList: books });
+  });
+};
+
+module.exports.searchAJAX = function(req, res) {
+  // input value from search
+  var val = req.query.search;
+  console.log(val);
+  Book.find({ title: val }).exec(function(err, books) {
+    if (!books) {
+      return;
+    } else if (err) {
+      console.log(err);
+
+      return;
+    }
+    console.log(books);
+    res.send(books);
+  });
+};

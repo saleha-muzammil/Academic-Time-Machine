@@ -1,0 +1,72 @@
+#include <iostream>
+using namespace std;
+int findSubString(char [], char [], int );// prototype
+void removeDuplicateWords(char []); 
+int main(){
+	char arr[]="Hello I am muslim I am going to Lahore to Lahore Hello";
+	removeDuplicateWords(arr);
+	cout << arr;
+	system("pause");
+	return 0;
+}
+
+//---------------------
+int findSubString(char arr[], char sub[], int index){
+	int a_i=index; // arr index
+	int s_i=0; // sub index
+	int r_i; // return index;
+	//char word[20];//max size 30
+	while(arr[a_i] != '\0' || arr[a_i] == ' '){
+		if(arr[a_i] == sub[s_i]){
+			// first char matchs
+			bool found=true;
+			r_i=a_i; // set return index to first found
+			while(sub[s_i] != '\0'){
+				if(arr[a_i] != sub[s_i]) {found=false; s_i++; a_i++; break;}
+				else{a_i++; s_i++;}
+			}//end while
+			if(found) return r_i;
+		}// end if match
+		a_i++;
+	}//end major while
+	return -1;
+}
+//---------------------------
+void removeDuplicateWords(char arr[]){
+	char temp[500]="empty text";//contains all undupicated words
+	
+	int a_i=0; // arr index
+	int t_i=0; // temp index
+	int w_i=0; //word index
+	while(arr[a_i] !='\0' || arr[a_i] == ' '){
+		// || to avoid the stopping at space
+		
+		char word[20]; //assuming max size of word is 20
+		if(arr[a_i] != ' ') {word[w_i]= arr[a_i]; w_i++;}
+		else{
+			word[w_i]='\0'; 
+			w_i=0;
+			// word is found
+			//cout << word << endl;
+			int f= findSubString(temp,word,0);
+			if(f == -1){
+			// it does not already exists,
+			// then copy word into temp array
+				while(word[w_i] != '\0') {temp[t_i]=word[w_i];w_i++;t_i++;}
+				temp[t_i++]= ' ';
+				w_i=0;
+				}
+
+			}
+		a_i++;
+
+	}//end major while
+	temp[t_i]='\0';
+	int i=0;
+while(temp[i] != '\0' || temp[i]==' '){
+		//cout << temp[i];
+		arr[i] = temp[i];
+		i++;
+	}
+	arr[i]='\0';
+}

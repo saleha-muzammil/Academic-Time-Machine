@@ -1,0 +1,26 @@
+Implement the paper attached (in JAVA) and report the results. 
+The dataset is also given.
+
+
+
+The format for each of these data files is:
+  
+ number of different problem sets (P)
+ for each problem set p (p=1,...,P) in turn:
+ number of agents (m), number of jobs (n)
+ for each agent i (i=1,...,m) in turn:
+     cost of allocating job j to agent i (j=1,...,n)
+ for each agent i (i=1,...,m) in turn:
+     resource consumed in allocating job j to agent i (j=1,...,n)
+ resource capacity of agent i (i=1,...,m)
+
+------------------------
+EXAMPLE (look at gapa)
+6 (means we have 6 different problems).
+
+------------------------------------------------
+Submission:
+1. Java code
+2. Report with results for all 4 problems. (5 Runs for each problem  instance) 
+ 
+

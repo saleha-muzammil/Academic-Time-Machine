@@ -1,0 +1,32 @@
+doctype html
+html
+  head
+    block head
+      script(src='/javascripts/jquery-ui.structure.min.css')
+      script(src='/javascripts/jquery-ui.theme.min.css')
+      script(src='/javascripts/autocomplete.js') 
+
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    block content
+
+  script.
+    $(document).ready(function(){
+    
+    $.ajax({url: "/demo_test.txt", success: function(result){
+    $("#shamsa").html(result);
+    }});  
+
+    $("#search").on("keyup", function(e) {
+    if (e.keyCode === 13) {
+      var parameters = { search: $(this).val() };
+      $.get("/searching", parameters, function(data) {
+        $("#results").html(data[0].author);
+      });
+    }
+    });
+    });
+    
+  
+    

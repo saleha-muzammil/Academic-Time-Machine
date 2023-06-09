@@ -1,0 +1,6 @@
+The purpose of this assignment is to establish an understanding of Pipes and fork. You need to develop an application that does following when the use starts you applicaiton
+
+- The user asked in which direction he wants to send the data (1) is for parent to child, (2) is for child to parent. 
+- Then the system asks the file name to be transfered. The user type the path of the file.
+- After taking above inputs the system sends the complete file to the other process character by character. The other process shows messages on the screen about the characters it had received.
+- All statuses should be printed on the screen from parent and child both.

@@ -1,0 +1,17 @@
+class Address{
+public:
+	string streetAddress;
+	string city;
+	string country;
+};
+
+class Person{
+private:
+	Address* address;
+
+public:
+	Person(Address* add){
+		address = add;
+	}
+
+};

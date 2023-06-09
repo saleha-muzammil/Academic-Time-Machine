@@ -1,0 +1,30 @@
+Q1a
+
+good
+-0
+
+Q1b
+good
+-0
+
+Q1c
+good
+-0
+Note: Your intial scheme is already very lightweight. You would not be able to remove much.
+If you had added encryption at every hop, the you could have removed it here.
+
+-3
+
+
+Q2a
+
+good
+
+-0
+
+Q2b
+good
+-0
+
+total = 37
+

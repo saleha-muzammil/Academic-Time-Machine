@@ -1,0 +1,92 @@
+\begin{thebibliography}{10}
+
+\bibitem{alba2007}
+E.~Alba and J.~Francisco~Chicano.
+\newblock Software project management with gas.
+\newblock {\em Information Sciences}, 177:2380--2401, 2007.
+
+\bibitem{chicano2011}
+F.~Chicano, F.~Luna, A.~J. Nebro, and E.~Alba.
+\newblock Using multi-objective metaheuristics to solve the software project
+  scheduling problem.
+\newblock In {\em GECCO}. ACM, 2011.
+
+\bibitem{deb2001}
+K.~Deb.
+\newblock {\em Multi-Objective Optimization using Evolutionary Algorithms}.
+\newblock John Wiley \& Sons, Chichester, 2001.
+
+\bibitem{deb2002}
+K.~Deb, A.~Pratap, S.~Agarwal, and T.~Meyarivan.
+\newblock A fast and elitist multiobjective genetic algorithm: {NSGA-II}.
+\newblock {\em Evolutionary Computation, IEEE Transactions on}, 6(2):182 --197,
+  2002.
+
+\bibitem{Durillo2011}
+J.~J. Durillo and A.~J. Nebro.
+\newblock j{M}etal: A java framework for multi-objective optimization.
+\newblock {\em Advances in Engineering Software}, 42:760--771, 2011.
+
+\bibitem{Fan2009}
+Z.-P. Fan, B.~Feng, Z.-Z. Jiang, and N.~Fu.
+\newblock A method for member selection of {R\&D} teams using the individual
+  and collaborative information.
+\newblock {\em Expert Syst. Appl.}, 36(4):8313--8323, 2009.
+
+\bibitem{feng2010}
+B.~Feng, Z.-Z. Jiang, Z.-P. Fan, and N.~Fu.
+\newblock A method for member selection of cross-functional teams using the
+  individual and collaborative performances.
+\newblock {\em European Journal of Operational Research}, 203(3):652--661,
+  2010.
+
+\bibitem{gueorguiev2009}
+S.~Gueorguiev, M.~Harman, and G.~Antoniol.
+\newblock Software project planning for robustness and completion time in the
+  presence of uncertainty using multi objective search based software
+  engineering.
+\newblock In {\em GECCO}. ACM, 2009.
+
+\bibitem{kamrani2010}
+F.~Kamrani, R.~Ayani, and A.~Karimson.
+\newblock Optimizing a business process model by using simulation.
+\newblock In {\em Workshop on Principles of Advanced and Distributed
+  Simulation}, 2010.
+
+\bibitem{kamrani2009}
+F.~Kamrani, R.~Ayani, F.~Moradi, and G.~Holm.
+\newblock Estimating performance of a business process model.
+\newblock In {\em WSC}, 2009.
+
+\bibitem{knowles2006}
+J.~Knowles, L.~Thiele, and E.~Zitzler.
+\newblock {A Tutorial on the Performance Assessment of Stochastic
+  Multiobjective Optimizers}.
+\newblock Technical report, Computer Engineering and Networks Laboratory (TIK),
+  ETH Zurich, 2006.
+
+\bibitem{david1998}
+D.~A.~V. Veldhuizen and G.~B. Lamont.
+\newblock Multiobjective evolutionary algorithm research: A history and
+  analysis, 1998.
+
+\bibitem{irfan2011}
+I.~Younas, F.~Kamrani, C.~Schulte, and R.~Ayani.
+\newblock Optimization of task assignment to collaborating agents.
+\newblock In {\em IEEE Symposium on Computational Intelligence in Scheduling},
+  2011.
+
+\bibitem{zitzler2002}
+E.~Zitzler, M.~Laumanns, and L.~Thiele.
+\newblock {SPEA2: Improving the Strength Pareto Evolutionary Algorithm for
+  Multiobjective Optimization}.
+\newblock In {\em EUROGEN}, 2002.
+
+\bibitem{zitzler1999}
+E.~Zitzler and L.~Thiele.
+\newblock Multiobjective evolutionary algorithms: a comparative case study and
+  the strength pareto approach.
+\newblock {\em Evolutionary Computation, IEEE Transactions on}, 3(4):257--271,
+  1999.
+
+\end{thebibliography}

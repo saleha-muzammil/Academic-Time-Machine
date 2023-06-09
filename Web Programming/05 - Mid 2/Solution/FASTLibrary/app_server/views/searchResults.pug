@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  h1= "FAST Library Search Results"
+  p #{message}      
+  each book in booksList               
+    //p Title: #{book.title} 
+    a(href="/Library/ItemDetail/"+ book._id) #{book.title} 
+    p Author: #{book.author}

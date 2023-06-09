@@ -1,0 +1,73 @@
+#include <iostream>
+using namespace std;
+
+float getStandardDeviation(float [],int);
+float getAverage(float [],int);
+void inputArray(float [],int);
+float percentage(float [],int, float, float);
+void printData(float [],int);
+
+//--------------------------------
+int main(){
+	float data[10]; int size=10;
+	inputArray(data,size);
+	printData(data,size);
+	float average = getAverage(data,size);
+	float std = getStandardDeviation(data,size);
+	cout << "average: " << average << endl;
+	float per = percentage(data,size,average,std);
+	cout << per << endl;
+	if(per > 65 && per <75) cout << "Good Bell shap\n";
+	else cout << "Bad bell shap\n";
+
+	//cout << getAverage(data,5) << endl;
+	cout << getStandardDeviation(data,5) << endl;
+	printData(data,5);
+	system("pause");
+	return 0;
+}
+
+
+//--------------------------------
+float getStandardDeviation(float arr[],int size){
+	float ave=getAverage(arr,size);
+	float sum=0;
+	for(int i=0; i< size; i++){
+		sum=sum+(arr[i]-ave)*(arr[i]-ave);
+	}
+	return(sqrt(sum/(size-1)));
+
+}
+//-------------------
+float getAverage(float arr[],int size){
+	float sum=0;
+	for(int i=0; i< size; i++) sum=sum+arr[i];
+	return (sum/size);
+
+}
+
+void inputArray(float arr[],int size){
+	cout << "number between 0-99 ";
+	for(int i=0; i< size; i++){
+
+		cin >> arr[i];
+	}
+}
+//-------------------
+float percentage(float arr[],int size, float average, float std){
+	int found=0;
+	for(int i=0; i < size; i++){
+		if(arr[i] > (average-std) && arr[i] < (average+std)) {
+			//cout << "found here \n";
+			found++;}
+	}
+	return (found*100 /size);
+}
+//-----------------
+void printData(float arr[],int size){
+	cout << "Sample Data: ";
+	for(int i=0; i< size; i++){
+		cout << arr[i] << " ";
+	}
+	cout << endl;
+}

@@ -1,0 +1,19 @@
+ 
+You have to write a program which takes and integer between 10 and 100 as input from the user. Then creates two threads, first threads prints the first half of the integers one by one, then the other threads prints the remaining. Each threads when printing the number also prints its thread ID. Threads start and end messages should also be printed. Make sure that you print the thread ID not the process ID. Following is an example run. 
+
+Enter a number between 10-100: 11
+>>>starting Thread 1 the Thread ID is:6755    
+Thread 1: 1 , the Thread ID is:6755 
+Thread 1: 2 , the Thread ID is:6755 
+Thread 1: 3 , the Thread ID is:6755 
+Thread 1: 4 , the Thread ID is:6755 
+Thread 1: 5 , the Thread ID is:6755 
+>>>ending Thread 1, the Thread ID is:6755
+>>>starting Thread 2 the Thread ID is:6757    
+Thread 2: 6 , the Thread ID is:6757 
+Thread 2: 7 , the Thread ID is:6757 
+Thread 2: 8 , the Thread ID is:6757 
+Thread 2: 9 , the Thread ID is:6757 
+Thread 2: 10 , the Thread ID is:6757
+Thread 2: 11 , the Thread ID is:6757
+>>>ending Thread 2, the Thread ID is:6757

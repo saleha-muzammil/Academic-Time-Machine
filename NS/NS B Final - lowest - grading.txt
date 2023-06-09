@@ -1,0 +1,24 @@
+Q1a
+not attempted 
+-10
+
+Q1b
+not attempted
+-10
+
+Q1c
+not attempted
+-10
+
+Q2a
+
+good
+
+-0
+
+Q2b
+you were supposed to defend removal of an activiti
+
+-1
+total = 9
+

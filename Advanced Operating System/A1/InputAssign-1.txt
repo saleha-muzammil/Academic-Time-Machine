@@ -1,0 +1,8 @@
+Process_A, Process_B
+[Msg1.1 from A], started B
+[Msg1.2 from A], [Msg1 from B]
+[Msg1.3 from A], [Msg2 from B]
+[Msg2.1 from A], Running B
+[Msg2,2 from A], Running B
+[Msg3.1 from A], [Msg3 from B]
+[Msg3.2 from A], Running B

@@ -1,0 +1,3 @@
+The link to lecture slides is:
+https://github.com/CS-A-11/CS406WebProgrammingCourseFall2018
+All content can be downloaded.

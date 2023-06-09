@@ -1,0 +1,50 @@
+#include <iostream>
+using namespace std;
+
+
+int main()
+{
+	int myArray[15];
+	int rotations , temp;
+
+	for (int x = 0 ; x < 15 ; x++)
+	{
+		cout << "Input value " << x+1 << " make sure its between 0 - 9 : ";
+		cin >> temp;
+	    if (temp >=0 && temp < 10)
+			myArray[x] = temp;
+		else
+			{
+				cout << "Invalid input , input again" <<endl;
+				x--;
+		    }
+	}
+
+
+	cout << "Your number was : ";
+	for (int x = 0 ; x < 15 ; x ++)
+		cout<< myArray[x];
+	cout << endl;
+
+	cout << "Input number of rotations : ";
+	cin >> rotations;
+
+	//Rotating 
+	for (int z = 1 ; z <= rotations ; z++)
+		{
+		temp = myArray[0];
+		for (int y = 0 ; y < 15-1 ; y++)
+		{
+			myArray[y] = myArray[y+1];
+		}
+		myArray[14] = temp;
+	}
+
+
+
+	//Outputting
+	cout << "The rotated number is : ";
+	for (int x = 0 ; x < 15 ; x++)
+		cout << myArray[x];
+	cout << endl;
+}

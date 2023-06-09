@@ -1,0 +1,64 @@
+#include "stdafx.h"
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+void fileInput(ifstream&);
+void parseNumber(int, int);
+void printDigits(int *, int, int);
+
+int main()
+{
+	ifstream cin ("input.txt");
+	if (cin.is_open())
+	{
+		fileInput(cin);
+	}
+	else
+		cout << "Unable to open file";
+
+	system("pause");
+	return 0;
+}
+
+void fileInput(ifstream &cin)
+{
+	int cases, inputInteger = 0;
+	cin >> cases;
+	for (int i = 0; i < cases; i++)
+	{
+		cin >> inputInteger;
+		parseNumber(inputInteger, i+1);
+	}
+}
+
+void parseNumber(int num, int caseNumber)
+{
+	int digit = 0, size = 0;
+	int *arr = nullptr, *temp = nullptr;
+	while (num > 0)
+	{
+		digit = num % 10;
+		size++;
+		temp = arr;
+		arr = nullptr;
+		arr = new int[size];
+		for (int i = 0; i < size - 1; i++)
+		{
+			arr[i] = temp[i];
+		}
+		arr[size - 1] = digit;
+		delete []temp;
+		num /= 10;
+	}
+	printDigits(arr, size, caseNumber);
+	delete []arr;
+}
+void printDigits(int *arr, int size, int caseNumber)
+{
+	cout << "Case#" << caseNumber << endl;
+	for (int i = size - 1; i >= 0; i--)
+	{
+		cout << arr[i] << endl;
+	}
+}

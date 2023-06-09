@@ -1,0 +1,28 @@
+a) Pattern:
+
+In this case study Factory method is mainly used so following are its possible entities:
+
+FAST_PizzaShop : Factory
+Lahore_FAST_PizzaShop : Concrete Factory
+Karachi_FAST_PizzaShop : Concerete Factory
+Islamabad_FAST_PizzaShop : Concrete Factory
+Faislabad_FAST_PizzaShop : Concrete Factory
+
+
+Pizza : Abstract Product
+cheesePizza: Concrete Product
+clamPizza : Concrete Product
+veggiePizza: Concrete Product
+pepperoniPizza: ConcreteProduct
+
+Customers: Client
+
+b) Relations:
+
+Campus aggregates Students
+Student and Campus has association class of Discount
+Student and PizzaShop is associated
+Campus has Departments.
+Department has inheritance
+Campus is associated with Committee(Inspection Committee)
+Committee has association with PizzaShops

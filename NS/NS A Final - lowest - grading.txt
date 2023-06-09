@@ -1,0 +1,33 @@
+Q1a
+
+missing the second input for the last concatenation before the middle
+
+similarly EP and DP are leading to where?
+
+
+Also, how does this scheme ensure authentication and confidentiality is not discused
+
+-7
+
+Q1b
+not attempted
+-10
+
+
+Q1c
+not attempted
+-10
+
+Q2a
+
+you missed many importatn ones
+
+
+-3
+
+Q2b
+incomplete answer
+-3
+
+total = 7
+

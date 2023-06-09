@@ -1,0 +1,20 @@
+CLASS ENTITY MAPPING
+
+Pattern Used --> Abstract Factory 
+
+Abstract Factory --> GetSetGo
+
+Concrete Factory --> Australian SubCompany, Canadian SubCompany, USA SubCompany, Brazilian SubCompany, Spain SubCompany
+
+Abstract Product --> Immigratio Visa, Visiting Visa, Tourist Visa, Urgent Visa, Research Visa
+
+Concrete Product --> Australian Immigratio Visa, Australian Visiting Visa, Australian Tourist Visa, Australian Urgent Visa, Australian Research Visa
+		    
+		     Canadian Immigratio Visa, Canadian Visiting Visa, Canadian Tourist Visa,  CanadianUrgent Visa, Canadian Research Visa
+			
+		     USA Immigratio Visa, USA Visiting Visa, USA Tourist Visa, USA Urgent Visa, USA Research Visa
+
+		     Brazilian Immigratio Visa, Brazilian Visiting Visa, Brazilian Tourist Visa, Brazilian Urgent Visa, Brazilian Research Visa
+
+		     Spain Immigratio Visa, Spain Visiting Visa, Spain Tourist Visa, Spain Urgent Visa, Spain Research Visa
+

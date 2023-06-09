@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+<title>
+Hello! Home Page
+</title>
+</head>
+
+
+
+<body>
+<h1> Hello world this is HTML page <h1>
+</body>
+</html>

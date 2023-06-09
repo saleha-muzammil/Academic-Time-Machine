@@ -1,0 +1,17 @@
+1. Always label both the axis of a graph
+2. Write the equations and math properly.  Use equation editor for equations and make sure all subscripts and superscripts appear properly.
+3. While coding in Matlab, DO NOT hard code anything.  Use the size function to get data sizes.
+4. In Matlab use matrix operations as much as possible.  AVOID LOOPS as much as you can.  For example to compute:
+   the sum of (x_i - mean)^T(x_i - mean) for all points stored in data matrix X you can do the following:
+	average = mean(X);
+	%compute difference of every point from mean...as matrix sizes are not the same 
+	%make average the same number of rows as X
+	[row col] = size(X);
+	average = repmat(average,row,1);
+	diff = X-average;
+	diff = diff.*diff;
+	requiredSum = sum(sum(diff,2));
+5. In your report always specify what is meant by "error" or "accuracy" by clearly specifying the evaluation measure like AUC or BER etc.
+6. Don't leave blank headings
+7. Instead of writing "figure below" or "the figure above", assign a number and caption to each figure and refer to them via this number.
+

@@ -1,0 +1,48 @@
+#include <iostream>
+using namespace std;
+//by l191196
+int main(){
+	int counter,power;
+	float t1,t2,t3,gterm,An,r; // term1, term2 ... general_term, nth term of Arithmetic
+	bool a=0,g=0,f=0; // arithmetic, geom.. fibno series
+	float d1,r1,sum1; //difference, r, sum of fib terms
+	do {
+		cout << "Enter the 1st value of series: ";
+		cin >> t1;}
+	while(t1 ==-9999);
+
+	do {
+		cout << "Enter the 2nd value of series: ";
+		cin >> t2;}
+	while(t2 ==-9999);
+	counter = 2;
+	
+
+//----------------
+	d1=t2-t1;
+//----------------
+	r1=t2/t1;
+	r=r1;
+//----------------
+
+//----------------
+	do {
+	counter++;
+	r=r*r1;
+	cout << "Enter the " << counter << "th value of series: ";
+	cin >> gterm;
+	if(gterm == (t1+(counter-1)*d1)){a=1;g=0;f=0;}//end of arithmetic
+	else if(gterm == t1*r){g=1;a=0; f=0;}
+	else if(gterm == (t1+t2)){f=1; g=0; a=0;t1=t2; t2=gterm;}
+	else{/* do nothign */ }
+
+
+	}while(! (counter >= 3 && gterm == -9999));// end do
+
+	if(a==1){cout << "The series is arithmetic.\n";}
+	else if(g == 1){cout << "The series is geometric.\n";}
+	else if(f == 1){cout << "The series is fibnocci.\n";}
+	else{cout << "Do not belong to any series\n";}
+	system("pause");
+	return 0;
+}

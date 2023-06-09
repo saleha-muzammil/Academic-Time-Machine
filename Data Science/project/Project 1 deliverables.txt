@@ -1,0 +1,16 @@
+Deliverables for Project 1:
+
+You have to submit the following: 
+
+some original and annotated images (you can reduce size and copy the images in a MS word file.). 
+annotations
+details of augmentation  methods, which you have applied
+augment data annotation files
+How many images for training and test.
+
+ 
+
+ 
+
+ 
+

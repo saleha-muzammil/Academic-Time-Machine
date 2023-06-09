@@ -1,0 +1,55 @@
+
+	Depatment MS
+
+- this pattern uses the state design pattern
+- the states are operational and non-operational in this case.
+- the department is further composed by 3 types.
+
+
+concrete Classes
+
+controller
+operational
+non operationa;
+accounting
+HR
+Sales
+
+
+
+Abstract Classes
+
+Department Type
+
+
+
+
+
+
+
+			Employee MS
+
+
+
+
+- This system uses 3 types of desing patterns
+- First one is the composite design pattern, the CEO of the system has or contains the list of all employees
+- the second is singleton, since there is only 1 CEO, thus only a single instance of an employee
+
+singleton Class
+CEO
+
+
+Concrete Classes 
+Regular
+contract
+
+
+
+Abstract Classes:
+
+Employee
+EmployeeSetter
+Executive
+Office
+Clerical

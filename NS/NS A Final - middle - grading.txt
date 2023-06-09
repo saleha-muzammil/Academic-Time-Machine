@@ -1,0 +1,50 @@
+Q1a
+
+good diagram
+
+good justification
+
+How does this scheme ensure authentication and confidentiality is not discused
+
+-2
+
+Q1b
+
+First diagram should be passenger - AP - server
+Second should be server sattelite
+
+third should be satteliete - ground stattion
+
+You did not provide any justification, or discussed in detail anything about nonce, timestamps, etc.
+
+-5
+
+
+Q1c.a
+1 ok
+
+Q1c.b
+not discussed
+
+Your intial scheme is already  lightweight. You would not be able to remove much.
+If you had added encryption at every hop, the you could have removed it here.
+
+-7
+
+
+Q2a
+
+good
+-0
+
+Q2b
+
+design inspection is necessary
+
+secure programming language maybe skipped only if coding standards are strictly followed
+
+
+-2
+
+total = 24
+

@@ -1,0 +1,26 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+int main()
+{
+	int i = 0;
+	int  n, sum = 0;
+
+	while(true){
+		cout << "Enter the binary digit" << endl;
+		cin >> n;
+
+		if (n == -1) {
+			break;
+		}
+
+		if (n != 0) {
+			sum = sum + pow(2, i);
+		}
+		i++;
+	} 
+
+	cout << "The decimal number is: " << sum << endl;
+	system("pause");
+	return 0;
+}

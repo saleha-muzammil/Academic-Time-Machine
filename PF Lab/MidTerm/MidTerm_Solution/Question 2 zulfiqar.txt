@@ -1,0 +1,47 @@
+//Question 2
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int A1[10] = {11,22,23,33,44,59,68,71,85,109};
+	int A2[10] = {12,22,33,45,56,67,71,92,93,109};
+	int A3[10];
+	int x = 0 , y = 0 , z = 0;
+        bool flag = false;
+
+	//Finding Intersection
+	while (x < 10 && y < 10)
+	{
+		if (A1[x] == A2[y])
+		{
+                        flag = true;
+			A3[z] = A1[x];
+			z++;x++;y++;
+		}
+		else if ( A1[x] < A2[y])
+			x++;
+		else if (A1[x] > A2[y])
+			y++;
+	}
+
+	//Output
+	cout << "The arrays were : " << endl;
+	for (int x = 0 ; x<10 ; x++)
+		cout << A1[x] << " ";
+	cout << endl;
+	for (int x = 0 ; x<10;x++)
+		cout <<A2[x] << " ";
+	cout <<endl;
+        
+        if ( flag == false)
+            cout << " No Intersection"<<endl;
+        else
+      {
+	cout<< "The intersection of the two arrays is : ";
+	for (int x = 0 ; x <z ; x++)
+		cout << A3[x] << " ";
+	cout << endl;
+       }
+}

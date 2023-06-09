@@ -1,0 +1,42 @@
+<html>
+<body background="backgrnd[2].gif" bgcolor=black text=magenta topmargin=0>
+<form name=f action="http://localhost:8080/servlet/Client2">
+<center><h2><u>USER DETAILS</u></h2>
+<img src="designborder.gif" align=center>
+</center> <br><br>Date:<b><u>
+<script language=javascript align=left>
+   var dt=new Date()
+document.write(dt.getDate()+"-"+(dt.getMonth()+1)+"-"+dt.getYear())
+</script><b></u>
+
+<pre>UserId     :<input type=text name=t1 size=15><br>   
+First Name :<input type=text name=t2 size=15><br>
+Last Name  :<input type=text name=t3 size=15><br>
+Sex        :<input type=radio name=r  value=male>M<input type=radio name=r value=female>F <br>
+Profession :<select name=s  >
+<option value=Student>Student
+<option value=Business>Business
+<option value=Govt. Employee>Govt.Employ
+<option value=Pvt.Employee>Pvt.Employ</select><br>
+H.NO       :<input type=text name=t4 size=15><br>
+E-MAIL     :<input type=text name=t5 size=30><br>
+Locality   :<input type=text name=t6 size=15><br>
+City       :<select  name=s1>
+<option value=Islamabad>Islamabad
+<option value=Lahore>Lahore
+<option value=Karachi>Karachi
+<option value=Peshawar>Peshawar
+<option value=Quetta>Quetta</select><br>
+State      :<input type=text name=t7 size=15 value=Punjab><br>
+Country    :<input type=text name=t8 size=15 value=Pakistan> <br>
+ZipCode    :<input type=text name=t9 size=5  ><br></pre>
+<input bgcolor="#0000FF" type=submit value="submit"  style="position: relative; width: 71; height: 28; background-color: #A0E0D0; color:#FF00FF; font-weight: bold"></b><font size="5" color="#FF0000" ></font>
+</form>
+<form name=f2 action="http://localhost:8080/servlet/Client">
+UserId        :<input type=text name="user" size=15>
+Password    :<input type=password name="pwd" size=15>
+<input type=submit value="send">
+<input type=reset value="cancel">
+</form>
+
+</body></html>

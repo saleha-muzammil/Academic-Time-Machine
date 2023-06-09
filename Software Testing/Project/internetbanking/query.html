@@ -1,0 +1,82 @@
+<html>
+
+<head>
+<title></title>
+</head>
+
+<body  background="backgrnd[2].gif">
+<pre><center>
+<b><u><font style="gothice: uppercase" size="6" color="red">QUERY</font></u></b><font size=4 color=blue style=bold></pre>
+<form name=f1 method=get action="http://c014:8080/servlet/Statement1"><br><br>
+  <b><dfn><font style="text-transform: uppercase">
+Starting Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DD
+ <select size="1" name="dd1"> 
+ <script language="JavaScript">
+                          for(i=1;i<=31;i++)
+                          {       document.writeln("<option>"+i+"</option>");}
+                   </script>
+                           
+  </select>
+  MM<select size="1" name="mm1">
+   <option>jan</option>
+   <option>feb</option>
+   <option>mar</option>
+   <option>apr</option>
+   <option>may</option>
+   <option>jun</option>
+   <option>jul</option>
+   <option>aug</option>
+   <option>sep</option>
+   <option>oct</option>
+   <option>nov</option>
+   <option>dec</option>
+  </select>YY</b>
+ 
+  <select size="1" name="yy1">
+  <script language="JavaScript">
+  for(i=1999;i<=2005;i++)
+   { document.writeln("<option>"+i+"</option>");}
+  </script>
+
+</font></dfn>
+  </select></font></center>
+
+<p><center><font size=4 color=blue style=bold><b><dfn><font style="text-transform: uppercase">Ending
+Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DD <select size="1" name="dd2">  <script language="JavaScript">
+                          for(i=1;i<=31;i++)
+                          {       document.writeln("<option>"+i+"</option>");}
+                   </script>
+                           
+  </select>
+   MM<select size="1" name="mm2">
+   <option>jan</option>
+   <option>feb</option>
+   <option>mar</option>
+   <option>apr</option>
+   <option>may</option>
+   <option>jun</option>
+   <option>jul</option>
+   <option>aug</option>
+   <option>sep</option>
+   <option>oct</option>
+   <option>nov</option>
+   <option>dec</option>
+  </select>YY</font></dfn></b>
+ 
+<font style="text-transform: uppercase"><dfn>
+ 
+  <select size="1" name="yy2">
+  <script language="JavaScript">
+  for(i=1999;i<=2005;i++)
+   { document.writeln("<option>"+i+"</option>");}
+  </script>
+
+</font></center>
+</select></p>
+<p><center><font size=4 color=red style=bold><input type=submit value="  SUBMIT" style="position: relative; width: 75; height: 25; background-color: green; color: #0000FF; text-transform: uppercase; font-weight: bold">
+</font>
+</center>
+</p>
+</form>
+</body>
+</html>

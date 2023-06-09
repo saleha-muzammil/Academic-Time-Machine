@@ -1,0 +1,518 @@
+{
+  "id": "57106212-eb66-492e-ba6d-aedd1c09660d",
+  "version": "2.0",
+  "name": "Software Testing D3",
+  "url": "https://sttestingmsm.000webhostapp.com/loans.html",
+  "tests": [{
+    "id": "ab4c95b2-291a-41f4-8567-4779f48cb3e7",
+    "name": "signup",
+    "commands": [{
+      "id": "bea8ce3f-900f-46c3-8bd1-a01560f88837",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1599e97f-5a6c-436d-aa9b-acea07bac77c",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1053x979",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a84e7844-bdbe-459a-8037-7770ba485a95",
+      "comment": "",
+      "command": "click",
+      "target": "name=t1",
+      "targets": [
+        ["name=t1", "name"],
+        ["css=pre > input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='t1']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f6e8d583-53a3-4dd3-a0a9-06975731986b",
+      "comment": "",
+      "command": "type",
+      "target": "name=t1",
+      "targets": [
+        ["name=t1", "name"],
+        ["css=pre > input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='t1']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "alisaad3"
+    }, {
+      "id": "f76a8136-19b2-47e0-bbf1-33f03d04a327",
+      "comment": "",
+      "command": "click",
+      "target": "css=pre",
+      "targets": [
+        ["css=pre", "css:finder"],
+        ["xpath=//pre", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "cdf8ce4b-e9b4-4ba9-b768-f11eda838b69",
+      "comment": "",
+      "command": "click",
+      "target": "name=t2",
+      "targets": [
+        ["name=t2", "name"],
+        ["css=pre > input:nth-child(3)", "css:finder"],
+        ["xpath=//input[@name='t2']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f017165d-2baa-468e-9a9e-05d81282b94a",
+      "comment": "",
+      "command": "type",
+      "target": "name=t2",
+      "targets": [
+        ["name=t2", "name"],
+        ["css=pre > input:nth-child(3)", "css:finder"],
+        ["xpath=//input[@name='t2']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "ali"
+    }, {
+      "id": "3c770d8a-4600-4b81-a4f3-fe702f95e587",
+      "comment": "",
+      "command": "click",
+      "target": "name=t3",
+      "targets": [
+        ["name=t3", "name"],
+        ["css=input:nth-child(5)", "css:finder"],
+        ["xpath=//input[@name='t3']", "xpath:attributes"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "337e56d3-e6e2-4f11-9877-186a26162f76",
+      "comment": "",
+      "command": "type",
+      "target": "name=t3",
+      "targets": [
+        ["name=t3", "name"],
+        ["css=input:nth-child(5)", "css:finder"],
+        ["xpath=//input[@name='t3']", "xpath:attributes"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": "saad"
+    }, {
+      "id": "c36f68df-5034-427c-9fc6-896cb293eb93",
+      "comment": "",
+      "command": "click",
+      "target": "name=r",
+      "targets": [
+        ["name=r", "name"],
+        ["css=input:nth-child(7)", "css:finder"],
+        ["xpath=//input[@name='r']", "xpath:attributes"],
+        ["xpath=//input[4]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "90f0b5c8-e974-4943-a31d-c1f85c435af7",
+      "comment": "",
+      "command": "click",
+      "target": "name=s",
+      "targets": [
+        ["name=s", "name"],
+        ["css=select:nth-child(10)", "css:finder"],
+        ["xpath=//select[@name='s']", "xpath:attributes"],
+        ["xpath=//select", "xpath:position"],
+        ["xpath=//select[contains(.,'Student\nBusiness\nGovt.Employ\nPvt.Employ')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "beff5c24-fb8d-4857-bace-a2561a226ad3",
+      "comment": "",
+      "command": "click",
+      "target": "name=t4",
+      "targets": [
+        ["name=t4", "name"],
+        ["css=input:nth-child(12)", "css:finder"],
+        ["xpath=//input[@name='t4']", "xpath:attributes"],
+        ["xpath=//input[6]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1696418f-8a2e-4c92-a6bf-9b5cc81ec1d3",
+      "comment": "",
+      "command": "type",
+      "target": "name=t4",
+      "targets": [
+        ["name=t4", "name"],
+        ["css=input:nth-child(12)", "css:finder"],
+        ["xpath=//input[@name='t4']", "xpath:attributes"],
+        ["xpath=//input[6]", "xpath:position"]
+      ],
+      "value": "4"
+    }, {
+      "id": "f0034b9d-9b95-4273-adb1-2becc1ea8f12",
+      "comment": "",
+      "command": "click",
+      "target": "name=t5",
+      "targets": [
+        ["name=t5", "name"],
+        ["css=input:nth-child(14)", "css:finder"],
+        ["xpath=//input[@name='t5']", "xpath:attributes"],
+        ["xpath=//input[7]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "aeadc7c0-0ef7-4eb9-bbd6-143de4feff8f",
+      "comment": "",
+      "command": "type",
+      "target": "name=t5",
+      "targets": [
+        ["name=t5", "name"],
+        ["css=input:nth-child(14)", "css:finder"],
+        ["xpath=//input[@name='t5']", "xpath:attributes"],
+        ["xpath=//input[7]", "xpath:position"]
+      ],
+      "value": "saada4928@gmail.com"
+    }, {
+      "id": "d149b0f0-624d-4f85-92ed-2ed0a0d99268",
+      "comment": "",
+      "command": "click",
+      "target": "name=t6",
+      "targets": [
+        ["name=t6", "name"],
+        ["css=input:nth-child(16)", "css:finder"],
+        ["xpath=//input[@name='t6']", "xpath:attributes"],
+        ["xpath=//input[8]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a5c52edc-777b-4ee1-a4bf-1d62ae2584ab",
+      "comment": "",
+      "command": "type",
+      "target": "name=t6",
+      "targets": [
+        ["name=t6", "name"],
+        ["css=input:nth-child(16)", "css:finder"],
+        ["xpath=//input[@name='t6']", "xpath:attributes"],
+        ["xpath=//input[8]", "xpath:position"]
+      ],
+      "value": "10"
+    }, {
+      "id": "a9b7d52a-6b60-4c59-8f85-a174bc9409d8",
+      "comment": "",
+      "command": "click",
+      "target": "name=s1",
+      "targets": [
+        ["name=s1", "name"],
+        ["css=select:nth-child(18)", "css:finder"],
+        ["xpath=//select[@name='s1']", "xpath:attributes"],
+        ["xpath=//select[2]", "xpath:position"],
+        ["xpath=//select[contains(.,'Islamabad\nLahore\nKarachi\nPeshawar\nQuetta')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "de6ee229-f262-4b17-8edb-995347af90f1",
+      "comment": "",
+      "command": "select",
+      "target": "name=s1",
+      "targets": [],
+      "value": "label=Lahore"
+    }, {
+      "id": "81b0df38-9ab6-4c6b-9d46-10a5bd4cb91b",
+      "comment": "",
+      "command": "click",
+      "target": "name=t7",
+      "targets": [
+        ["name=t7", "name"],
+        ["css=input:nth-child(20)", "css:finder"],
+        ["xpath=//input[@name='t7']", "xpath:attributes"],
+        ["xpath=//input[9]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "99cc944f-a19c-4e91-855b-f984d166ca61",
+      "comment": "",
+      "command": "click",
+      "target": "name=t8",
+      "targets": [
+        ["name=t8", "name"],
+        ["css=input:nth-child(22)", "css:finder"],
+        ["xpath=//input[@name='t8']", "xpath:attributes"],
+        ["xpath=//input[10]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "51373d9b-ef21-4f9d-86b7-5165190ce56f",
+      "comment": "",
+      "command": "click",
+      "target": "name=t9",
+      "targets": [
+        ["name=t9", "name"],
+        ["css=input:nth-child(24)", "css:finder"],
+        ["xpath=//input[@name='t9']", "xpath:attributes"],
+        ["xpath=//input[11]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5106cb9e-b55b-428c-8481-4d20d240e584",
+      "comment": "",
+      "command": "type",
+      "target": "name=t9",
+      "targets": [
+        ["name=t9", "name"],
+        ["css=input:nth-child(24)", "css:finder"],
+        ["xpath=//input[@name='t9']", "xpath:attributes"],
+        ["xpath=//input[11]", "xpath:position"]
+      ],
+      "value": "56300"
+    }, {
+      "id": "c3a92570-8724-45b0-a6df-3ee0b9c3e176",
+      "comment": "",
+      "command": "click",
+      "target": "css=b > input",
+      "targets": [
+        ["css=b > input", "css:finder"],
+        ["xpath=//input[@value='submit']", "xpath:attributes"],
+        ["xpath=//b/input", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "96665070-38ec-420f-b8ef-0403be8e8e93",
+    "name": "statement.html",
+    "commands": [{
+      "id": "e21e5e8c-ec20-4a96-aee3-5141860cde1f",
+      "comment": "",
+      "command": "open",
+      "target": "https://sttestingmsm.000webhostapp.com/statement.html",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4b65ecbd-ad96-4f59-a179-7a9da97bc532",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1053x979",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c3f7a7d7-6254-45ce-bdd8-b2f2a9c3370b",
+      "comment": "",
+      "command": "click",
+      "target": "css=input:nth-child(1)",
+      "targets": [
+        ["css=input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1af8b00c-36b1-421b-8df1-4c659f855ee8",
+      "comment": "",
+      "command": "type",
+      "target": "css=input:nth-child(1)",
+      "targets": [
+        ["css=input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "98675472945673"
+    }, {
+      "id": "c7849c86-be5b-4f3a-8d41-6e3ba64b1c3a",
+      "comment": "",
+      "command": "click",
+      "target": "css=input:nth-child(5)",
+      "targets": [
+        ["css=input:nth-child(5)", "css:finder"],
+        ["xpath=//input[@value='Query']", "xpath:attributes"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "be613281-f0cd-47bc-b001-a1d1ba9f90c6",
+    "name": "Transaction",
+    "commands": [{
+      "id": "3aa5749e-cbad-4d81-9492-504a5ed005e8",
+      "comment": "",
+      "command": "open",
+      "target": "https://sttestingmsm.000webhostapp.com/transaction.html",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d41e5e77-4b68-4b18-8795-96c3bdba3bb8",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1053x940",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "57c8e323-40f2-45e5-a29f-81d74bdd99fd",
+      "comment": "",
+      "command": "click",
+      "target": "name=t1",
+      "targets": [
+        ["name=t1", "name"],
+        ["css=input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='t1']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8ba31024-4a9b-4402-941e-a6ec66cb07dd",
+      "comment": "",
+      "command": "type",
+      "target": "name=t1",
+      "targets": [
+        ["name=t1", "name"],
+        ["css=input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='t1']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "568398"
+    }, {
+      "id": "f1d2f50f-fedd-4e5a-87f5-38efd1a09e19",
+      "comment": "",
+      "command": "click",
+      "target": "name=t2",
+      "targets": [
+        ["name=t2", "name"],
+        ["css=input:nth-child(2)", "css:finder"],
+        ["xpath=//input[@name='t2']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "52c5a05f-1056-4e4d-bbc9-f4e5778e167c",
+      "comment": "",
+      "command": "type",
+      "target": "name=t2",
+      "targets": [
+        ["name=t2", "name"],
+        ["css=input:nth-child(2)", "css:finder"],
+        ["xpath=//input[@name='t2']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "14723"
+    }, {
+      "id": "1c096165-e0d0-4bac-9b13-5b390c8df99e",
+      "comment": "",
+      "command": "click",
+      "target": "css=input:nth-child(3)",
+      "targets": [
+        ["css=input:nth-child(3)", "css:finder"],
+        ["xpath=//input[@value='submit']", "xpath:attributes"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "8d81ba38-fd4f-4749-a3d4-bef7523ca22c",
+    "name": "loan",
+    "commands": [{
+      "id": "bc99b69c-27ad-4182-8337-e80fe5fdb999",
+      "comment": "",
+      "command": "open",
+      "target": "https://sttestingmsm.000webhostapp.com/loan.html",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "dd567309-7e62-4ee9-9651-354f8b23de55",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1053x979",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "269abe1d-0918-47ea-abf4-e102a23234a2",
+      "comment": "",
+      "command": "click",
+      "target": "name=t1",
+      "targets": [
+        ["name=t1", "name"],
+        ["css=input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='t1']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9b6e8fb8-ef77-4f38-8fd2-5c593aa6144a",
+      "comment": "",
+      "command": "type",
+      "target": "name=t1",
+      "targets": [
+        ["name=t1", "name"],
+        ["css=input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='t1']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "985627184536278"
+    }, {
+      "id": "df652174-6236-4d89-92a0-30d2338d0c35",
+      "comment": "",
+      "command": "click",
+      "target": "name=t2",
+      "targets": [
+        ["name=t2", "name"],
+        ["css=input:nth-child(4)", "css:finder"],
+        ["xpath=//input[@name='t2']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9079cfb0-8489-4139-a8cd-ab356cb5d000",
+      "comment": "",
+      "command": "type",
+      "target": "name=t2",
+      "targets": [
+        ["name=t2", "name"],
+        ["css=input:nth-child(4)", "css:finder"],
+        ["xpath=//input[@name='t2']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "2"
+    }, {
+      "id": "a34b8545-57c8-458b-8a15-1ea83e344dc4",
+      "comment": "",
+      "command": "click",
+      "target": "name=t3",
+      "targets": [
+        ["name=t3", "name"],
+        ["css=input:nth-child(7)", "css:finder"],
+        ["xpath=//input[@name='t3']", "xpath:attributes"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ede7cf10-23d7-4ede-b3c9-a56b25095728",
+      "comment": "",
+      "command": "type",
+      "target": "name=t3",
+      "targets": [
+        ["name=t3", "name"],
+        ["css=input:nth-child(7)", "css:finder"],
+        ["xpath=//input[@name='t3']", "xpath:attributes"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": "10000"
+    }, {
+      "id": "271a47ab-c43a-4683-a2d6-041321bdbe24",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "37595d11-7f36-47ad-854b-31d7a5fcfa72",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["https://sttestingmsm.000webhostapp.com/", "https://sttestingmsm.000webhostapp.com/statement.html", "https://sttestingmsm.000webhostapp.com/transaction.html", "https://sttestingmsm.000webhostapp.com/loans.html"],
+  "plugins": []
+}

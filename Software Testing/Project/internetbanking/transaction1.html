@@ -1,0 +1,25 @@
+<html>
+<head><center><h2><i><u>Transaction Screen</u></i></center>
+<script language="JavaScript">
+function load1()
+{
+   var x=location.href
+  var i=x.indexOf("=")
+var v= x.substring(i+1,x.length)
+document.f1.t1.value=v
+
+}
+</script>
+</head>
+<body bgcolor=orange background=backgrnd[2].gif onLoad="load1()">
+<form name="f1">
+<input type=text name=t1 size=20 ><br>
+<img src="Tball.gif"><a  href="http://localhost:8080/servlet/Saving">Savings to Savings</a><br>
+<img src="Tball.gif"><a  href="http://localhost:8080/servlet/Loan">Savings to loan</a><br>
+<img src="tball.gif"><a href="bill.html">Bill Payment</a><br>
+<img src="tball.gif"><a href="loans.html">Request to Loans</a><br>
+<img src="tball.gif"><a href="logout.html" target=_top>Logout</a><br><br>
+ <a href="home.html"><img src="home[1].gif"height=40 width=40 align=right></a> 
+</form>
+</body>
+</html>

@@ -6,13 +6,13 @@ Link to the repository: [FAST-NUCES-Lhr-Past-Papers](https://github.com/saleha-m
 
 To access and contribute to this repository, please follow the instructions below: 
 
-**1. Become a Collaborator** 🤝
+**1. Become a Collaborator 🤝**
 If you are a student or an alumnus of FAST, Lahore, and you would like to become a collaborator for this repository, please send an email to l201192@lhr.nu.edu.pk. 📧
 
-**2. Contact Collaborators** 📞
+**2. Contact Collaborators 📞**
 Alternatively, you can reach out to any of the current collaborators listed in the repository to request updates or share new past papers. They will be happy to assist you in keeping the repository up-to-date. 😄
 
-**3. Fork the Repository** 🍴
+**3. Fork the Repository 🍴**
 If you wish to make your own changes or updates to the repository without becoming a collaborator, you can fork the repository to create your copy. Feel free to contribute by adding new past papers, organizing the existing collection, or suggesting improvements. Let's work together to create a valuable resource for the FAST NUCES Lahore student community! 💪🌟
 
 Happy learning and best of luck with your exams! 📚✨

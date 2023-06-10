@@ -1,6 +1,6 @@
  **Repository: FAST-NUCES-Lhr-Past-Papers** 📚
 
-Welcome to the repository containing past papers for computer science (CS), software engineering (SE), and data science (DS) courses at FAST NUCES, Lahore campus. 🎓 This repository aims to provide a comprehensive collection of past papers to help students prepare for their exams effectively. Whether you're a current student or an alumnus looking to brush up on your knowledge, you'll find this repository useful. 📖🚀
+Welcome to the repository containing past papers for computer science (CS), software engineering (SE), and data science (DS) courses at FAST-NUCES, Lahore campus. 🎓 This repository aims to provide a comprehensive collection of past papers to help students prepare for their exams effectively. Whether you're a current student or an alumnus looking to brush up on your knowledge, you'll find this repository useful. 📖🚀
 
 Link to the repository: [FAST-NUCES-Lhr-Past-Papers](https://github.com/saleha-muzammil/FAST-NUCES-Lhr-Past-Papers)
 
@@ -19,4 +19,4 @@ Happy learning and best of luck with your exams! 📚✨
 
 ### Credits 🙌
 
-We would like to extend our sincere gratitude to [@dork-writes](https://github.com/dork-writes) and Syed Muhammad Ali Mustafa for their valuable contributions to the FAST-NUCES-Lhr-Past-Papers repository.  Their involvement and efforts have greatly enhanced the collection of past papers and improved the overall quality of the repository. 👏👏
+We would like to extend our sincere gratitude to [@syedmalimustafa](https://github.com/syedmalimustafa) and [@raza-h](https://github.com/raza-h) for their valuable contributions to the FAST-NUCES Lahore Past Papers repository.  Their involvement and efforts have greatly enhanced the collection of past papers and improved the overall quality of the repository. 👏👏

@@ -19,4 +19,4 @@ Happy learning and best of luck with your exams! 📚✨
 
 ### Credits 🙌
 
-We would like to extend our sincere gratitude to [@syedmalimustafa](https://github.com/syedmalimustafa) and [@raza-h](https://github.com/raza-h) for their valuable contributions to the FAST-NUCES Lahore Past Papers repository.  Their involvement and efforts have greatly enhanced the collection of past papers and improved the overall quality of the repository. 👏👏
+We would like to extend our sincere gratitude to [@syedmalimustafa](https://github.com/syedmalimustafa) , [@raza-h](https://github.com/raza-h) , [@Hassaan-T075](https://github.com/Hassaan-T075) for their valuable contributions to the FAST-NUCES Lahore Past Papers repository.  Their involvement and efforts have greatly enhanced the collection of past papers and improved the overall quality of the repository. 👏👏

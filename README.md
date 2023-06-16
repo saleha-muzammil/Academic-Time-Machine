@@ -1,4 +1,4 @@
- **Repository: FAST-NUCES-Lhr-Past-Papers** 📚
+ **Repository: FAST-NUCES-Lahore Academic Time Machine** 📚
 
 Welcome to the repository containing past papers for computer science (CS), software engineering (SE), and data science (DS) courses at FAST-NUCES, Lahore campus. 🎓 This repository aims to provide a comprehensive collection of past papers to help students prepare for their exams effectively. Whether you're a current student or an alumnus looking to brush up on your knowledge, you'll find this repository useful. 📖🚀
 

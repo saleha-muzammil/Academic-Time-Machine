@@ -13,6 +13,13 @@ Alternatively, you can reach out to any of the current collaborators listed in t
 **3. Fork the Repository 🍴**
 If you wish to make your own changes or updates to the repository without becoming a collaborator, you can fork the repository to create your copy. Feel free to contribute by adding new past papers, organizing the existing collection, or suggesting improvements. Let's work together to create a valuable resource for the FAST NUCES Lahore student community! 💪🌟
 
+**4. Download Specific Folders 📥**
+If you want to download only specific course folders from a repository without downloading the whole repository, you can use the following steps:
+- Go to the link of the repository (https://github.com/saleha-muzammil/Academic-Time-Machine/)
+- Press `.` or replace `.com` with `.dev` in URL to open the repository in GitHub's internal editor
+- In Explorer pane (left side or press Ctrl+Shift+E), Right click on the required file/folder and select download.
+- In the Select Folder dialog box, choose the directory on your disk under which you want the selected file/folder to download.
+
 Happy learning and best of luck with your exams! 📚✨
 
 ### Credits 🙌

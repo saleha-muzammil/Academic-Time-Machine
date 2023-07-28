@@ -1,1 +1,0 @@
-Suppose, the messaging application developed as a series of assignments in this course, is developed using a Web View. What may be the benefits/drawbacks in this case?

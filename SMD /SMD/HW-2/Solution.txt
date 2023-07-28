@@ -1,5 +1,0 @@
-Suppose, the messaging application developed as a series of assignments in this course, is developed using a Web View. What may be the benefits/drawbacks in this case?
-
-Benefit will be to work it out as a hybrid application, which will make it easier to deploy on multiple platforms.
-
-Drawback will be the drop in performance in comparison with a native application.

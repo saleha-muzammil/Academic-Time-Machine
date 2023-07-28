@@ -1,1 +1,0 @@
-Describe an application scenario where Socket Programming (using TCP/IP stack) will be preferred and another where Bluetooth will be more appropriate? Give an example for each.

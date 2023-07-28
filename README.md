@@ -4,8 +4,8 @@ Welcome to the repository containing past papers for computer science (CS), soft
 
 To access and contribute to this repository, please follow the instructions below: 
 
-**1. Become a Collaborator 🤝**
-If you are a student or an alumnus of FAST, and you would like to become a collaborator for this repository, please send an email to l201192@lhr.nu.edu.pk. 📧
+**1. Create a pull request 🤝**
+Fork the repository, add materials and create a pull request to merge your fork.
 
 **2. Contact Collaborators 📞**
 Alternatively, you can reach out to any of the current collaborators listed in the repository to request updates or share new past papers. They will be happy to assist you in keeping the repository up-to-date. 😄

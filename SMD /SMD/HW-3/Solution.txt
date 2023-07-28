@@ -1,3 +1,0 @@
-For applications requiring high data volume and/or tranmission over a long distance, TCP/IP stack would be preferable e.g. a video call application.
-
-For applications requiring moderate data volume to be transmitted over a short distance, bluetooth will be preferred e.g. sharing contacts, photos etc.

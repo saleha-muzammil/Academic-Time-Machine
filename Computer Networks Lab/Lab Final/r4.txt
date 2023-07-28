@@ -1,8 +1,0 @@
-Router(config-if)#exit
-Router(config)#router rip
-Router(config-router)#version 2
-Router(config-router)#no auto-summary
-Router(config-router)#network 210.98.169.64
-Router(config-router)#network 210.98.169.96
-Router(config-router)#network 199.210.121.172
-Router(config-router)#exit

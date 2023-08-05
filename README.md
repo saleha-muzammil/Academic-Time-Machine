@@ -11,7 +11,7 @@ To access and contribute to this repository, please follow the instructions belo
 Alternatively, you can reach out to any of the current collaborators listed in the repository to request updates or share new past papers. They will be happy to assist you in keeping the repository up-to-date. 😄
 
 **3. Fork the Repository 🍴**
-If you wish to make your own changes or updates to the repository without becoming a collaborator, you can fork the repository to create your copy. Feel free to contribute by adding new past papers, organizing the existing collection, or suggesting improvements. Let's work together to create a valuable resource for the FAST NUCES Lahore student community! 💪🌟
+If you wish to make your own changes or updates to the repository without becoming a collaborator, you can fork the repository to create your copy. Feel free to contribute by adding new past papers, organizing the existing collection, or suggesting improvements. 💪🌟
 
 **4. Download Specific Folders 📥**
 If you want to download only specific course folders from a repository without downloading the whole repository, you can use the following steps:

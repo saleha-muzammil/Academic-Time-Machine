@@ -5,7 +5,7 @@ Welcome to the repository containing past papers for computer science (CS), soft
 To access and contribute to this repository, please follow the instructions below: 
 
 **1. Create a pull request 🤝**
- Fork the repository, add materials and create a pull request to merge your fork.
+ Fork the repository, add materials (all the files should be in .pdf format) and create a pull request to merge your fork.
 
 **2. Contact Collaborators 📞**
 Alternatively, you can reach out to any of the current collaborators listed in the repository to request updates or share new past papers. They will be happy to assist you in keeping the repository up-to-date. 😄

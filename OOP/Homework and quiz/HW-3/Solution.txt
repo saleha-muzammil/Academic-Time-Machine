@@ -1,1 +1,0 @@
-Destructors aren't declared as virtual, which will lead to memory leak.

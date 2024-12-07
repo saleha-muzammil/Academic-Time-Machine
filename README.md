@@ -28,7 +28,7 @@ To download specific course folders from the repository:
 ## Additional Resources:
 - **FAST CFD**: [Link](https://drive.google.com/drive/folders/1_tUnBKHRtlCKnC_D5VFCmQ5cCFTCHW8x)  
 - **General Resources**: [Link](https://drive.google.com/drive/u/0/folders/12yztqUjjvhwgcgSIqxUODJbaYtavi6HX)
-- ** Wondar Site:** [Link](https://www.wondar.site/)
+- **Wondar Site:** [Link](https://www.wondar.site/)
 
 ---
 

@@ -1,0 +1,5 @@
+Q1: No, Because RCAF value must be between 1 and 70. It cannot be 97.
+
+Q2: C
+
+Q3: A

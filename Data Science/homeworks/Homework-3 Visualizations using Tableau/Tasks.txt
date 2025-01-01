@@ -1,6 +1,0 @@
-1.Go through the following turotials and create visualizations and submit.
-You can have a group of 3 students.
-
-https://www.analyticsvidhya.com/blog/2017/07/data-visualisation-made-easy/?utm_source=blog&utm_medium=learning-path-tableau-expert
-
-https://www.analyticsvidhya.com/blog/2018/01/tableau-for-intermediate-data-science/?utm_source=blog&utm_medium=learning-path-tableau-expert

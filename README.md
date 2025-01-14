@@ -1,27 +1,46 @@
- **Repository: Academic Time Machine** 📚
+## Repository: Academic Time Machine
 
-Welcome to the repository containing past papers for computer science (CS), software engineering (SE), and data science (DS) courses. 🎓 This repository aims to provide a comprehensive collection of past papers to help students prepare for their exams effectively. Whether you're a current student or an alumnus looking to brush up on your knowledge, you'll find this repository useful. 📖🚀
+Welcome to the **Academic Time Machine** repository. Whether you're a current student or an alumnus looking to brush up on your knowledge, we hope, you find this repository useful.
 
-To access and contribute to this repository, please follow the instructions below: 
+---
 
-**1. Create a pull request 🤝**
- Fork the repository, add materials (all the files should be in .pdf format) and create a pull request to merge your fork (Important: Kindly mention in the comments, the material you want to add).
+## Contribute to the Repository
 
-**2. Contact Collaborators 📞**
-Alternatively, you can reach out to any of the current collaborators listed in the repository to request updates or share new past papers. They will be happy to assist you in keeping the repository up-to-date. 😄
+Your contributions keep the repository up to date and valuable for everyone:
 
-**3. Fork the Repository 🍴**
-If you wish to make your own changes or updates to the repository without becoming a collaborator, you can fork the repository to create your copy. Feel free to contribute by adding new past papers, organizing the existing collection, or suggesting improvements. 💪🌟
+1. **Create a Pull Request**: Fork the repository, add materials in `.pdf` format, and submit a PR with clear comments on what you're adding.
+2. **Contact Collaborators**: Reach out to any current collaborators listed in the repository to request updates. Please note that response times may vary—between juggling work, life, and the occasional existential crisis, they might be a bit slow to reply.
+3. **Fork the Repository**: You can fork the repo to make changes, add materials, or suggest improvements without becoming a direct collaborator.
 
-**4. Download Specific Folders 📥**
-If you want to download only specific course folders from a repository without downloading the whole repository, you can use the following steps:
-- Go to the link of the repository (https://github.com/saleha-muzammil/Academic-Time-Machine/)
-- Press `.` or replace `.com` with `.dev` in URL to open the repository in GitHub's internal editor
-- In Explorer pane (left side or press Ctrl+Shift+E), Right click on the required file/folder and select download.
-- In the Select Folder dialog box, choose the directory on your disk under which you want the selected file/folder to download.
+---
 
-Happy learning and best of luck with your exams! 📚✨
+## Download Specific Folders
 
-### Credits 🙌
+To download specific course folders from the repository:
 
-We would like to extend our sincere gratitude to [@syedmalimustafa](https://github.com/syedmalimustafa) (who first compiled this repository) , [@raza-h](https://github.com/raza-h) , [@Hassaan-T075](https://github.com/Hassaan-T075) , [@saimali1124](https://github.com/saimali1124) ,[@Mahd67](https://github.com/Mahd67) , [@Huzaifa-fh](https://github.com/Huzaifa-fh) for their valuable contributions to the Academic Time Machine repository.  Their involvement and efforts have greatly enhanced the collection of past papers and improved the overall quality of the repository. 👏👏
+1. Go to the [GitHub repository](https://github.com/saleha-muzammil/Academic-Time-Machine/)
+2. Press `.` or replace `.com` with `.dev` to open it in GitHub's internal editor.
+3. In the Explorer pane, right-click the desired folder/file and select **Download**.
+4. Choose the destination folder on your system.
+
+---
+
+## Additional Resources:
+- **FAST CFD**: [Link](https://drive.google.com/drive/folders/1_tUnBKHRtlCKnC_D5VFCmQ5cCFTCHW8x)  
+- **General Resources**: [Link](https://drive.google.com/drive/u/0/folders/12yztqUjjvhwgcgSIqxUODJbaYtavi6HX)
+- **Wondar Site:** [Link](https://www.wondar.site/)
+
+---
+
+## Acknowledgements
+
+Special thanks to the following individuals for their contributions to the **Academic Time Machine** repository:
+
+- [@syedmalimustafa](https://www.linkedin.com/in/syedmalimustafa) - SDE@ Amazon  
+- [@raza-h](https://www.linkedin.com/in/razah1214/) - SE @ Dubizzle Labs  
+- [@Hassaan-T075](https://github.com/Hassaan-T075)  
+- [@saimali1124](https://www.linkedin.com/in/saim-ali-cs/) - SE @ GoSaaS  
+- [@Mahd67](https://www.linkedin.com/in/mahd-tariq-51b7b6236/) - SE @ Careem  
+- [@Huzaifa-fh](https://www.linkedin.com/in/huzaifa-faheem-17891623a/) - SE @ Techlogix  
+
+Their involvement and efforts have significantly enhanced the quality and breadth of this resource.

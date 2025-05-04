@@ -1,3 +1,5 @@
+NUCES AI Hub: https://nucesai.vercel.app/
+
 ## Repository: Academic Time Machine
 
 Welcome to the **Academic Time Machine** repository. Whether you're a current student or an alumnus looking to brush up on your knowledge, we hope, you find this repository useful.

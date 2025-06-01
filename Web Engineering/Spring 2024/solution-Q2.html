@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculator</title>
+</head>
+<body>
+
+<h1>Welcome to the Calculator</h1>
+
+<script>
+  function calculateSum(a, b) {
+    return a + b;
+  }
+
+  function calculateProduct(a, b) {
+    return a * b;
+  }
+
+  // Prompt user to choose an option when the page loads
+  window.onload = function() {
+    const userInput = parseInt(prompt("Choose an option:\n1. Calculate the sum of two numbers.\n2. Calculate the product of two numbers."));
+
+    if (!isNaN(userInput)) {
+      if (userInput === 1) {
+        const num1 = parseFloat(prompt("Enter the first number:"));
+        const num2 = parseFloat(prompt("Enter the second number:"));
+
+        if (!isNaN(num1) && !isNaN(num2)) {
+          const sum = calculateSum(num1, num2);
+          document.write(`<h2>Sum of ${num1} and ${num2} is: ${sum}</h2>`);
+        } else {
+          alert("Invalid input. Please enter valid numbers.");
+        }
+      } else if (userInput === 2) {
+        const num1 = parseFloat(prompt("Enter the first number:"));
+        const num2 = parseFloat(prompt("Enter the second number:"));
+
+        if (!isNaN(num1) && !isNaN(num2)) {
+          const product = calculateProduct(num1, num2);
+          document.write(`<h2>Product of ${num1} and ${num2} is: ${product}</h2>`);
+        } else {
+          alert("Invalid input. Please enter valid numbers.");
+        }
+      } else {
+        alert("Invalid input. Please choose either 1 or 2.");
+      }
+    } else {
+      alert("Invalid input. Please enter a number.");
+    }
+  };
+</script>
+
+</body>
+</html>

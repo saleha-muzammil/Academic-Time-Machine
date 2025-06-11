@@ -1,1 +1,0 @@
-What can be wrong with the following implementation (code below), if the relationship among the classes is correct? Simply explain in words.

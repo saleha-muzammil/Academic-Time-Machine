@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Image Gallery</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    .gallery-container {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .gallery-image {
+      max-width: 100%;
+      height: auto;
+    }
+    .thumbnail-image {
+      max-width: 100px;
+      height: auto;
+      margin: 5px;
+      cursor: pointer;
+    }
+    #next-btn {
+      padding: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Image Gallery</h1>
+
+<div class="gallery-container">
+  <img src="" id="main-image" class="gallery-image" alt="Main Image">
+</div>
+
+<div class="thumbnails-container">
+  <!-- Thumbnail images will be dynamically added here -->
+</div>
+
+<button id="next-btn">Next</button>
+
+<script>
+  $(document).ready(function() {
+    const gallery = [
+      "https://via.placeholder.com/600x400?text=Image%201",
+      "https://via.placeholder.com/600x400?text=Image%202",
+      "https://via.placeholder.com/600x400?text=Image%203"
+    ];
+
+    let currentImageIndex = 0;
+
+    function displayImage(index) {
+      $('#main-image').attr('src', gallery[index]);
+    }
+
+    // Display the first image when the page loads
+    displayImage(currentImageIndex);
+
+    // Create thumbnail images
+    gallery.forEach(function(imageUrl, index) {
+      const $thumbnail = $('<img>').attr('src', imageUrl)
+                                   .addClass('thumbnail-image')
+                                   .click(function() {
+                                      currentImageIndex = index;
+                                      displayImage(currentImageIndex);
+                                   });
+      $('.thumbnails-container').append($thumbnail);
+    });
+
+    // Next button functionality
+    $('#next-btn').click(function() {
+      currentImageIndex = (currentImageIndex + 1) % gallery.length;
+      displayImage(currentImageIndex);
+    });
+  });
+</script>
+
+</body>
+</html>

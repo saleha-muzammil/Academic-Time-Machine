@@ -1,0 +1,17 @@
+you can also see the manual for each system call using man command:
+man sem_init 
+man sem_wait
+man sem_post
+man sem_destroy
+man sem_timedwait
+man sem_trywait
+
+
+
+sem_init: http://man7.org/linux/man-pages/man3/sem_init.3.html
+
+sem_wait: http://man7.org/linux/man-pages/man3/sem_wait.3.html
+
+sem_post: http://man7.org/linux/man-pages/man3/sem_post.3.html
+
+sem_destroy: http://man7.org/linux/man-pages/man3/sem_destroy.3.html

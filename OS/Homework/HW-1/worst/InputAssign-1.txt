@@ -1,3 +1,0 @@
-Process_A, Process_B, Process_C, Process_D
-Hello from parent, Hello B, Hello C, Hello D
-Are you running, Keep running, Keep up, Good

@@ -1,0 +1,3 @@
+4 36 whoami
+4 36 ls
+4 37 pwd

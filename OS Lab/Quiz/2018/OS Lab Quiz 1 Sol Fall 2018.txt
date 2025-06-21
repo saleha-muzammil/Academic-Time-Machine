@@ -1,0 +1,50 @@
+
+
+
+//thread 1
+While(1)
+{
+
+    	sem1.post()
+ 	sem1.post()
+	sem1.post()
+	sem1.post()
+
+   	 Cout << ‘a’;
+
+	sem3.post()
+
+}	
+//thread 2
+
+While(1)
+{
+	sem2.wait()
+        Cout << ‘b’;
+	
+	sem1.post()
+
+}	
+//thread 3
+
+While(1)
+{	
+	sem3.wait()
+        Cout << ‘c’;
+	sem2.post()
+	sem2.post()
+	sem2.post()
+	sem2.post()
+}
+
+main()
+{
+	create 3 semaphores
+	sem1 initialize 0
+	sem2 initialize 0
+	sem3  initialize 1
+
+	create all 3 theads 
+	join all 3 threads
+
+}

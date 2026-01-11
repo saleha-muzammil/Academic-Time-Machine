@@ -1,0 +1,6 @@
+Student(roll_no, name, dept_id, batch)
+Course(course_id, name, credit_hrs, dept_id)
+Section (section_id, course_id, capacity)
+Enrolled(student_roll_no, section_id)
+Faculty(faculty_id, name, dept_id)
+Department(dept_id, name)

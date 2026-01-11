@@ -1,0 +1,26 @@
+[org 0x0100]
+
+jmp start
+multiplicand: db 0x0A
+multiplier: db 0x0B
+result: db 0x0
+
+start:
+mov cl, 4 ;4-bit multiplication
+mov al, [multiplicand]
+mov dl, [multiplier]
+
+l1:
+shr dl, 1
+jnc skipAddition
+add byte[result], al
+
+skipAddition:
+shl al, 1
+dec cl
+cmp cl, 0
+jnz l1
+
+
+mov ax, 0x4c00
+int 0x21

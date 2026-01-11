@@ -1,0 +1,24 @@
+[org 0x100]
+mov ax, 0x0013 ; Set graphics mode
+int 0x10        ; BIOS video services
+
+mov ax, 0x0C07  ; Set pixel color to white (color index 7)
+xor bx, bx      ; Page number 0
+mov cx, 0     ; x position (horizontal position)
+mov dx, 0     ; y position (vertical position)
+
+l2:
+mov dx, 200
+inc cx
+l1:
+    int 0x10     ; Plot a pixel
+    inc dx       ; Move down (change the vertical position)
+    cmp dx, 300  ; Check if the line has reached the desired length
+    jnz l1       ; If not, continue
+	cmp cx, 250
+	jnz l2
+	
+    int 0x16     ; Wait for a key press
+	
+	mov ax, 0x4c00
+    int 0x21     ; Terminate the program

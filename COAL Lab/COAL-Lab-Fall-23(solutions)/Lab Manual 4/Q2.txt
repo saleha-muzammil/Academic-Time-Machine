@@ -1,0 +1,21 @@
+[org 0x0100]
+
+jmp start
+num: dq 0xffa0e32f56ca1a9f
+;64 bit shifting
+start:
+;shift right
+shr word[num+6], 1
+rcr word[num+4], 1
+rcr word[num+2], 1
+rcr word[num], 1
+
+;shift left
+shl word[num], 1
+rcl word[num+2], 1
+rcl word[num+4], 1
+rcl word[num+6], 1
+
+
+mov ax, 0x4c00      ;terminate the program
+int 0x21

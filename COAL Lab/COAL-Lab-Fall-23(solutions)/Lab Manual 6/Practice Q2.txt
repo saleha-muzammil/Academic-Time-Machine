@@ -1,0 +1,70 @@
+[org 0x0100]
+
+jmp start
+;Global Variables
+num: dw 7
+result: dw 0
+;---------------------------------------------------
+
+multiply:
+push bp
+mov bp, sp
+push ax
+push bx
+push cx
+
+mov ax, [bp+6] ;multiplier
+mov bx, [bp+4] ;multiplicand
+mov cx, 1
+l1:
+add ax, [bp+6]
+inc cx
+cmp bx, cx
+jne l1
+mov word[bp+8], ax
+
+pop cx
+pop bx
+pop ax
+pop bp
+ret 4 ;2 params 
+;---------------------------------------------------
+
+factorial:
+push bp
+mov bp, sp
+push ax
+push bx
+push cx
+
+mov ax, [bp+4] ;stores result
+mov cx, ax  
+dec cx
+
+l2:
+push 0xFFFF
+push ax
+push cx
+call multiply
+pop ax
+dec cx
+cmp cx, 1
+jne l2
+
+mov word[bp+6], ax
+
+pop cx
+pop bx
+pop ax
+pop bp
+ret 2 ;as 1 param need to be cleared
+;---------------------------------------------------
+
+start:
+push 0xFFFF ;return
+push word[num]
+call factorial
+pop word[result]
+
+mov ax, 0x4c00
+int 0x21

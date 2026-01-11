@@ -1,0 +1,425 @@
+[org 0x0100]
+
+jmp start
+num: times 10 db 0 
+equal: db '='
+numSize: dw 0
+operand1: db 0
+operand2: db 0
+operator: db 0
+result: dw 0
+totalRows: dw 25
+totalCols: dw 80
+;------------------------------------------------------------------------------
+calculatePosition:
+push bp
+mov bp, sp
+push ax
+push bx
+push cx
+push dx
+push di
+push si
+push es
+
+mov ax, 0
+mov ax, [totalCols]
+mul word[bp+6]
+add ax, [bp+4]
+shl ax, 1
+mov word[bp+8], ax  ;return value
+
+pop es
+pop si
+pop di
+pop dx
+pop cx
+pop bx
+pop ax
+pop bp
+ret 4
+
+;-----------------------------------------------------------
+clrScreen:
+push bp
+mov bp, sp
+push dx
+push ax
+push di
+push si
+push es
+
+mov ax, 0xB800 ;display memory block starting physical address
+mov es, ax
+
+push 0xFFFF
+push word[bp+6] ;starting row
+push 0
+call calculatePosition
+pop di ;start pos
+
+push 0xFFFF
+mov dx, word[bp+4] ;ending row
+dec dx
+push dx
+push word[totalCols]
+call calculatePosition 
+pop si ;end pos
+
+nextChar:
+mov word[es:di], 0x0720 ;background is black, foreground is space char so empty slot
+add di, 2
+cmp di, si 
+jne nextChar
+
+pop es
+pop si
+pop di
+pop ax
+pop dx
+pop bp
+ret 4
+;-----------------------------------------------------------
+getInput:
+push bp
+mov bp, sp
+push es
+push ax
+push bx
+push cx
+push dx
+push di
+push si
+
+mov di, [bp+6] ;string offset
+mov cx, 0
+n4:
+mov ah, 0x00
+int 0x16 ;get keystroke
+cmp al, 13 ;ascii for enter key
+je en8
+mov [di], al
+inc di
+inc cx
+mov dl, al
+mov ah, 0x02 ;print char at cursor position
+int 0x21
+jmp n4
+
+en8:
+mov si, word[bp+4] ;stores size of the string
+mov [si], cx
+
+pop si
+pop di
+pop dx
+pop cx
+pop bx
+pop ax
+pop es
+pop bp
+ret 4
+;-----------------------------------------------------------
+tokenizeNumbers:
+push bp
+mov bp, sp
+push es
+push ax
+push bx
+push cx
+push dx
+push di
+push si
+
+mov si, num
+mov cx, 0
+next1:
+cmp byte[si], '+'
+jne next2
+mov byte[operator], '+'
+jmp settingFirstOperand
+
+next2:
+cmp byte[si], '*'
+jne next3
+mov byte[operator], '*'
+jmp settingFirstOperand
+
+next3:
+cmp byte[si], '/'
+jne next4
+mov byte[operator], '/'
+jmp settingFirstOperand
+
+next4:
+cmp byte[si], '-'
+jne update
+mov byte[operator], '-'
+jmp settingFirstOperand
+
+update:
+inc cx
+inc si
+cmp cx, [numSize]
+jne next1
+jmp en1 ;no operator found
+
+settingFirstOperand:
+;cx has the number of chars in the first operand
+push cx ;for later use
+push cx
+mov ax, 1
+dec cx
+mov dl, 10
+cmp cx, 0
+je skip1
+set1: ;set the number to multiply digits with
+mul dl
+loop set1
+skip1:
+mov bx, ax ;stores the number to multiply
+pop cx
+mov si, num
+nx1:
+mov al, [si]
+sub al, '0' ;to get num
+mul bl
+add byte[operand1], al
+inc si
+mov ax, bx
+div dl
+mov bl, al
+loop nx1
+
+settingSecondOperand:
+inc si ;to point to the next operand
+pop di
+inc di ;for considering operator
+mov cx, [numSize]
+sub cx, di ;cx now holds num2 size
+push cx
+mov ax, 1
+dec cx
+mov dl, 10
+cmp cx, 0
+je skip2
+set2:
+mul dl
+loop set2
+skip2:
+mov bx, ax ;stores the number to multiply
+pop cx
+nx2:
+mov al, [si]
+sub al, '0' ;to get num
+mul bl
+add byte[operand2], al
+inc si
+mov ax, bx
+div dl
+mov bl, al
+loop nx2
+
+en1:
+pop si
+pop di
+pop dx
+pop cx
+pop bx
+pop ax
+pop es
+pop bp
+ret 
+;-----------------------------------------------------------
+performOperation:
+push bp
+mov bp, sp
+push es
+push ax
+push bx
+push cx
+push dx
+push di
+push si
+
+cmp byte[operator], '+'
+je addNums
+
+cmp byte[operator], '*'
+je mulNums
+
+cmp byte[operator], '/'
+je divNums
+
+cmp byte[operator], '-'
+je subNums
+jmp en
+
+addNums:
+mov ax, 0
+mov bx, 0
+mov al, [operand1]
+mov bl, [operand2]
+add ax, bx
+mov [result], ax
+jmp en
+
+mulNums:
+mov ax, 0
+mov bx, 0
+mov al, [operand1]
+mov bl, [operand2]
+mul bl
+mov [result], ax
+jmp en
+
+subNums:
+mov ax, 0
+mov bx, 0
+mov al, [operand1]
+mov bl, [operand2]
+sub ax, bx
+mov [result], ax
+jmp en
+
+divNums:
+mov ax, 0
+mov bx, 0
+mov al, [operand1]
+mov bl, [operand2]
+div bl
+mov ah, 0
+mov [result], ax
+jmp en
+
+en:
+pop si
+pop di
+pop dx
+pop cx
+pop bx
+pop ax
+pop es
+pop bp
+ret 
+;-----------------------------------------------------------
+printNum:
+push bp
+mov bp, sp
+push ax
+push bx
+push cx
+push dx
+push di
+push si
+push es
+push ds
+
+mov ax, 0xb800
+mov es, ax
+
+push 0xffff
+push word[bp+8];row
+push 40 ;column
+call calculatePosition
+pop di
+
+mov ax, word[bp+6] ;num
+mov bl, 10
+l1:
+div bl ;divide by 10
+print:
+mov dh, [bp+4]
+mov dl, 0
+mov dl, ah ;remainder
+add dl, '0' ;to get ascii
+mov word[es:di], dx
+sub di, 2
+
+mov ah, 0
+cmp ax, 0
+jne l1
+
+pop ds
+pop es
+pop si
+pop di
+pop dx
+pop cx
+pop bx
+pop ax
+pop bp
+ret 6
+;-----------------------------------------------------------
+printStr:
+push bp
+mov bp, sp
+push es
+push ax
+push bx
+push cx
+push dx
+push di
+
+mov ah, 0x13 ;service
+mov al, 1 ;update cursor position
+mov bh, 0 ;page
+mov bl, [bp+10] ;attribute
+mov cx, [bp+8] ;length
+mov dh, [bp+14] ;row
+mov dl, [bp+12] ;col
+mov es, [bp+6] ;points to cs
+
+push bp
+mov di, [bp+4]
+mov bp, di
+int 0x10
+pop bp
+
+pop di
+pop dx
+pop cx
+pop bx
+pop ax
+pop es
+pop bp
+ret 12
+;-----------------------------------------------------------
+
+start:
+push num
+push numSize
+call getInput
+
+call tokenizeNumbers
+
+call performOperation
+
+push 0
+push 25
+call clrScreen
+
+push 10
+push 28
+push 0x07
+push word[numSize]
+push cs
+push num
+call printStr
+
+push 10
+push 36
+push 0x07
+push 1
+push cs
+push equal
+call printStr
+
+push 10
+mov ax, [result]
+push ax
+push 0x07
+call printNum
+
+mov ax, 0x4c00
+int 0x21

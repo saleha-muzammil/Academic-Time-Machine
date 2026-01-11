@@ -1,0 +1,68 @@
+[org 0x0100]
+
+jmp start
+;Global Variables
+
+;--------------------------------------------------------------------------------
+
+clrScreen:
+push bp
+mov bp, sp
+push ax
+push di
+
+mov ax, 0xB800 ;display memory block starting physical address
+mov es, ax
+mov di, 0
+mov ax, 0x0720 ;background is black, foreground is space char so empty slot
+nextChar:
+mov word[es:di], ax
+add di, 2
+cmp di, 4000
+jne nextChar
+
+pop di
+pop ax
+pop bp
+ret
+;-------------------------------------------------------------------------------
+
+printOnScreen:
+push bp
+mov bp, sp
+push ax
+push di
+
+mov ax, 0xB800 ;display memory block starting physical address
+mov es, ax
+mov di, 0
+mov ah, 0x07
+mov al, [bp+6]
+l1:
+mov word[es:di], ax
+add di, 2
+cmp di, 2080
+jne l1
+add di, 2
+
+mov al, [bp+4]
+l2:
+mov word[es:di], ax
+add di, 2
+cmp di, 4000
+jne l2
+pop di
+pop ax
+pop bp
+ret 4
+;------------------------------------------------------------------------------
+
+start:
+call clrScreen  ;clears the screen
+push '_'
+push '.'
+call printOnScreen
+
+
+mov ax, 0x4c00
+int 0x21

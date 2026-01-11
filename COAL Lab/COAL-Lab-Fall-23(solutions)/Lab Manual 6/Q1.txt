@@ -1,0 +1,45 @@
+[org 0x0100]
+; Note that this only works for small powers
+
+jmp start
+;Global Variables
+x: db 6
+y: db 6
+result: dd 0
+
+Power:
+push bp
+mov bp, sp
+push ax
+push dx
+push bx
+
+mov ax, 0
+mov al, [bp+6]  ;load value of x
+mov bl, 1
+l1:
+mul byte[bp+6]
+inc bl
+cmp bl, [bp+4]
+jne l1
+
+mov word[bp+8], ax  ;store the return val on the stack
+mov word[bp+10], dx
+
+pop bx
+pop dx
+pop ax
+pop bp
+ret 4
+;---------------------------------------------------
+start:
+push 0xFFFF   ;dummy push for return value
+push 0xFFFF
+push word[x]
+push word[y]
+call Power
+pop word[result]
+pop word[result+2]
+
+mov ax, 0x4c00
+int 0x21

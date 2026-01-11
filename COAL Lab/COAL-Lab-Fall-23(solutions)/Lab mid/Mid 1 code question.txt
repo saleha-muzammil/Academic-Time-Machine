@@ -1,0 +1,51 @@
+[org 0x0100]
+
+jmp start
+array: db 0xa7, 0xa3, 0x94, 0xff, 0x00
+sizeArr: dw 5
+
+start:
+mov bx, 0 ;outer iterations
+mov di, 0 ;cuurent array size
+mov si, 0 ;counter to calculate parity
+
+l1:
+mov ah, [array+bx]
+mov si, 0
+mov dx, 0
+inner:
+shr ah, 1
+jnc nextInner
+inc dx
+nextInner:
+add si, 1
+cmp si, 8
+jnz inner
+
+shr dx, 1
+jc next
+
+evenParity:
+mov al, [array+bx]
+mov byte[array+di], al
+inc di
+
+next:
+inc bx
+cmp bx, [sizeArr]
+jnz l1
+
+cmp di, [sizeArr] ;all even parity numbers
+jz exit
+
+l2:
+mov byte[array+di], 0
+inc di
+cmp di, [sizeArr]
+jnz l2
+
+exit:
+mov ax, 0x4c00
+int 0x21
+
+

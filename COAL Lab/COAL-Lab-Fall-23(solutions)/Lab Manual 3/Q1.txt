@@ -1,0 +1,26 @@
+[org 0x0100]
+
+;(a)
+mov ax, 0x25
+;(b) swap
+mov bx, 0x50
+mov [temp], ax
+mov ax, bx
+mov bx, [temp]
+;(c)
+mov [0x270], ax
+mov bx, [0x270]
+;(d)
+mov cx, 3
+mov si, 0
+loop:
+mov ax, [num+si]
+add si,2
+sub cx,1
+jnz loop
+
+mov ax, 0x4c00
+int 0x21
+
+temp: dw 0
+num: dw 12, 25, 10

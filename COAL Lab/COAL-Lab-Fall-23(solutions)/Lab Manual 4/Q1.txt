@@ -1,0 +1,38 @@
+[org 0x0100]
+
+jmp start
+totalOneBits: dw 0
+maskVal: dw 0
+
+start:
+mov bx, 0xb189
+mov ax, 0xaba5
+mov cx, 0
+mov dx, 0
+mov si, 2
+
+;counts the number of one bits in BX
+l1:
+shr bx, 1
+jnc update
+add dx, 1
+
+update:
+add cx, 1
+cmp cx, 16
+jnz l1
+mov [totalOneBits], dx
+
+;complementing the last DX(val) bits of AX
+calculateMask:
+add si, [maskVal]
+mov [maskVal], si
+sub dx, 1
+cmp dx, 0
+jnz calculateMask
+sub word[maskVal], 1
+
+xor ax, [maskVal] ;complements the number
+
+mov ax, 0x4c00
+int 0x21

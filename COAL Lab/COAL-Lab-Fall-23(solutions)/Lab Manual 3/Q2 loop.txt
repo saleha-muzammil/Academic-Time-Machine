@@ -1,0 +1,50 @@
+[org 0x0100]
+
+mov si,0
+mov cx, 5
+loop1:  
+;modifying array3
+mov ax, 0
+mov ax, [array1+si]
+add ax, [array2+si]
+mov [array3+si], ax
+
+add si,1
+sub cx,1
+jnz loop1
+
+
+mov si,0
+mov cx, 4
+loop2:  
+;modifying array1
+mov ax, 0
+mov ax, [array1+si]
+add ax, [array3+si]
+mov [array1+si+1], ax
+
+add si,1
+sub cx,1
+jnz loop2
+
+
+
+mov si,0
+mov cx, 4
+loop3:  
+;modifying array2
+mov ax, 0
+mov ax, [array2+si]
+sub [array3+si], ax
+mov [array2+si+1], ax
+
+add si,1
+sub cx,1
+jnz loop3
+
+mov ax, 0x4c00
+int 0x21
+
+array1: db 1, 2, 3, 4, 5 
+array2: db 9, 8, 7, 6, 3
+array3: db 0, 0, 0, 0, 0

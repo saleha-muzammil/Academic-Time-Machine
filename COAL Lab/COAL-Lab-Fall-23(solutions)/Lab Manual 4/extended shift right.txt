@@ -1,0 +1,11 @@
+[org 0x0100]
+
+jmp start
+c: 	DD 0x0A0FF0AF ; 0000 1010 0000 1111 1111 0000 1010 1111
+
+start:
+	shr word[c+2],1	
+	rcr word[c],1
+
+mov ax, 0x4c00		;terminate the program
+int 0x21

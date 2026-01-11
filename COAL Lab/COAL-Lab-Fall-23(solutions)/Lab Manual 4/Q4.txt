@@ -1,0 +1,34 @@
+[org 0x0100]
+
+jmp start
+multiplicand: dq 0xffa0e32f56ca1a9f
+multiplier: dd 0xffa012a1
+result: dq 0
+
+start:
+mov cx, 32
+l1:
+shr word[multiplier+2], 1
+rcr word[multiplier], 1
+jnc skip
+;addition
+mov ax, [multiplicand]
+add word[result], ax
+mov ax, [multiplicand+2]
+adc word[result+2], ax
+mov ax, [multiplicand+4]
+adc word[result+4], ax
+mov ax, [multiplicand+6]
+adc word[result+6], ax
+
+skip:
+shl word[multiplicand], 1
+rcl word[multiplicand+2], 1
+rcl word[multiplicand+4], 1
+rcl word[multiplicand+6], 1
+dec cx
+jnz l1
+
+
+mov ax, 0x4c00		;terminate the program
+int 0x21

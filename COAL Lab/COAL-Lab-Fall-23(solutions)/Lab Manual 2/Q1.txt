@@ -1,0 +1,14 @@
+[org 0x0100]
+
+mov ax, 0
+mov cx, [N]
+
+loop:
+add ax, cx
+sub cx, 1
+jnz loop
+
+mov ax, 0x4c00
+int 0x21
+
+N: dw 6

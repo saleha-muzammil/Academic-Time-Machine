@@ -1,0 +1,20 @@
+[org 0x0100]
+
+;(a)
+mov bx, 20
+mov [0x025], bx
+mov ax, [0x025] 
+
+;(b)
+mov [0x0fff], ax
+
+;(c)
+mov bx, 13
+mov [0x0100], bx
+
+mov ax, [0x0100]
+mov si, 0x002f
+mov [si], ax
+
+mov ax, 0x4c00
+int 0x21

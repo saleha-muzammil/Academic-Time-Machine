@@ -1,0 +1,230 @@
+[org 0x0100]
+jmp start
+string: db 'I am a student of coal', 0 ;null-terminated
+subString: db 'student', 0
+
+;-------------------------------
+calculatePosition:
+push bp
+mov bp, sp
+push ax
+push bx
+push cx
+push dx
+push di
+push si
+
+mov ax, 80
+mul word[bp+6]
+add ax, [bp+4]
+shl ax, 1
+mov word[bp+8], ax  ;return value
+
+pop si
+pop di
+pop dx
+pop cx
+pop bx
+pop ax
+pop bp
+ret 4
+
+;-------------------------------
+clrScreen:
+push bp
+mov bp, sp
+push ax
+push cx
+push si
+push di
+push es
+
+mov ax, 0xb800
+mov es, ax
+mov di, 0
+mov ax, 0x0720 ;space on black background
+mov cx, 2000
+
+cld ;auto-increment mode
+rep stosw
+
+pop es
+pop di
+pop si
+pop cx
+pop ax
+pop bp
+ret
+
+;-------------------------------
+strLen: 
+push bp
+mov bp, sp
+push ax
+push bx
+push cx
+push dx
+push si
+push di
+push es
+push ds
+
+les di, [bp+4]
+mov al, 0
+mov cx, 0xffff
+repne scasb
+mov ax, 0xffff
+sub ax, cx
+dec ax
+mov [bp+8], ax
+
+pop ds
+pop es
+pop di
+pop si
+pop dx
+pop cx
+pop bx
+pop ax
+pop bp
+ret 4
+;-------------------------------
+
+printScreen:
+push bp
+mov bp, sp
+push ax
+push bx
+push cx
+push dx
+push si
+push di
+
+mov ax, 0xb800
+mov es, ax
+
+push 0xffff
+push word[bp+10]
+push word[bp+8]
+call calculatePosition
+pop di
+mov ah, [bp+6]
+mov si, [bp+4]
+push 0xffff
+push ds
+push word[bp+4]
+call strLen
+pop cx
+
+cld
+nextChar:
+lodsb 
+stosw
+loop nextChar
+
+pop di
+pop si
+pop dx
+pop cx
+pop bx
+pop ax
+pop bp
+ret 10
+;-------------------------------
+
+highlighSubString:
+push bp
+mov bp, sp
+push ax
+push bx
+push cx
+push dx
+push si
+push di
+push es
+push ds
+
+push 0xffff
+push word[bp+14] ;row
+push word[bp+12] ;col
+call calculatePosition
+pop di
+mov ah, [bp+10] ;attribute
+mov si, [bp+6] ;base
+push di
+
+push 0xffff
+push ds
+push word[bp+6]
+call strLen
+pop cx ;string lenght
+
+push 0xffff
+push ds
+push word[bp+4]
+call strLen
+pop bx  ;substring lenght
+
+mov di, word[bp+6] ;for di
+
+next:
+push ds
+pop es ;both set to data segment
+push cx ;so original iterations can be recovered later
+push di ;so canb be used while printing
+mov cx, bx ;cx=size of substring
+mov si, [bp+4] ;start of substring
+repne cmpsb
+cmp cx, 0
+jnz printHighllighted
+pop di
+pop cx
+
+printSimple:
+mov ax, 0xb800
+mov es, ax
+mov ax, 0
+mov ah, [bp+10]
+rep movsb 
+
+printHighllighted:
+mov ax, 0xb800
+mov es, ax
+mov ax, 0
+mov ah, 0x1f
+rep movsb 
+
+jmp next
+
+exit:
+pop ds
+pop es
+pop di
+pop si
+pop dx
+pop cx
+pop bx
+pop ax
+pop bp
+ret 12
+;-------------------------------
+
+start:
+call clrScreen
+
+push 10
+push 10
+push 0x0f
+push string
+call printScreen
+
+push 20
+push 10 
+push 0x0f
+push ds
+push subString
+push string
+call highlighSubString
+
+mov ax, 0x4c00
+int 0x21

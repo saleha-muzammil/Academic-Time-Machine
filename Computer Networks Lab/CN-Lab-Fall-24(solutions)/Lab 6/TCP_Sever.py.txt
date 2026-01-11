@@ -1,0 +1,48 @@
+import socket
+
+def main():
+    # Creating the socket
+    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+    # Binding the socket to IP and port
+    server_address = ('127.0.0.1', 2000)  # Localhost, port 2000
+    try:
+        server_socket.bind(server_address)
+        print("Socket successfully bound to IP and port")
+    except socket.error as err:
+        print(f"Bind failed. Error: {err}")
+        return
+
+    # Putting the socket into listening state
+    server_socket.listen(1)
+    print("Listening for incoming connections...")
+
+    while True:
+        # Accepting a connection
+        client_socket, client_address = server_socket.accept()
+        print(f"Client connected with IP: {client_address[0]} and Port: {client_address[1]}")
+
+        # Receiving the message from the client
+        try:
+            client_message = client_socket.recv(2000).decode('utf-8')
+            print(f"Client Message: {client_message}")
+        except socket.error as err:
+            print(f"Receive failed. Error: {err}")
+            client_socket.close()
+            continue
+
+        # Sending the message back to the client
+        try:
+            server_message = client_message  # Echoing back the same message
+            client_socket.send(server_message.encode('utf-8'))
+        except socket.error as err:
+            print(f"Send failed. Error: {err}")
+
+        # Closing the client connection
+        client_socket.close()
+
+    # Closing the server socket (this won't be reached in an infinite loop, but could be useful in modifications)
+    server_socket.close()
+
+if __name__ == "__main__":
+    main()

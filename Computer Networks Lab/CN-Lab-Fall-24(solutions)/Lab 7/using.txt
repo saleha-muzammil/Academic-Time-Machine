@@ -1,0 +1,6 @@
+#Input format: Client enters name and cnic
+#server authorizes it in voters list and checks if already voted
+#if satisfies the above then candidate list is sent to client
+#client the sends a symbol which the server verifies
+#if correct symbol then places the vote and regords the output in output.txt
+#if need to terminate the server then client sends name="exit" and cnic="" but the server closes when the loop is iterated again i.e. the next time client is run

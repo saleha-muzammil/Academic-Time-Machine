@@ -1,0 +1,26 @@
+[org 0x0100]
+
+jmp start
+tmp1: dw 0
+tmp2: dw 0
+valax: dw 0
+
+start:
+mov ax, 0xb25d
+mov word[valax], ax
+mov bx, 0xaaaa ;odd mask to get odd bits
+mov dx, 0x5555 ;even mask to get even bits
+
+and ax, bx
+mov word[tmp1], ax
+mov ax, [valax]
+and ax, dx
+mov word[tmp2], ax
+shr word[tmp1], 1 ;shift right the odd bits to even position
+shl word[tmp2], 1 ;shift left the even bits to odd position
+mov dx, [tmp1]
+or word[tmp2], dx
+mov ax, [tmp2]
+
+mov ax, 0x4c00		;terminate the program
+int 0x21

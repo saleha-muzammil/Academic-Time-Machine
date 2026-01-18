@@ -1,0 +1,25 @@
+[org 0x0100]
+
+jmp start
+multipicand: dw 0xf
+multiplier: dw 0xa
+result: dw 0x0
+
+start:
+mov ax, [multipicand]
+mov bx, 1  ;initial mask
+mov cx, 4
+
+l1:
+test [multiplier], bx ;performs bitwise AND but does not update registers, only the flags(like CMP is to SUB)
+jz skipAddition
+add word[result], ax
+
+skipAddition:
+shl ax, 1
+shl bx, 1
+dec cx
+jnz l1
+
+mov ax, 0x4c00	   ;terminate the program
+int 0x21

@@ -1,0 +1,80 @@
+[org 0x0100]
+
+jmp start
+;Global Variables
+arr1: db 1,3,5,7,9,12,12
+lenght: dw 7
+result: dw 0
+;---------------------------------------------------
+
+binarySearch:
+push bp
+mov bp, sp
+sub sp, 2 ;locals
+push ax
+push bx
+push cx
+push dx
+push si
+push di
+
+mov bx, [bp+8] ;base address
+mov si, 0; first element ind
+mov cx, [bp+6]
+dec cx ;last element ind
+mov word[bp-2], 2
+mov word[bp+10], 1 ;initially set to true
+
+l1:
+mov ax, 0
+add ax, si
+add ax, cx
+div word[bp-2] ;so whole ax is the quotient
+mov ah, 0
+mov di, ax
+mov al, [bx+di]
+cmp al, [bp+4]
+je en
+jb updateFirst
+ja updateLast
+
+updateFirst:
+mov si, di
+inc si ;si=mid+1
+jmp next
+
+updateLast:
+mov cx, di
+dec cx
+
+next:
+cmp si, cx
+jbe l1
+
+return:
+mov word[bp+10], 0 ;key not found
+
+en:
+pop di
+pop si
+pop dx
+pop cx
+pop bx
+pop ax
+mov sp, bp
+pop bp
+ret 6 ;as 3 params need to be cleared
+;---------------------------------------------------
+
+start:
+push 0xFFFF ;return
+mov ax, arr1
+push ax ;array base address
+mov ax, [lenght]
+push ax ;size
+push 3 ;key
+call binarySearch
+pop word[result]
+
+mov ax, 0x4c00
+int 0x21

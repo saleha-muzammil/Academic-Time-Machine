@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Currency Converter</title>
+</head>
+
+<body>
+    <header>
+        <div id="navBar">
+            <a class="navOpt" href="">Home</a>
+            <a class="navOpt" href="">About Us</a>
+            <a class="navOpt" href="">Contact</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="a1">
+            <h1>Currency Conversions</h1>
+        </section>
+        <form action="text/javascript">
+            <label for="currency">
+                Enter the Currency Medium:
+                <select id="currency" name="currency">
+                    <option value="dollar" name="dollar">Dollars</option>
+                    <option value="euro" name="euro">Euros</option>
+                    <option value="yen" name="yen">Yen</option>
+                </select>
+            </label>
+
+            <br><br>
+            <fieldset>
+                <legend>Rupees to another Currency: </legend>
+                <label for="conAmount1">
+                    Enter the amount in Ruppees to be converted: 
+                    <input type="text" id="conAmount1" placeholder="Enter here">
+                </label>
+                <br><br>
+                <button type="button" class="buttons" value="b1" onclick="convertFromRup()">Convert the Ruppees to the selected Currency Medium</button>
+                <br><br>
+                <label for="o1">
+                    Amount in your chosen medium:
+                    <input type="text" id="o1" placeholder="Output here">
+                </label>
+            </fieldset>
+
+            <br><br>
+            <fieldset>
+                <legend>Another Currency to Rupees: </legend>
+                <label for="conAmount2">
+                    Enter the amount in Chosen Medium to be converted: 
+                    <input type="text" id="conAmount2" placeholder="Enter here">
+                </label>
+                <br><br>
+                <button type="button" class="buttons" value="b2" onclick="convertToRupee()">Convert the Chosen Medium to Rupee</button>
+                <br><br>
+                <label for="o2">
+                    Amount in Rupee:
+                    <input type="text" id="o2" placeholder="Output here">
+                </label>
+            </fieldset>
+            <br><br>
+            <label for="myName">
+                Name and Roll Number: 
+                <input type="textbox" placeholder="name and roll" id="myName">
+            </label>
+        </form>
+    </main>
+
+    <footer></footer>
+
+    <!-- It is a convetnion to place script tag at the bottom of the body tag -->
+    <script type="text/javascript">
+        function convertFromRup()
+        {
+            var f1=document.getElementById("currency").value
+            console.log(f1)
+            var f2=document.getElementById("conAmount1").value
+            console.log(f2)
+            if (f1="dollar"){
+                var f3=f2/279
+            }
+            else if(f1="euro"){
+                var f3=f2/300.77
+            }
+            else{
+                var f3=f2/1.87
+            }
+            document.getElementById("o1").value=f3
+            document.getElementById("myName").value="Muhammad Hassaan Raza, 22L-6947"
+        } 
+        function convertToRupee()
+        {
+            var f1=document.getElementById("currency").value
+            console.log(f1)
+            var f2=document.getElementById("conAmount2").value
+            console.log(f2)
+            if (f1="dollar"){
+                var f3=f2*279
+            }
+            else if(f1="euro"){
+                var f3=f2*300.77
+            }
+            else{
+                var f3=f2*1.87
+            }
+            document.getElementById("o2").value=f3
+        } 
+    </script>
+</body>
+</html>

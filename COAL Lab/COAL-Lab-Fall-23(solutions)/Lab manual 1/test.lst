@@ -1,0 +1,21 @@
+     1                                  [org 0x0100]
+     2                                  
+     3                                  start:
+     4                                  
+     5 00000000 B80300                  mov ax, 3
+     6 00000003 01C3                    add bx, ax
+     7                                  
+     8 00000005 83C003                  add ax, 3
+     9 00000008 01C3                    add bx, ax
+    10                                  
+    11 0000000A 83C003                  add ax, 3
+    12 0000000D 01C3                    add bx, ax
+    13                                  
+    14 0000000F 83C003                  add ax, 3
+    15 00000012 01C3                    add bx, ax
+    16                                  
+    17 00000014 83C003                  add ax, 3
+    18 00000017 01C3                    add bx, ax
+    19                                  
+    20 00000019 B8004C                  mov ax, 0x4c00	;terminate the program
+    21 0000001C CD21                    int 0x21

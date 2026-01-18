@@ -1,0 +1,20 @@
+[org 0x0100]
+
+mov ax, 0
+mov si, 0
+mov di, 10
+mov cx, 6
+
+loop:
+mov ax, [arr1 + si]
+mov [arr2 + di], ax
+add si, 2
+sub di, 2
+sub cx, 1
+jnz loop
+
+mov ax, 0x4c00
+int 0x21
+
+arr1: dw 1, 2, 3, 4, 5, 6
+arr2: dw 0, 0, 0, 0, 0, 0

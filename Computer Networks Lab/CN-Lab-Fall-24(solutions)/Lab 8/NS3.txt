@@ -1,0 +1,120 @@
+ns-3
+
+ns-3 is a discrete-event network simulator primarily used for research and education in network simulation. It’s an open-source tool written in C++ with Python bindings, allowing users to simulate a wide range of networking protocols and setups, such as wired, wireless, and even satellite networks.
+
+Key Components of ns-3:
+
+Nodes: Represent devices (like computers, routers, etc.) in the network.
+
+Net Devices: Network interfaces used to link nodes.
+
+Channels: The medium through which nodes communicate.
+
+Applications: High-level functions like sending and receiving data.
+
+waf
+
+waf is a build automation tool used in ns-3 for compiling and running programs. It helps manage dependencies and simplifies the compilation process.
+
+Setting Up
+
+1. Installation of ns-3:
+
+Follow the official instructions at ns-3 installation guide.
+
+Clone the ns-3 repository and install dependencies as per your operating system.
+
+2. Basic Commands with waf:
+
+Build: ./waf build compiles all ns-3 modules and examples.
+
+Run an Example: ./waf --run <example_name> runs a specific example file.
+
+Clean: ./waf clean removes all compiled files.
+
+Sample Code for ns-3
+
+Here's a simple example that sets up a network of two nodes with a point-to-point connection. The nodes exchange a small amount of data.
+
+#include "ns3/core-module.h"
+#include "ns3/network-module.h"
+#include "ns3/internet-module.h"
+#include "ns3/point-to-point-module.h"
+#include "ns3/applications-module.h"
+
+using namespace ns3;
+
+int main(int argc, char *argv[]) {
+    // Set up logging
+    LogComponentEnable("UdpEchoClientApplication", LOG_LEVEL_INFO);
+    LogComponentEnable("UdpEchoServerApplication", LOG_LEVEL_INFO);
+
+    // Create nodes
+    NodeContainer nodes;
+    nodes.Create(2);
+
+    // Set up point-to-point connection
+    PointToPointHelper pointToPoint;
+    pointToPoint.SetDeviceAttribute("DataRate", StringValue("5Mbps"));
+    pointToPoint.SetChannelAttribute("Delay", StringValue("2ms"));
+
+    // Install network devices
+    NetDeviceContainer devices;
+    devices = pointToPoint.Install(nodes);
+
+    // Install the Internet stack
+    InternetStackHelper stack;
+    stack.Install(nodes);
+
+    // Assign IP addresses
+    Ipv4AddressHelper address;
+    address.SetBase("10.1.1.0", "255.255.255.0");
+    Ipv4InterfaceContainer interfaces = address.Assign(devices);
+
+    // Set up server application on node 1
+    UdpEchoServerHelper echoServer(9);
+    ApplicationContainer serverApps = echoServer.Install(nodes.Get(1));
+    serverApps.Start(Seconds(1.0));
+    serverApps.Stop(Seconds(10.0));
+
+    // Set up client application on node 0
+    UdpEchoClientHelper echoClient(interfaces.GetAddress(1), 9);
+    echoClient.SetAttribute("MaxPackets", UintegerValue(1));
+    echoClient.SetAttribute("Interval", TimeValue(Seconds(1.0)));
+    echoClient.SetAttribute("PacketSize", UintegerValue(1024));
+
+    ApplicationContainer clientApps = echoClient.Install(nodes.Get(0));
+    clientApps.Start(Seconds(2.0));
+    clientApps.Stop(Seconds(10.0));
+
+    // Run the simulation
+    Simulator::Run();
+    Simulator::Destroy();
+
+    return 0;
+}
+
+Compiling and Running the Code
+
+1. Create a Folder in ns-3:
+
+Place the code in scratch/your_program.cc inside the ns-3 directory.
+
+2. Build and Run:
+
+./waf build
+./waf --run your_program
+
+Tips for Students
+
+Debugging with Logging: Use NS_LOG macros (e.g., NS_LOG_INFO("message")) to output debug information. Control logging levels with LogComponentEnable.
+
+Using Python: ns-3 also supports Python scripts. To run Python scripts, use ./waf --pyrun scratch/your_program.py.
+
+Additional Resources
+
+ns-3 Documentation: The ns-3 Manual is a comprehensive guide.
+
+Tutorials: Try the ns-3 tutorial to gain deeper insights.
+
+Example Scripts: The examples folder in ns-3 contains several scripts demonstrating various protocols and scenarios.

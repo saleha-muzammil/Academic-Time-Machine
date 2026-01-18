@@ -1,0 +1,315 @@
+[org 0x0100]
+jmp start
+str1: db 'hello world', 0
+stor: times 4000 dw 0
+
+;-------------------------------
+strLen:
+push bp
+mov bp, sp
+push ax
+push bx
+push cx
+push dx
+push si
+push di
+push es
+
+les di, [bp+4] ;es=[bp+6], di=[bp+4]
+mov cx, 0xffff
+mov al, 0
+repne scasb
+mov ax, 0xffff
+sub ax, cx
+dec ax
+mov word[bp+8], ax ;return value
+
+pop es
+pop di
+pop si
+pop dx
+pop cx
+pop bx
+pop ax
+pop bp
+ret 4
+;-------------------------------
+
+clrScreen:
+push bp
+mov bp, sp
+push ax
+push cx
+push si
+push di
+push es
+
+mov ax, 0xb800
+mov es, ax
+mov di, 0
+mov ax, 0x0720 ;space on black background
+mov cx, 2000
+
+cld ;auto-increment mode
+rep stosw
+
+pop es
+pop di
+pop si
+pop cx
+pop ax
+pop bp
+ret
+
+;-------------------------------
+calculatePosition:
+push bp
+mov bp, sp
+push ax
+push bx
+push cx
+push dx
+push di
+push si
+
+mov ax, 80
+mul word[bp+6]
+add ax, [bp+4]
+shl ax, 1
+mov word[bp+8], ax  ;return value
+
+pop si
+pop di
+pop dx
+pop cx
+pop bx
+pop ax
+pop bp
+ret 4
+;-------------------------------
+scrollDownCircular:
+push bp
+mov bp, sp
+push ax
+push bx
+push cx
+push dx
+push si
+push di
+push es
+push ds
+
+;copy the rows to be scrolled to buffer
+les di, [bp+6]
+mov ax, 0xb800
+mov ds, ax
+mov ax, 80;totalCols
+mul word[bp+4]
+mov dx, ax
+shl ax, 1
+mov si, 3998
+sub si, ax
+mov cx, ax
+cld 
+rep movsw
+
+;scroll the screen
+mov ax, 0xb800
+mov es, ax
+mov ds, ax
+mov di, 3998
+mov ax, 80
+mul word[bp+4]
+mov dx, ax
+shl ax, 1
+mov si, di
+sub si, ax
+mov cx, 2000
+sub cx, dx
+std
+rep movsw
+
+;copy the buffer contents to the screen
+lds si, [bp+6]
+mov di, 0
+mov cx, dx
+cld
+rep movsw
+
+pop ds
+pop es
+pop di
+pop si
+pop dx
+pop cx
+pop bx
+pop ax
+pop bp
+ret 6
+;-------------------------------
+scrollUpCircular:
+push bp
+mov bp, sp
+push ax
+push bx
+push cx
+push dx
+push si
+push di
+push es
+push ds
+
+;copies the rows that will be scrolled up to the buffer
+mov ax, 0xb800
+mov ds, ax
+mov ax, 80 ;totalCols
+mul word[bp+4]
+mov cx, ax
+shl cx, 1
+mov si, 0
+les di, [bp+6]
+cld
+rep movsw 
+
+;scrolls the rows up
+mov ax, 0xb800
+mov es, ax
+mov ds, ax
+
+mov di, 0
+mov ax, 80
+mul word[bp+4]
+mov dx, ax
+shl ax, 1
+mov si, ax
+mov cx, 2000
+sub cx, dx
+cld
+rep movsw
+
+;print the copied rows in the buffer to the screen
+lds si, [bp+6] ;di already pointed at the correct location
+mov cx, dx
+rep movsw
+ 
+
+pop ds
+pop es
+pop di
+pop si
+pop dx
+pop cx
+pop bx
+pop ax
+pop bp
+ret 6
+;-------------------------------
+
+printScreen:
+push bp
+mov bp, sp
+push ax
+push bx
+push cx
+push dx
+push si
+push di
+push es
+
+mov di, [bp+4] ;base address of the string
+push 0xffff
+push ds
+push di 
+call strLen
+pop ax
+jz exit ;end if empty string
+
+mov cx, ax
+mov ax, 0xb800
+mov es, ax
+push 0xffff
+push word[bp+10] ;row
+push word[bp+8] ;col
+call calculatePosition
+pop di
+mov ah, [bp+6] ;attribute
+mov si, [bp+4] ;base of string
+
+cld
+nextChar:
+lodsb 
+stosw
+loop nextChar
+
+exit:
+pop es
+pop di
+pop si
+pop dx
+pop cx
+pop bx
+pop ax
+pop bp
+ret 8
+;-------------------------------
+delay:
+push bp
+mov bp, sp
+push cx
+
+mov cx, 0xffff
+l1: loop l1
+mov cx, 0xffff
+l2: loop l2
+mov cx, 0xffff
+l3: loop l3
+mov cx, 0xffff
+l4: loop l4
+
+pop cx
+pop bp
+ret
+;-------------------------------
+
+start:
+call clrScreen
+
+push 0
+push 5
+push 0x0f
+push str1
+call printScreen
+
+push 1
+push 5
+push 0x1f
+push str1
+call printScreen
+
+push 2
+push 5
+push 0x2f
+push str1
+call printScreen
+
+call delay
+call delay
+call delay
+
+push ds
+push stor
+push 3
+call scrollUpCircular
+
+call delay
+call delay
+call delay
+
+push ds
+push stor
+push 3
+call scrollDownCircular
+
+
+mov ax, 0x4c00
+int 0x21

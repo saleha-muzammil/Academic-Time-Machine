@@ -1,0 +1,208 @@
+[org 0x0100]
+jmp start
+
+oldKbIsr: dd 0
+oldTIsr: dd 0
+direction: dw 'r'
+currRow: dw 0
+currCol: dw 1
+prevData: dw 0
+prevLocation: dw 0
+timerTick: dw 0
+
+;------------------------------------
+kbisr:
+push bp
+mov bp, sp
+push es
+push ax
+push bx
+push cx
+push dx
+push di
+push ds
+push es
+
+mov al, 0x20
+out 0x20, al
+pop ds
+pop es
+pop di
+pop dx
+pop cx
+pop bx
+pop ax
+pop es
+pop bp
+iret
+;------------------------------------
+timer:
+push ax
+inc word[cs:timerTick]
+call printStar
+
+mov al, 0x20 ;EOI signal
+out 0x20, al
+
+pop ax
+jmp far[cs:oldTIsr]
+iret
+;-------------------------------------------------------------------------------
+calculatePosition:
+push bp
+mov bp, sp
+push es
+push ax
+push bx
+push cx
+push dx
+push di
+push si
+push ds
+
+mov dx, 80
+mov ax, word[bp+6]
+mul dx
+add ax, [bp+4]
+shl ax, 1
+mov word[bp+8], ax
+
+pop ds
+pop si
+pop di
+pop dx
+pop cx
+pop bx
+pop ax
+pop es
+pop bp
+ret 4
+;-------------------------------------------------------------------------------
+
+printStar:
+push bp
+mov bp, sp
+push ax
+push bx
+push cx
+push dx
+push di
+push es
+
+mov ax, 0xB800
+mov es, ax
+
+;saving screen contents
+mov di, [cs:prevLocation]
+mov ax, word[cs:prevData]
+mov word[es:di], ax
+
+push 0xFFFF
+push word[cs:currRow]
+push word[cs:currCol]
+call calculatePosition
+pop di
+
+;saving the current column
+mov ax, word[es:di]
+mov word[cs:prevData], ax
+mov word[cs:prevLocation], di
+
+mov ah, 0x07
+mov al, '*'
+mov word[es:di], ax ;print at the current position
+
+;checks to see if need to update or not
+cmp word[cs:direction], 'r'
+jne n1
+cmp word[cs:currCol], 79
+jne right
+mov word[cs:direction], 'd'
+inc word[cs:currRow]
+jmp en
+
+n1:
+cmp word[cs:direction], 'd'
+jne n2
+cmp word[cs:currRow], 24
+jne down
+mov word[cs:direction], 'l'
+dec word[cs:currCol]
+jmp en
+
+n2:
+cmp word[cs:direction], 'l'
+jne n3
+cmp word[cs:currCol], 0
+jne left
+mov word[cs:direction], 'u'
+dec word[cs:currRow]
+jmp en
+
+n3:
+cmp word[cs:direction], 'u'
+jne en
+cmp word[cs:currRow], 0
+jne up
+mov word[cs:direction], 'r'
+inc word[cs:currCol]
+jmp en
+
+right:
+inc word[cs:currCol]
+jmp en
+
+down:
+inc word[cs:currRow]
+jmp en
+
+left:
+dec word[cs:currCol]
+jmp en
+
+up:
+dec word[cs:currRow]
+jmp en
+
+en:
+pop es
+pop di
+pop dx
+pop dx
+pop bx
+pop ax
+pop bp
+ret
+;------------------------------------------------------------------------------
+
+start:
+;stores the first display cell for function to work correctly
+mov ax, 0xb800
+mov es, ax
+mov ax, word[es:0]
+mov word[prevData], ax
+
+xor ax, ax
+mov es, ax
+
+;storing old timer isr
+mov ax, word[es:8*4]
+mov word[oldTIsr], ax
+mov ax, word[es:8*4+2]
+mov word[oldTIsr+2], ax
+
+cli
+mov word[es:8*4], timer
+mov word[es:8*4+2], cs
+sti
+
+; l:
+; jmp l
+
+mov dx, start
+add dx, 15
+mov cl, 4
+shr dx, cl
+
+mov ax, 0x3100 ;TSR
+int 0x21

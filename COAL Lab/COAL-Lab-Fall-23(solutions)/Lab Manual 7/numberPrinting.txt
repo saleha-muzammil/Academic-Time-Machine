@@ -1,0 +1,58 @@
+[org 0x0100]
+
+jmp start
+;Global Variables
+startingBit: dw 235
+
+;--------------------------------------------
+printNum:
+push bp
+mov bp, sp
+push ax
+push bx
+push cx
+push dx
+push di
+push es
+
+mov ax, [bp+4] ;contains the number to be printed
+mov bx, 10 ;contains the base
+mov cx, 0
+;processing
+l1:
+mov dx, 0
+div bx ;dx contains the remainder
+add dx, 0x30
+mov dh, 0x07
+push dx
+inc cx
+cmp ax, 0
+jne l1
+;printing
+mov ax, 0xb800
+mov es, ax
+mov di, 0
+
+l2:
+pop dx
+mov word[es:di], dx
+add di, 2
+loop l2
+
+pop es
+pop di
+pop dx
+pop cx
+pop bx
+pop ax
+pop bp
+ret 2
+
+;--------------------------------------------
+start:
+push 45684
+call printNum
+
+
+mov ax, 0x4c00
+int 0x21

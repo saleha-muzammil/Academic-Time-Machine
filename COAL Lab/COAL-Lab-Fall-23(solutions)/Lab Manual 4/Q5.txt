@@ -1,0 +1,12 @@
+[org 0x0100]
+
+jmp start
+num: dw 0
+
+start:
+mov ax, 0xB25D
+ror ah, 4
+ror al, 4
+
+mov ax, 0x4c00		;terminate the program
+int 0x21

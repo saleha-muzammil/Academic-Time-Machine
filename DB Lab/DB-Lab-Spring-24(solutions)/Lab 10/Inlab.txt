@@ -1,0 +1,8 @@
+Question:
+Create a procedure for student registration in some course the procedure must check 
+that the CGPA of the student if the CGPA is less than 2.5 the transaction must 
+rollback and the record must not be stored and a message must be displayed that 
+he can only enroll in subjects that he can improve however if the student’s CGPA
+is greater than 2.5 he can enroll in any subject he wants in this case the 
+transaction should be committed.  Assume that the enrollment can only be done 
+through stored procedure.

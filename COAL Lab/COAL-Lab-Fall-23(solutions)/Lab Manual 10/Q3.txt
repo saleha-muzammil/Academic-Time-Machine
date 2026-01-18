@@ -1,0 +1,272 @@
+[org 0x0100]
+jmp start
+
+oldKbIsr: dd 0
+oldTIsr: dd 0
+direction: dw 'r'
+currRow: dw 0
+currCol: dw 1
+prevData: dw 0
+prevLocation: dw 0
+timerTick: dw 0
+timerFlag: dw 0
+
+;------------------------------------
+printNum:
+push bp
+mov bp, sp
+push es
+push ax
+push bx
+push cx
+push dx
+push di
+mov ax, 0xb800
+mov es, ax ; point es to video base
+mov ax, [bp+4] ; load number in ax
+mov bx, 10 ; use base 10 for division
+mov cx, 0 ; initialize count of digits
+nextdigit: mov dx, 0 ; zero upper half of dividend
+div bx ; divide by 10
+add dl, 0x30 ; convert digit into ascii value
+push dx ; save ascii value on stack
+inc cx ; increment count of values
+cmp ax, 0 ; is the quotient zero
+jnz nextdigit ; if no divide it again
+mov di, 140 ; point di to 70th column
+nextpos: pop dx ; remove a digit from the stack
+mov dh, 0x07 ; use normal attribute
+mov [es:di], dx ; print char on screen
+add di, 2 ; move to next screen location
+loop nextpos ; repeat for all digits on stack
+
+pop di
+pop dx
+pop cx
+pop bx
+pop ax
+pop es
+pop bp
+ret 2
+;------------------------------------
+kbisr:
+push bp
+mov bp, sp
+push es
+push ax
+push bx
+push cx
+push dx
+push di
+push ds
+push es
+
+in al, 0x60
+cmp al, 0x2a ;left shift
+jne nextCmp
+cmp word[timerFlag], 1
+je en2
+mov word[timerFlag], 1
+
+nextCmp:
+cmp al, 0x36 ;right shift
+jne en2
+cmp word[timerFlag], 0
+je en2
+mov word[timerFlag], 0
+
+en2:
+mov al, 0x20
+out 0x20, al
+pop ds
+pop es
+pop di
+pop dx
+pop cx
+pop bx
+pop ax
+pop es
+pop bp
+jmp far[cs:oldKbIsr]
+iret
+;------------------------------------
+timer:
+push ax
+
+cmp word[timerFlag], 1
+jne en1
+inc word[timerTick]
+push word[timerTick]
+call printNum
+call printStar
+
+en1:
+mov al, 0x20 ;EOI signal
+out 0x20, al
+
+pop ax
+;jmp far[cs:oldTIsr]
+iret
+;-------------------------------------------------------------------------------
+calculatePosition:
+push bp
+mov bp, sp
+push es
+push ax
+push bx
+push cx
+push dx
+push di
+push si
+push ds
+
+mov dx, 80
+mov ax, word[bp+6]
+mul dx
+add ax, [bp+4]
+shl ax, 1
+mov word[bp+8], ax
+
+pop ds
+pop si
+pop di
+pop dx
+pop cx
+pop bx
+pop ax
+pop es
+pop bp
+ret 4
+;-------------------------------------------------------------------------------
+
+printStar:
+push bp
+mov bp, sp
+push ax
+push bx
+push cx
+push dx
+push di
+push es
+
+mov ax, 0xB800
+mov es, ax
+
+;saving screen contents
+mov di, [prevLocation]
+mov ax, word[prevData]
+mov word[es:di], ax
+
+push 0xFFFF
+push word[currRow]
+push word[currCol]
+call calculatePosition
+pop di
+
+;saving the current column
+mov ax, word[es:di]
+mov word[prevData], ax
+mov word[prevLocation], di
+
+mov ah, 0x07
+mov al, '*'
+mov word[es:di], ax ;print at the current position
+
+;checks to see if need to update or not
+cmp word[direction], 'r'
+jne n1
+cmp word[currCol], 79
+jne right
+mov word[direction], 'd'
+inc word[currRow]
+jmp en
+
+n1:
+cmp word[direction], 'd'
+jne n2
+cmp word[currRow], 24
+jne down
+mov word[direction], 'l'
+dec word[currCol]
+jmp en
+
+n2:
+cmp word[direction], 'l'
+jne n3
+cmp word[currCol], 0
+jne left
+mov word[direction], 'u'
+dec word[currRow]
+jmp en
+
+n3:
+cmp word[direction], 'u'
+jne en
+cmp word[currRow], 0
+jne up
+mov word[direction], 'r'
+inc word[currCol]
+jmp en
+
+right:
+inc word[currCol]
+jmp en
+
+down:
+inc word[currRow]
+jmp en
+
+left:
+dec word[currCol]
+jmp en
+
+up:
+dec word[currRow]
+jmp en
+
+en:
+pop es
+pop di
+pop dx
+pop dx
+pop bx
+pop ax
+pop bp
+ret
+;------------------------------------------------------------------------------
+
+start:
+;stores the first display cell for function to work correctly
+mov ax, 0xb800
+mov es, ax
+mov ax, word[es:0]
+mov word[prevData], ax
+
+xor ax, ax
+mov es, ax
+
+;storing old timer isr
+mov ax, word[es:8*4]
+mov word[oldTIsr], ax
+mov ax, word[es:8*4+2]
+mov word[oldTIsr+2], ax
+;storing old keyboard isr
+mov ax, word[es:9*4]
+mov word[oldKbIsr], ax
+mov ax, word[es:9*4+2]
+mov word[oldKbIsr+2], ax
+
+cli
+mov word[es:9*4], kbisr
+mov word[es:9*4+2], cs
+mov word[es:8*4], timer
+mov word[es:8*4+2], cs
+sti
+
+mov dx, start
+add dx, 15
+mov cl, 4
+shr dx, cl
+
+mov ax, 0x3100 ;TSR
+int 0x21

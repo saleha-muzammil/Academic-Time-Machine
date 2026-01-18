@@ -1,0 +1,109 @@
+[org 0x0100]
+jmp start
+string: db 'hello world'
+lenght: dw 11
+
+;-------------------------------
+calculatePosition:
+push bp
+mov bp, sp
+push ax
+push bx
+push cx
+push dx
+push di
+push si
+push es
+
+mov ax, 80
+mul word[bp+6]
+add ax, [bp+4]
+shl ax, 1
+mov word[bp+8], ax  ;return value
+
+pop es
+pop si
+pop di
+pop dx
+pop cx
+pop bx
+pop ax
+pop bp
+ret 4
+
+;-------------------------------
+clrScreen:
+push bp
+mov bp, sp
+push ax
+push cx
+push si
+push di
+
+mov ax, 0xb800
+mov es, ax
+mov di, 0
+mov ax, 0x0720 ;space on black background
+mov cx, 2000
+
+cld ;auto-increment mode
+rep stosw
+
+pop di
+pop si
+pop cx
+pop ax
+pop bp
+ret
+
+;-------------------------------
+printScreen:
+push bp
+mov bp, sp
+push ax
+push bx
+push cx
+push dx
+push si
+push di
+
+mov ax, 0xb800
+mov es, ax
+
+push 0xffff
+push word[bp+12]
+push word[bp+10]
+call calculatePosition
+pop di
+mov ah, [bp+8]
+mov si, [bp+6]
+mov cx, [bp+4]
+
+cld
+nextChar:
+lodsb 
+stosw
+loop nextChar
+
+pop di
+pop si
+pop dx
+pop cx
+pop bx
+pop ax
+pop bp
+ret 10
+
+;-------------------------------
+start:
+call clrScreen
+
+push 12 ;row
+push 30 ;col
+push 0x3f ;attribute
+push string ;base address
+push word[lenght] ;lenght
+call printScreen
+
+mov ax, 0x4c00
+int 0x21

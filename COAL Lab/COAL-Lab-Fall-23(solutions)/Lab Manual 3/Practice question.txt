@@ -1,0 +1,17 @@
+[org 0x0100]
+
+mov ax, 0x200
+mov bx, 0x250
+mov [bx], 50
+mov [ax], 25
+
+
+mov bx, 0x200    ;(a)
+mov ax, [bx]
+
+mov cx, [250]  ;(b)
+
+mov ax, 0x4c00
+int 0x21
+
+array: dw 1,2,7,5,10

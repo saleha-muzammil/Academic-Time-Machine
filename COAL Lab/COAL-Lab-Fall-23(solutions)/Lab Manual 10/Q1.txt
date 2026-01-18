@@ -1,0 +1,291 @@
+[org 0x0100]
+
+jmp start
+timerTick: dw 0
+timerFlag: dw 0
+oldKbIsr: dd 0
+oldTIsr: dw 0
+direction: dw 'r'
+currRow: dw 0
+currCol: dw 1
+prevData: dw 0
+prevLocation: dw 0
+
+;------------------------------------
+delay:
+push bp
+mov bp, sp
+push cx
+
+mov cx, 0xFFFF
+l2:loop l2
+mov cx, 0xFFFF
+l3:loop l3
+
+pop cx
+pop bp
+ret
+;------------------------------------
+printNum:
+push bp
+mov bp, sp
+push es
+push ax
+push bx
+push cx
+push dx
+push di
+mov ax, 0xb800
+mov es, ax ; point es to video base
+mov ax, [bp+4] ; load number in ax
+mov bx, 10 ; use base 10 for division
+mov cx, 0 ; initialize count of digits
+nextdigit: mov dx, 0 ; zero upper half of dividend
+div bx ; divide by 10
+add dl, 0x30 ; convert digit into ascii value
+push dx ; save ascii value on stack
+inc cx ; increment count of values
+cmp ax, 0 ; is the quotient zero
+jnz nextdigit ; if no divide it again
+mov di, 140 ; point di to 70th column
+nextpos: pop dx ; remove a digit from the stack
+mov dh, 0x07 ; use normal attribute
+mov [es:di], dx ; print char on screen
+add di, 2 ; move to next screen location
+loop nextpos ; repeat for all digits on stack
+pop di
+pop dx
+pop cx
+pop bx
+pop ax
+pop es
+pop bp
+ret 2
+;------------------------------------
+kbisr:
+push bp
+mov bp, sp
+push es
+push ax
+push bx
+push cx
+push dx
+push di
+push ds
+push es
+
+mov al, 0x20
+out 0x20, al
+pop ds
+pop es
+pop di
+pop dx
+pop cx
+pop bx
+pop ax
+pop es
+pop bp
+iret
+;------------------------------------
+timer:
+push bp
+mov bp, sp
+push es
+push ax
+push bx
+push cx
+push dx
+push di
+
+call printStar
+
+ex:
+;jmp far[cs:oldTIsr]
+mov al, 0x20
+out 0x20, al
+
+pop di
+pop dx
+pop cx
+pop bx
+pop ax
+pop es
+pop bp
+iret
+;------------------------------------------------------------------------------
+clrScreen:
+push bp
+mov bp, sp
+push ax
+push di
+push es
+
+mov ax, 0xB800 ;display memory block starting physical address
+mov es, ax
+mov di, 0
+mov ax, 0x0720 ;background is black, foreground is space char so empty slot
+nextChar:
+mov word[es:di], ax
+add di, 2
+cmp di, 4000
+jne nextChar
+
+pop es
+pop di
+pop ax
+pop bp
+ret
+;-------------------------------------------------------------------------------
+calculatePosition:
+push bp
+mov bp, sp
+push es
+push ax
+push bx
+push cx
+push dx
+push di
+push ds
+
+mov dx, 80
+mov ax, word[bp+6]
+mul dx
+add ax, [bp+4]
+shl ax, 1
+mov word[bp+8], ax
+
+pop ds
+pop di
+pop dx
+pop cx
+pop bx
+pop ax
+pop es
+pop bp
+ret 4
+;-------------------------------------------------------------------------------
+
+printStar:
+push bp
+mov bp, sp
+push ax
+push dx
+push di
+push es
+
+mov ax, 0xB800
+mov es, ax
+
+;saving screen contents
+mov di, [prevLocation]
+mov ax, word[prevData]
+mov word[es:di], ax
+
+push 0xFFFF
+push word[currRow]
+push word[currCol]
+call calculatePosition
+pop di
+
+;saving the current column
+mov ax, word[es:di]
+mov word[prevData], ax
+mov word[prevLocation], di
+
+mov ah, 0x07
+mov al, '*'
+mov word[es:di], ax ;print at the current position
+
+;checks to see if need to update or not
+cmp word[direction], 'r'
+jne n1
+cmp word[currCol], 79
+jne right
+mov word[direction], 'd'
+inc word[currRow]
+jmp en
+
+n1:
+cmp word[direction], 'd'
+jne n2
+cmp word[currRow], 24
+jne down
+mov word[direction], 'l'
+dec word[currCol]
+jmp en
+
+n2:
+cmp word[direction], 'l'
+jne n3
+cmp word[currCol], 0
+jne left
+mov word[direction], 'u'
+dec word[currRow]
+jmp en
+
+n3:
+cmp word[direction], 'u'
+jne en
+cmp word[currRow], 0
+jne up
+mov word[direction], 'r'
+inc word[currCol]
+jmp en
+
+right:
+inc word[currCol]
+jmp en
+
+down:
+inc word[currRow]
+jmp en
+
+left:
+dec word[currCol]
+jmp en
+
+up:
+dec word[currRow]
+jmp en
+
+en:
+;save the word at the new position
+; push 0xFFFF
+; push word[currRow]
+; push word[currCol]
+; call calculatePosition
+; pop di
+; mov ax, word[es:di]
+; mov word[prevData], ax
+
+pop es
+pop di
+pop dx
+pop ax
+pop bp
+ret
+;------------------------------------------------------------------------------
+start:
+;stores the first display cell for function to work correctly
+mov ax, 0xb800
+mov es, ax
+mov ax, word[es:0]
+mov word[prevData], ax
+mov ax, 0
+mov es, ax
+
+cli
+mov word[es:8*4], timer
+mov word[es:8*4+2], cs
+sti
+
+next10:
+jmp next10
+
+mov dx, start
+add dx, 15
+mov cl, 4
+shr dx, cl
+
+mov ax, 0x3100 ;TSR
+int 0x21

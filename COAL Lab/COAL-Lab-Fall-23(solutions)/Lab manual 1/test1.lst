@@ -1,0 +1,13 @@
+     1                                  [org 0x0100]  ;directive in the assembler
+     2                                  
+     3                                  start:
+     4                                  
+     5 00000000 83C006                  add ax, 6
+     6 00000003 83C006                  add ax, 6
+     7 00000006 83C006                  add ax, 6
+     8 00000009 83C006                  add ax, 6
+     9 0000000C 83C006                  add ax, 6
+    10 0000000F 83C006                  add ax, 6
+    11                                  
+    12 00000012 B8004C                  mov ax, 0x4c00  ;terminate
+    13 00000015 CD21                    int 0x21

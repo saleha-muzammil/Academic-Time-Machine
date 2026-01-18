@@ -1,0 +1,436 @@
+[org 0x0100]
+
+jmp start
+;all strings are null-terminated so no need to manually calculate the lengths
+string: db 'Muhammad Hassaan Raza Chaudhary', 0
+str1: db 'Vowel', 0
+str2: db 'Count', 0
+str3: db 'a or A', 0
+str4: db 'e or E', 0
+str5: db 'i or I', 0
+str6: db 'o or O', 0
+str7: db 'u or U', 0
+totalRows: dw 25
+totalCols: dw 80
+count1: dw 0
+count2: dw 0
+count3: dw 0
+count4: dw 0
+count5: dw 0
+
+;----------------------------------------------------
+clrScreen:
+push bp
+mov bp, sp
+push dx
+push ax
+push di
+push si
+push es
+
+mov ax, 0xB800 ;display memory block starting physical address
+mov es, ax
+
+push 0xFFFF
+push word[bp+6] ;starting row
+push 0
+call calculatePosition
+pop di ;start pos
+
+push 0xFFFF
+mov dx, word[bp+4] ;ending row
+dec dx
+push dx
+push word[totalCols]
+call calculatePosition 
+pop si ;end pos
+
+nextChar1:
+mov word[es:di], 0x0720 ;background is black, foreground is space char so empty slot
+add di, 2
+cmp di, si 
+jne nextChar1
+
+pop es
+pop si
+pop di
+pop ax
+pop dx
+pop bp
+ret 4
+;----------------------------------------------------
+
+calculatePosition:
+push bp
+mov bp, sp
+push ax
+push bx
+push cx
+push dx
+push di
+push si
+push es
+
+mov ax, 0
+mov ax, [totalCols]
+mul word[bp+6]
+add ax, [bp+4]
+shl ax, 1
+mov word[bp+8], ax  ;return value
+
+pop es
+pop si
+pop di
+pop dx
+pop cx
+pop bx
+pop ax
+pop bp
+ret 4
+;----------------------------------------------------
+stringLength:
+push bp
+mov bp, sp
+push ax
+push bx
+push cx
+push dx
+push di
+push si
+push es
+push ds
+
+push word[bp+4] ;cs/segment
+pop es
+push word[bp+6] ;string offset
+pop di
+mov cx, 0xFFFF
+mov al, 0
+repne scasb
+mov ax, 0xFFFF
+sub ax, cx
+
+mov word[bp+8], ax ;return value
+
+pop ds
+pop es
+pop si
+pop di
+pop dx
+pop cx
+pop bx
+pop ax
+pop bp
+ret 4
+;-----------------------------------------------------------
+printString:
+push bp
+mov bp, sp
+push ax
+push bx
+push cx
+push dx
+push di
+push si
+push es
+push ds
+
+push 0xffff
+push word[bp+4]
+push word[bp+6]
+call stringLength
+pop cx ;length
+mov ah, 0x13 ;service
+mov al, 1 ;update cursor position
+mov bh, 0 ;page
+mov bl, [bp+8] ;attribute
+mov dh, [bp+12] ;row
+mov dl, [bp+10] ;col
+mov es, [bp+6] ;points to cs
+
+push bp
+mov di, [bp+4]
+mov bp, di
+int 0x10
+pop bp
+
+pop ds
+pop es
+pop si
+pop di
+pop dx
+pop cx
+pop bx
+pop ax
+pop bp
+ret 10
+;----------------------------------------------------
+countVowels:
+push bp
+mov bp, sp
+push ax
+push bx
+push cx
+push dx
+push di
+push si
+push es
+push ds
+
+push 0xffff ;return
+push word[bp+4] ;string
+push word[bp+6] ;segment/cs
+call stringLength
+pop cx
+;no need to count vowels if string of length 0
+cmp cx, 0
+je en
+
+mov si, word[bp+4]
+nextChar:
+cmp byte[si], 'a'
+jne next1
+inc word[count1]
+jmp update
+next1:
+cmp byte[si], 'A'
+jne next2
+inc word[count1]
+jmp update
+next2:
+cmp byte[si], 'e'
+jne next3
+inc word[count2]
+jmp update
+next3:
+cmp byte[si], 'E'
+jne next4
+inc word[count2]
+jmp update
+next4:
+cmp byte[si], 'i'
+jne next5
+inc word[count3]
+jmp update
+next5:
+cmp byte[si], 'I'
+jne next6
+inc word[count3]
+jmp update
+next6:
+cmp byte[si], 'o'
+jne next7
+inc word[count4]
+jmp update
+next7:
+cmp byte[si], 'O'
+jne next8
+inc word[count4]
+jmp update
+next8:
+cmp byte[si], 'u'
+jne next9
+inc word[count5]
+jmp update
+next9:
+cmp byte[si], 'U'
+jne update
+inc word[count5]
+
+update:
+inc si
+loop nextChar
+
+en:
+pop ds
+pop es
+pop si
+pop di
+pop dx
+pop cx
+pop bx
+pop ax
+pop bp
+ret 4
+;----------------------------------------------------
+printVowelInformation:
+push bp
+mov bp, sp
+push ax
+push bx
+push cx
+push dx
+push di
+push si
+push es
+push ds
+
+push 6
+push 30
+push 0x07
+push cs
+push str1
+call printString
+
+;vovwel head
+push 6
+push 40
+push 0x07
+push cs
+push str2
+call printString
+
+;count head
+push 8
+push 30
+push 0x07
+push cs
+push str3
+call printString
+
+;chars print
+push 8
+push 30
+push 0x07
+push cs
+push str3
+call printString
+
+push 10
+push 30
+push 0x07
+push cs
+push str4
+call printString
+
+push 12
+push 30
+push 0x07
+push cs
+push str5
+call printString
+
+push 14
+push 30
+push 0x07
+push cs
+push str6
+call printString
+
+push 16
+push 30
+push 0x07
+push cs
+push str7
+call printString
+
+;print numbers/counts of vowels
+push 8
+push 40
+push 0x07
+push word[count1]
+call printNum
+
+push 10
+push 40
+push 0x07
+push word[count2]
+call printNum
+
+push 12
+push 40
+push 0x07
+push word[count3]
+call printNum
+
+push 14
+push 40
+push 0x07
+push word[count4]
+call printNum
+
+push 16
+push 40
+push 0x07
+push word[count5]
+call printNum
+
+
+pop ds
+pop es
+pop si
+pop di
+pop dx
+pop cx
+pop bx
+pop ax
+pop bp
+ret
+;----------------------------------------------------
+printNum:
+push bp
+mov bp, sp
+push ax
+push bx
+push cx
+push dx
+push di
+push si
+push es
+push ds
+
+mov ax, 0xb800
+mov es, ax
+
+mov ax, [bp+4] ;num
+mov bx, 10
+mov dx, 0
+mov cx, 0
+nextChar2:
+div bx
+add dx, '0' ;to get ascii of digit
+push dx
+inc cx
+
+cmp ax, 0
+jne nextChar2
+
+;printing chars
+push 0xFFFF
+push word[bp+10] ;row
+push word[bp+8] ;col
+call calculatePosition
+pop di
+
+printChar:
+pop dx
+mov dh, [bp+6] 
+mov word[es:di], dx
+add di, 2
+loop printChar
+
+pop ds
+pop es
+pop si
+pop di
+pop dx
+pop cx
+pop bx
+pop ax
+pop bp
+ret 8
+
+;----------------------------------------------------
+start:
+push 0
+push 25
+call clrScreen
+
+push cs
+push string
+call countVowels
+
+call printVowelInformation
+
+mov ax, 0x4c00
+int 0x21

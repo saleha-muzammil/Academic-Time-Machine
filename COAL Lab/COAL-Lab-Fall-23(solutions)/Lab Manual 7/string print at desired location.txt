@@ -1,0 +1,89 @@
+[org 0x0100]
+
+jmp start
+;Global Variables
+string: db 'hello world'
+lenght: dw 11
+
+;--------------------------------------------
+clrScreen:
+push bp
+mov bp, sp
+push ax
+push di
+
+mov ax, 0xB800 ;display memory block starting physical address
+mov es, ax
+mov di, 0
+mov ax, 0x0720 ;background is black, foreground is space char so empty slot
+nextChar:
+mov word[es:di], ax
+add di, 2
+cmp di, 4000
+jne nextChar
+
+pop di
+pop ax
+pop bp
+ret
+
+;--------------------------------------------
+printString:
+push bp
+mov bp, sp
+push ax
+push bx
+push cx
+push dx
+push di
+push es
+
+mov ax, 0xB800
+mov es, ax
+mov si, [bp+6] ;starting address of the string
+mov cx, [bp+4] ;lenght of the string
+;calculate starting position
+mov ax, 80
+mul byte[bp+12]
+add ax, [bp+10]
+shl ax, 1 ;mul by 2
+mov di, ax ;starting address
+mov ah, [bp+8]
+
+l1:
+mov al, [si]
+mov word[es:di], ax 
+inc si
+add di, 2
+dec cx
+cmp cx, 0
+jnz l1
+
+pop es
+pop di
+pop dx
+pop cx
+pop bx
+pop ax
+pop bp
+ret 10
+
+;--------------------------------------------
+start:
+call clrScreen
+mov ax, 24 ;rows
+push ax
+mov ax, 68 ;column
+push ax
+mov ax, 0x37 ;attribute
+push ax
+mov ax, string ;starting address
+push ax
+mov ax, [lenght] ;lenght of the array
+push ax
+call printString 
+
+
+
+mov ax, 0x4c00
+int 0x21

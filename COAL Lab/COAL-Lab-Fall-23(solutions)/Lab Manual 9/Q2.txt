@@ -1,0 +1,160 @@
+[org 0x0100]
+
+jmp start
+buffer1: times 2000 dw 0  ;to store all the cells on display memory
+oldIsr: dd 0
+;-------------------------------------
+
+saveScreen:
+push bp
+mov bp, sp
+push ax
+push bx
+push cx
+push dx
+push di
+push si
+push ds
+push es
+
+les di, [bp+4]
+mov ax, 0xb800
+mov ds, ax
+mov si, 0
+mov cx, 2000
+rep movsw 
+
+pop es
+pop ds
+pop si
+pop di
+pop dx
+pop cx
+pop bx
+pop ax
+pop bp
+ret 4
+;---------------------------------
+
+restoreScreen:
+push bp
+mov bp, sp
+push ax
+push bx
+push cx
+push dx
+push di
+push si
+push ds
+push es
+
+lds si, [bp+4]
+mov ax, 0xb800
+mov es, ax
+mov di, 0
+mov cx, 2000
+rep movsw 
+
+pop es
+pop ds
+pop si
+pop di
+pop dx
+pop cx
+pop bx
+pop ax
+pop bp
+ret 4
+;------------------------------
+
+clearScreen:
+push bp
+mov bp, sp
+push ax
+push bx
+push cx
+push dx
+push di
+push si
+push ds
+push es
+
+mov ax, 0xb800
+mov es, ax
+mov ax, 0x0720
+mov cx, 2000
+mov di, 0
+rep stosw
+
+pop es
+pop ds
+pop si
+pop di
+pop dx
+pop cx
+pop bx
+pop ax
+pop bp
+ret
+;------------------------------
+kbIsr:
+push ax
+push es
+
+in al, 0x60 ;reads port number 60 to get keystroke(scan code)
+
+cmp al, 0x30 ;key press scan code
+jne nextMatch
+push cs
+push buffer1
+call saveScreen
+call clearScreen
+jmp exit
+
+nextMatch:
+cmp al, 0xb0 ;key release
+jne otherService
+push cs
+push buffer1
+call restoreScreen
+jmp exit
+
+otherService:
+pop es
+pop ax
+jmp far[cs:oldIsr] ;if neither of the above key presses
+
+exit:
+mov al, 0x20 ;EOI singnal sent to PIC
+out 0x20, al
+pop es
+pop ax
+iret
+start:
+xor ax, ax
+mov es, ax
+;save the old ISR for INT 9
+mov ax, [es:9*4]
+mov [oldIsr], ax
+mov ax, [es:9*4+2]
+mov [oldIsr+2], ax
+
+;Hook an interrupt
+cli
+mov word[es:9*4], kbIsr
+mov word[es:9*4+2], cs
+sti
+
+mov dx, start ;dx stores number of paras
+add dx, 15
+mov cl, 4
+shr dx, cl ;dx/(2^4=16)
+
+; mov ax, 0xb800
+; mov es, ax
+; mov dh, 0x07
+; mov dl, 'r'
+; mov word[es:0], dx
+
+mov ax, 0x3100 ;service number 31 for TSR
+int 0x21

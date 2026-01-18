@@ -1,0 +1,449 @@
+[org 0x0100]
+
+jmp start
+char: db '*'
+tickCount: dw 0
+totalRows: dw 25
+totalCols: dw 80
+oldisr: dd 0
+oldTimer: dd 0
+currRow: dw 12
+currCol: dw 40
+prevRow: dw 12
+prevCol: dw 40
+isGameRunning: dw 1
+firstKeyPressed: dw 0
+scoreStr: db 'Score: ', 0
+num: dw 10
+
+;----------------------------------------------------
+clrScreen:
+push bp
+mov bp, sp
+push dx
+push ax
+push di
+push si
+push es
+
+mov ax, 0xB800 ;display memory block starting physical address
+mov es, ax
+
+push 0xFFFF
+push word[bp+6] ;starting row
+push 0
+call calculatePosition
+pop di ;start pos
+
+push 0xFFFF
+mov dx, word[bp+4] ;ending row
+dec dx
+push dx
+push word[totalCols]
+call calculatePosition 
+pop si ;end pos
+
+nextChar1:
+mov word[es:di], 0x0720 ;background is black, foreground is space char so empty slot
+add di, 2
+cmp di, si 
+jne nextChar1
+
+pop es
+pop si
+pop di
+pop ax
+pop dx
+pop bp
+ret 4
+;----------------------------------------------------
+
+calculatePosition:
+push bp
+mov bp, sp
+push ax
+push bx
+push cx
+push dx
+push di
+push si
+push es
+
+mov ax, 0
+mov ax, [totalCols]
+mul word[bp+6]
+add ax, [bp+4]
+shl ax, 1
+mov word[bp+8], ax  ;return value
+
+pop es
+pop si
+pop di
+pop dx
+pop cx
+pop bx
+pop ax
+pop bp
+ret 4
+;----------------------------------------------------
+stringLength:
+push bp
+mov bp, sp
+push ax
+push bx
+push cx
+push dx
+push di
+push si
+push es
+push ds
+
+push word[bp+4] ;cs/segment
+pop es
+push word[bp+6] ;string offset
+pop di
+mov cx, 0xFFFF
+mov al, 0
+repne scasb
+mov ax, 0xFFFF
+sub ax, cx
+
+mov word[bp+8], ax ;return value
+
+pop ds
+pop es
+pop si
+pop di
+pop dx
+pop cx
+pop bx
+pop ax
+pop bp
+ret 4
+;-----------------------------------------------------------
+printString:
+push bp
+mov bp, sp
+push ax
+push bx
+push cx
+push dx
+push di
+push si
+push es
+push ds
+
+push 0xffff
+push word[bp+4]
+push word[bp+6]
+call stringLength
+pop cx ;length
+mov ah, 0x13 ;service
+mov al, 1 ;update cursor position
+mov bh, 0 ;page
+mov bl, [bp+8] ;attribute
+mov dh, [bp+12] ;row
+mov dl, [bp+10] ;col
+mov es, [bp+6] ;points to cs
+
+push bp
+mov di, [bp+4]
+mov bp, di
+int 0x10
+pop bp
+
+pop ds
+pop es
+pop si
+pop di
+pop dx
+pop cx
+pop bx
+pop ax
+pop bp
+ret 10
+;----------------------------------------------------
+printNum:
+push bp
+mov bp, sp
+push ax
+push bx
+push cx
+push dx
+push di
+push si
+push es
+
+mov ax, [bp+4] ;num
+mov bx, 10
+mov dx, 0
+mov cx, 0
+nextChar2:
+div bx
+add dl, '0' ;to get ascii of digit
+push dx
+inc cx
+
+cmp ax, 0
+jne nextChar2
+
+;printing chars
+push 0xFFFF
+push word[bp+10] ;row
+push word[bp+8] ;col
+call calculatePosition
+pop di
+
+mov ax, 0xb800
+mov es, ax
+printCh:
+pop dx
+mov dh, [bp+6] 
+mov word[es:di], dx
+add di, 2
+loop printCh
+
+pop es
+pop si
+pop di
+pop dx
+pop cx
+pop bx
+pop ax
+pop bp
+ret 8
+
+;----------------------------------------------------
+kbisr:
+push ax
+push dx
+
+cmp word[firstKeyPressed], 0
+jne checkInputs
+mov word[firstKeyPressed], 1
+
+checkInputs:
+in al, 0x60
+
+cmp al, 0x48 ;up
+jne next1
+cmp word[currRow], 0
+je clearGameEndFlag
+mov dx, [currCol]
+mov word[prevCol], dx
+mov dx, [currRow]
+mov word[prevRow], dx
+dec word[currRow]
+jmp en1
+
+next1:
+cmp al, 0x4b ;left
+jne next2
+cmp word[currCol], 0
+je clearGameEndFlag
+mov dx, [currCol]
+mov word[prevCol], dx
+mov dx, [currRow]
+mov word[prevRow], dx
+dec word[currCol]
+jmp en1
+
+next2:
+cmp al, 0x4d ;right
+jne next3
+cmp word[currCol], 79
+je clearGameEndFlag
+mov dx, [currCol]
+mov word[prevCol], dx
+mov dx, [currRow]
+mov word[prevRow], dx
+inc word[currCol]
+jmp en1
+
+next3:
+cmp al, 0x50 ;down
+jne en1
+cmp word[currRow], 24
+je clearGameEndFlag
+mov dx, [currCol]
+mov word[prevCol], dx
+mov dx, [currRow]
+mov word[prevRow], dx
+inc word[currRow]
+jmp en1
+
+clearGameEndFlag:
+mov word[isGameRunning], 0
+
+en1:
+mov al, 0x20
+out 0x20, al
+pop dx
+pop ax
+iret
+;----------------------------------------------------
+timer:
+push ax
+
+cmp word[isGameRunning], 1
+jne en
+inc word[tickCount]
+
+en:
+mov al, 0x20
+out 0x20, al ; end of interrupt
+pop ax
+iret ; return from interrupt
+
+;----------------------------------------------------
+printChar:
+push bp
+mov bp, sp
+push ax
+push bx
+push cx
+push dx
+push di
+push si
+push es
+push ds
+
+push 0xFFFF
+push word[currRow]
+push word[currCol]
+call calculatePosition
+pop di
+
+mov ax, 0xB800
+mov es, ax
+
+mov dh, 0x07
+mov dl, byte[char]
+mov word[es:di], dx
+
+push 0xFFFF
+push word[prevRow]
+push word[prevCol]
+call calculatePosition
+pop di
+
+mov word[es:di], 0x0720
+
+pop ds
+pop es
+pop si
+pop di
+pop dx
+pop cx
+pop bx
+pop ax
+pop bp
+ret 
+;----------------------------------------------------
+printNumber:
+                push bp
+				mov bp, sp
+				push es
+				push ax
+				push bx
+				push cx
+				push dx
+				push di
+
+				mov ax, 0xb800
+				mov es, ax			; point es to video base
+
+				mov ax, [bp+4]		; load number in ax= 4529
+				mov bx, 10			; use base 10 for division
+				mov cx, 0			; initialize count of digits
+
+nextdigit:		mov dx, 0			; zero upper half of dividend
+				div bx				; divide by 10 AX/BX --> Quotient --> AX, Remainder --> DX ..... 
+				add dl, 0x30		; convert digit into ascii value
+				push dx				; save ascii value on stack
+
+				inc cx				; increment count of values
+				cmp ax, 0			; is the quotient zero
+				jnz nextdigit		; if no divide it again
+
+
+				mov di, 2000			; point di to top left column
+nextpos:		pop dx				; remove a digit from the stack
+				mov dh, 0x07		; use normal attribute
+				mov [es:di], dx		; print char on screen
+				add di, 2			; move to next screen location
+				loop nextpos		; repeat for all digits on stack
+
+				pop di
+				pop dx
+				pop cx
+				pop bx
+				pop ax
+				pop es
+				pop bp
+				ret 2
+;----------------------------------------------------
+start:
+push 0
+push 25
+call clrScreen
+
+xor ax, ax
+mov es, ax
+mov ax, [es:9*4]
+mov word[oldisr], ax
+mov ax, [es:9*4+2]
+mov word[oldisr+2], ax
+mov ax, [es:8*4]
+mov word[oldTimer], ax
+mov ax, [es:8*4+2]
+mov word[oldTimer+2], ax
+
+;hooking interrupts
+cli
+mov word[es:9*4], kbisr
+mov word[es:9*4+2], cs
+mov word[es:8*4], timer
+mov word[es:8*4+2], cs
+sti
+
+l1:
+cmp word[isGameRunning], 0
+je endGame
+call printChar ;prints the asterik at updated location using the global variables
+jmp l1
+
+endGame:
+;unhooking
+mov ax, 0
+mov es, ax
+mov ax, [oldisr]
+mov bx, [oldisr+2]
+mov cx, [oldTimer]
+mov dx, [oldTimer+2]
+cli
+mov word[es:9*4], ax
+mov word[es:9*4+2], bx
+mov word[es:8*4], cx
+mov word[es:8*4+2], dx
+sti
+
+;print score and ends game
+push 12
+push 30
+push 0x07
+push cs
+push scoreStr
+call printString
+
+;push 8
+;push 40
+;push 0x07
+;push word[tickCount]
+;call printNum
+
+push word[tickCount]
+call printNumber
+
+mov ax, 0x4c00
+int 0x21

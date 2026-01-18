@@ -1,0 +1,302 @@
+[org 0x0100]
+jmp start
+string: db 'hello world', 0 ;null-terminated string
+string1: db 'hello World', 0
+string2: db 'hello world', 0
+
+;-------------------------------
+calculatePosition:
+push bp
+mov bp, sp
+push ax
+push bx
+push cx
+push dx
+push di
+push si
+
+mov ax, 80
+mul word[bp+6]
+add ax, [bp+4]
+shl ax, 1
+mov word[bp+8], ax  ;return value
+
+pop si
+pop di
+pop dx
+pop cx
+pop bx
+pop ax
+pop bp
+ret 4
+
+;-------------------------------
+clrScreen:
+push bp
+mov bp, sp
+push ax
+push cx
+push si
+push di
+push es
+
+mov ax, 0xb800
+mov es, ax
+mov di, 0
+mov ax, 0x0720 ;space on black background
+mov cx, 2000
+
+cld ;auto-increment mode
+rep stosw
+
+pop es
+pop di
+pop si
+pop cx
+pop ax
+pop bp
+ret
+
+;-------------------------------
+strLen:
+push bp
+mov bp, sp
+push ax
+push bx
+push cx
+push dx
+push si
+push di
+push es
+
+les di, [bp+4] ;es=[bp+6], di=[bp+4]
+mov cx, 0xffff
+mov al, 0
+repne scasb
+mov ax, 0xffff
+sub ax, cx
+dec ax
+mov word[bp+8], ax ;return value
+
+pop es
+pop di
+pop si
+pop dx
+pop cx
+pop bx
+pop ax
+pop bp
+ret 4
+
+;-------------------------------
+printScreen:
+push bp
+mov bp, sp
+push ax
+push bx
+push cx
+push dx
+push si
+push di
+push es
+
+mov di, [bp+4] ;base address of the string
+push 0xffff
+push ds
+push di 
+call strLen
+pop ax
+jz exit ;end if empty string
+
+mov cx, ax
+mov ax, 0xb800
+mov es, ax
+push 0xffff
+push word[bp+10]
+push word[bp+8]
+call calculatePosition
+pop di
+mov ah, [bp+6] ;attribute
+mov si, [bp+4] ;base of string
+
+cld
+nextChar:
+lodsb 
+stosw
+loop nextChar
+
+exit:
+pop es
+pop di
+pop si
+pop dx
+pop cx
+pop bx
+pop ax
+pop bp
+ret 8
+
+;-------------------------------
+scrollUp:
+push bp
+mov bp, sp
+push ax
+push bx
+push cx
+push dx
+push si
+push di
+push es
+push ds
+
+mov ax, 0xb800
+mov es, ax
+mov ds, ax
+mov ax, 80
+mul word[bp+4]
+mov dx, ax ;stores for later use
+mov si, ax
+shl si, 1
+mov cx, 2000
+sub cx, ax
+mov di, 0
+cld 
+rep movsw
+
+;clears the lines scrolled
+mov cx, dx
+mov ax, 0x0720
+;note that di is already pointing to the required point
+rep stosw
+
+pop ds
+pop es
+pop di
+pop si
+pop dx
+pop cx
+pop bx
+pop ax
+pop bp
+ret 2
+
+;-------------------------------
+scrollDown:
+push bp
+mov bp, sp
+push ax
+push bx
+push cx
+push dx
+push si
+push di
+push es
+push ds
+
+mov ax, 0xb800
+mov es, ax
+mov ds, ax
+mov ax, 80
+mul word[bp+4]
+mov dx, ax
+mov cx, 2000
+sub cx, ax
+mov di, 3998
+mov si, di
+shl ax, 1
+sub si, ax
+std ;auto-decrement mode
+rep movsw
+
+mov cx, dx
+mov ax, 0x0720
+rep stosw
+
+pop ds
+pop es
+pop di
+pop si
+pop dx
+pop cx
+pop bx
+pop ax
+pop bp
+ret 2
+;-------------------------------
+strCmp:
+push bp
+mov bp, sp
+push ax
+push bx
+push cx
+push dx
+push si
+push di
+push es
+push ds
+
+les di, [bp+8]
+lds si, [bp+4]
+
+push 0xffff
+push word[bp+10]
+push word[bp+8]
+call strLen
+pop cx
+
+push 0xffff
+push word[bp+6]
+push word[bp+4]
+call strLen
+pop dx
+
+cmp cx, dx
+jnz exitFalse
+
+repe cmpsb
+jcxz exitSimple
+
+exitFalse:
+mov word[bp+12], 0
+
+
+exitSimple:
+pop ds
+pop es
+pop di
+pop si
+pop dx
+pop cx
+pop bx
+pop ax
+pop bp
+ret 8
+;-------------------------------
+start:
+
+;mov ax, 10
+;push ax  ;num of lines to be scrolled
+;call scrollUp
+
+; mov ax, 10
+; push ax
+; call scrollDown
+
+push 1
+push ds
+push string
+push ds
+push string1
+call strCmp
+pop ax
+
+push 1
+push ds
+push string
+push ds
+push string2
+call strCmp
+pop ax
+
+mov ax, 0x4c00
+int 0x21

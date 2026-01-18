@@ -1,0 +1,19 @@
+[org 0x0100]
+
+jmp start
+num1: dq 0xffa0e32f56ca1a9f
+num2: dq 0xffa0e32f56ca1a9f
+
+;64 bit addition
+start:
+mov ax, [num1]
+add word[num2], ax
+mov ax, [num1+2]
+adc word[num2+2], ax
+mov ax, [num1+4]
+adc word[num2+4], ax
+mov ax, [num1+6]
+adc word[num2+6], ax
+
+mov ax, 0x4c00		;terminate the program
+int 0x21

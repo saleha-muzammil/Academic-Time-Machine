@@ -1,0 +1,30 @@
+[org 0x0100]
+jmp start
+
+clrScreen:
+push bp
+mov bp, sp
+push ax
+push cx
+
+mov ax, 0xb800
+mov es, ax
+mov di, 0
+mov ax, 0x0720 ;space on black background
+mov cx, 2000
+
+cld ;auto-increment mode
+rep stosw
+
+pop cx
+pop ax
+pop bp
+ret
+
+
+
+start:
+call clrScreen
+
+mov ax, 0x4c00
+int 0x21

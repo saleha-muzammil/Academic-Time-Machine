@@ -1,0 +1,31 @@
+#a1{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#navBar{
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.navOpt{
+    display: inline;
+    text-decoration: none;
+    color: black;
+}
+.navOpt:hover{
+    background-color: lightgray;
+}
+.buttons{
+    border: 1px solid black;
+    border-radius: 3px;
+    transition: background-color 1s, color 1s;
+}
+.buttons:hover{
+    background-color: darkslategrey;
+    color: aliceblue;
+}

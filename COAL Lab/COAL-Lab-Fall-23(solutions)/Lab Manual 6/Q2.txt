@@ -1,0 +1,98 @@
+[org 0x0100]
+
+jmp start
+;Global Variables
+r: dw 2
+l: dw 7
+result: dw 0
+;---------------------------------------------------
+
+Power:
+push bp
+mov bp, sp
+push ax
+push dx
+push bx
+
+cmp word[bp+4], 1
+je elseCond   ;if multiply by 1 then return the number itself
+
+mov ax, 0
+mov al, [bp+6]  ;load value of x
+mov bl, 1
+l1:
+mul byte[bp+6]
+inc bl
+cmp bl, [bp+4]
+jne l1
+
+mov word[bp+8], ax  ;store the return val on the stack
+jmp en
+
+elseCond:
+mov ax, 0
+mov al, [bp+6]
+mov word[bp+8], ax
+
+en:
+pop bx
+pop dx
+pop ax
+pop bp
+ret 4
+;---------------------------------------------------
+
+seriesSum:
+push bp
+mov bp, sp
+sub sp, 4 ;reserves 4 bytes for local variables
+push cx
+push ax
+push dx
+push bx
+
+mov cx, 1
+mov ax, [bp+6] ;loads r
+mov word[bp-4], 0 ;initializes sum to zero
+
+l2:
+push 0xFFFF
+push ax
+push cx
+call Power
+pop word[bp-2] ;current Answer from power function
+mov bx, [bp-2]
+add word[bp-4], bx
+inc cx
+cmp cx, [bp+4]
+jne l2
+
+push 0xFFFF
+push ax
+push cx
+call Power
+pop word[bp-2] ;current Answer from power function
+mov bx, [bp-2]
+add word[bp-4], bx
+
+mov bx, [bp-4]
+mov word[bp+8], bx
+
+pop bx
+pop dx
+pop ax
+pop cx
+mov sp, bp
+pop bp
+ret 4
+;---------------------------------------------------
+
+start:
+push 0xFFFF
+push word[r]
+push word[l]
+call seriesSum
+pop word[result] 
+
+mov ax, 0x4c00
+int 0x21

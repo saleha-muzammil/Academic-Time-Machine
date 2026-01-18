@@ -1,0 +1,151 @@
+[org 0x0100]
+
+jmp start
+;Global Variables
+currRow: dw 0
+currCol: dw 0
+printChar: db 0x2B
+direction: db 'r'
+;--------------------------------------------------------------------------------
+
+clrScreen:
+push bp
+mov bp, sp
+push ax
+push di
+
+mov ax, 0xB800 ;display memory block starting physical address
+mov es, ax
+mov di, 0
+mov ax, 0x0720 ;background is black, foreground is space char so empty slot
+nextChar:
+mov word[es:di], ax
+add di, 2
+cmp di, 4000
+jne nextChar
+
+pop di
+pop ax
+pop bp
+ret
+;-------------------------------------------------------------------------------
+
+printStar:
+push bp
+mov bp, sp
+push ax
+push dx
+push di
+
+mov ax, 0xB800
+mov es, ax
+;calculates the position of the star -> (i*80)+j)*2
+mov ax, 0
+mov al, 80
+mul byte[currRow]
+add ax, [currCol]
+shl ax, 1  ;multiplies by 2
+
+mov dh, 0x0F
+mov dl, [printChar]
+mov di, ax
+mov word[es:di], dx
+
+;right to down
+cmp word[currCol], 79
+jne skip2
+cmp byte[direction], 'r'
+jne skip2
+mov byte[direction], 'd'
+add word[currRow], 1
+jmp skip1
+
+;down to left
+skip2:
+cmp word[currRow], 23
+jne skip3
+cmp byte[direction], 'd'
+jne skip3
+mov byte[direction], 'l'
+sub word[currCol], 1
+jmp skip1
+
+;left to up
+skip3:
+cmp word[currCol], 0
+jne skip4
+cmp byte[direction], 'l'
+jne skip4
+mov byte[direction], 'u'
+sub word[currRow], 1
+jmp skip1
+
+;up to right
+skip4:
+cmp word[currRow], 0
+jne skip1 
+cmp byte[direction], 'u'
+jne skip1
+mov byte[direction], 'r'
+add word[currCol], 1
+
+skip1:
+cmp byte[direction], 'd'
+je down
+cmp byte[direction], 'l'
+je left
+cmp byte[direction], 'u'
+je up
+
+right:
+add word[currCol], 1
+jmp en
+
+down:
+add word[currRow], 1
+call delay ;to make the star move a bit slower when moving up/down
+jmp en
+
+left:
+sub word[currCol], 1
+jmp en
+
+up:
+sub word[currRow], 1
+call delay
+jmp en
+
+en:
+pop di
+pop dx
+pop ax
+pop bp
+ret
+;------------------------------------------------------------------------------
+
+delay:
+push bp
+mov bp, sp
+push cx
+
+mov cx, 0xFFFF
+l2:loop l2
+
+
+pop cx
+pop bp
+ret
+;------------------------------------------------------------------------------
+
+start:
+call clrScreen  ;clears the screen
+
+l1: 
+call printStar
+call delay
+call clrScreen
+jmp l1  ;infinite loop
+
+
+mov ax, 0x4c00
+int 0x21

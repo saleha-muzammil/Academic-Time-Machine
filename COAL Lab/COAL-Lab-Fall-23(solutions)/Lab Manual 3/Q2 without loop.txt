@@ -1,0 +1,79 @@
+[org 0x0100]
+
+;modifying array3
+mov al, 0
+mov al, [array1]
+add al, [array2]
+mov [array3], al
+
+mov al, 0
+mov al, [array1+1]
+add al, [array2+1]
+mov [array3+1], al
+
+mov al, 0
+mov al, [array1+2]
+add al, [array2+2]
+mov [array3+2], al
+
+mov al, 0
+mov al, [array1+3]
+add al, [array2+3]
+mov [array3+3], al
+
+mov al, 0
+mov al, [array1+4]
+add al, [array2+4]
+mov [array3+4], al
+
+
+;modifying array1
+mov al, 0
+mov al, [array1]
+add al, [array3]
+mov [array1+1], al
+
+mov al, 0
+mov al, [array1+1]
+add al, [array3+1]
+mov [array1+2], al
+
+mov al, 0
+mov al, [array1+2]
+add al, [array3+2]
+mov [array1+3], al
+
+mov al, 0
+mov al, [array1+3]
+add al, [array3+3]
+mov [array1+4], al
+
+
+ 
+;modifying array2
+mov al, 0
+mov al, [array2]
+sub [array3], al
+mov [array2+1], al
+
+mov al, 0
+mov al, [array2+1]
+sub [array3+1], al
+mov [array2+2], al
+
+mov al, 0
+mov al, [array2+2]
+sub [array3+2], al
+mov [array2+3], al
+
+mov al, 0
+mov al, [array2+3]
+sub [array3+3], al
+mov [array2+4], al
+
+mov ax, 0x4c00
+int 0x21
+
+array1: db 1, 2, 3, 4, 5 
+array2: db 9, 8, 7, 6, 3
+array3: db 0, 0, 0, 0, 0

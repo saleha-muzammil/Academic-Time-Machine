@@ -1,0 +1,2 @@
+
+Apply BFS, DFS, UCS and IDS on Pacman Game by defining Initial, Goal, State Space. Find path goal in each case.
